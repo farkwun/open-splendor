@@ -1,0 +1,18 @@
+{
+  "name": "open-splendor",
+  "version": "0.0.1",
+  "description": "An open implementation of Splendor by Marc Andre",
+  "author": "Bryan Chu",
+  "scripts": {
+    "start": "node_modules/.bin/webpack-dev-server --progress"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.*",
+    "babel-loader": "^5.3.*",
+    "webpack": "^1.12.*",
+    "webpack-dev-server": "^1.10.*"
+  },
+  "dependencies": {
+    "react": "^0.13.*"
+  }
+}
