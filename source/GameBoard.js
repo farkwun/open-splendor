@@ -10,6 +10,7 @@ class GameBoard extends React.Component {
     return (
       <div className="game__board">
         <NobleList nobles={this.props.nobles}/>
+        <DeckList />
         {/* <DeckList decks={}/>
         <CoinList coins={}/>
         <PlayerList players={}/>*/}

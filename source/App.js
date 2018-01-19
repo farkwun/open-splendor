@@ -18,7 +18,7 @@ let nobles = [
     img_url: "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   {
-    id: 1,
+    id: 2,
     prestige: 3,
     costs: [
       {
@@ -27,6 +27,51 @@ let nobles = [
       },
       {
         type: "red",
+        val: 4
+      },
+    ],
+    img_url: "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+  },
+  {
+    id: 3,
+    prestige: 3,
+    costs: [
+      {
+        type: "red",
+        val: 4
+      },
+      {
+        type: "green",
+        val: 4
+      },
+    ],
+    img_url: "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+  },
+  {
+    id: 4,
+    prestige: 3,
+    costs: [
+      {
+        type: "red",
+        val: 4
+      },
+      {
+        type: "green",
+        val: 4
+      },
+    ],
+    img_url: "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+  },
+  {
+    id: 5,
+    prestige: 3,
+    costs: [
+      {
+        type: "red",
+        val: 4
+      },
+      {
+        type: "green",
         val: 4
       },
     ],
