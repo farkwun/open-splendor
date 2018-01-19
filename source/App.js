@@ -1,11 +1,5 @@
 import React from 'react';
 
-class Hello extends React.Component {
-  render() {
-    return (
-      <h1>Hello World</h1>
-    );
-  }
-}
+import GameBoard from './GameBoard';
 
-React.render(<Hello />, document.getElementById('root'));
+React.render(<GameBoard />, document.getElementById('root'));
