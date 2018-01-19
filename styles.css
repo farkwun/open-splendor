@@ -1,0 +1,7 @@
+.game__board {
+  background: #eee;
+  padding: 10px 10px 10px 10px;
+  border: 2px solid #e5e5df;
+  border-radius: 3px;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+}

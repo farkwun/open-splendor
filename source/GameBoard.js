@@ -8,7 +8,7 @@ import PlayerList from './PlayerList';
 class GameBoard extends React.Component {
   render() {
     return (
-      <div className="app">
+      <div className="game__board">
         <NobleList />
         <DeckList />
         <CoinList />
