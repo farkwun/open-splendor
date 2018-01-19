@@ -9,10 +9,10 @@ class GameBoard extends React.Component {
   render() {
     return (
       <div className="game__board">
-        <NobleList />
-        <DeckList />
-        <CoinList />
-        <PlayerList />
+        <NobleList nobles={this.props.nobles}/>
+        {/* <DeckList decks={}/>
+        <CoinList coins={}/>
+        <PlayerList players={}/>*/}
       </div>
     );
   }
