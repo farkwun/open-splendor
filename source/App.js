@@ -4,4 +4,4 @@ import GameBoard from './GameBoard';
 
 import * as mock from './MockData';
 
-React.render(<GameBoard nobles={mock.nobles}/>, document.getElementById('root'));
+React.render(<GameBoard nobles={mock.nobles} levels={mock.levels}/>, document.getElementById('root'));
