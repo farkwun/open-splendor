@@ -1,7 +1,7 @@
 import React from 'react';
 
 import NobleList from './NobleList';
-import DeckList from './DeckList';
+import LevelBoard from './LevelBoard';
 import CoinList from './CoinList';
 import PlayerList from './PlayerList';
 
@@ -10,8 +10,8 @@ class GameBoard extends React.Component {
     return (
       <div className="game__board">
         <NobleList nobles={this.props.nobles}/>
-        <DeckList />
-        {/* <DeckList decks={}/>
+        <LevelBoard levels={this.props.levels}/>
+        {/* <LevelBoard decks={}/>
         <CoinList coins={}/>
         <PlayerList players={}/>*/}
       </div>
