@@ -9,6 +9,7 @@ class NobleTray extends React.Component {
         <Noble id={noble.id}
           prestige={noble.prestige}
           costs={noble.costs}
+          img_url={noble.img_url}
         />
       );
     });
