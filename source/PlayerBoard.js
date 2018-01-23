@@ -1,6 +1,6 @@
 import React from 'react';
 
-class PlayerList extends React.Component {
+class PlayerBoard extends React.Component {
   render() {
     return (
       <h1>Player List</h1>
@@ -8,4 +8,4 @@ class PlayerList extends React.Component {
   }
 }
 
-export default PlayerList;
+export default PlayerBoard;
