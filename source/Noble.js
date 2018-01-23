@@ -17,9 +17,11 @@ class Noble extends React.Component {
 
 
     return (
-      <div className="noble" style={backgroundStyle}>
-        <Prestige prestige={this.props.prestige} />
-        {costs}
+      <div className="noble__box">
+        <div className="noble" style={backgroundStyle}>
+          <Prestige prestige={this.props.prestige} />
+          {costs}
+        </div>
       </div>
     );
   }
