@@ -264,3 +264,30 @@ export const levels = [
     ]
   }
 ];
+
+export const coins = [
+  {
+    type: "green",
+    amount: 7
+  },
+  {
+    type: "blue",
+    amount: 7
+  },
+  {
+    type: "red",
+    amount: 7
+  },
+  {
+    type: "white",
+    amount: 7
+  },
+  {
+    type: "black",
+    amount: 7
+  },
+  {
+    type: "yellow",
+    amount: 5
+  },
+];
