@@ -309,6 +309,22 @@ export const players = [
     id: "Bob",
     prestige: 0,
     coins: [
+      {
+        type: "green",
+        amount: 7
+      },
+      {
+        type: "blue",
+        amount: 7
+      },
+      {
+        type: "red",
+        amount: 7
+      },
+      {
+        type: "white",
+        amount: 7
+      }
     ],
     cards: [
     ],
@@ -339,6 +355,21 @@ export const players = [
     discounts: [
     ],
     nobles: [
+      {
+        id: 1,
+        prestige: 3,
+        costs: [
+          {
+            type: "red",
+            val: 4
+          },
+          {
+            type: "green",
+            val: 4
+          },
+        ],
+        img_url: "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+      }
     ]
   }
 ];
