@@ -2,6 +2,12 @@
   font-family: Luminari, Fantasy, sans-serif;
 }
 
+.box__header {
+  padding: 0px;
+  margin: 0px;
+  text-decoration: underline;
+}
+
 .game__board {
   background: #eee;
   padding: 10px 10px 10px 10px;
@@ -36,6 +42,16 @@
   display: inline-block;
   width: 25%;
 }
+
+.noble__tray {
+  display: inline-block;
+  height: 100px;
+  margin: 5px;
+  border: 6px solid #e5e5df;
+  width: 45%;
+  border-radius: 10px;
+}
+
 .card__stack {
   display: inline-block;
   width: 20%;
