@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Deck from './Deck';
 import Card from './Card';
 
 class Level extends React.Component {
@@ -13,8 +14,8 @@ class Level extends React.Component {
     });
 
     return (
-    <div className="deck" id={this.props.level_id}>
-      {this.props.level_id}
+    <div className="level" id={this.props.id}>
+      <Deck id={this.props.id} />
       {cards}
     </div>
     );

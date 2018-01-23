@@ -10,6 +10,28 @@
   box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
 }
 
+.level__board {
+  background: #ccc;
+  padding: 10px 10px 10px 10px;
+  border: 2px solid #e5e5df;
+  border-radius: 10px;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+}
+
+.level {
+  border: dashed 4px #ddd;
+}
+
+.deck {
+  width: 25%;
+  display: inline-block;
+}
+
+.card {
+  width: 25%;
+  display: inline-block;
+}
+
 .noble {
   display: inline-block;
   width: 15%;
