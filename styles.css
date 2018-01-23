@@ -18,6 +18,35 @@
   box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
 }
 
+.coin__board {
+  background: #ccc;
+  padding: 10px 10px 10px 10px;
+  border: 2px solid #e5e5df;
+  border-radius: 10px;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+}
+
+.coin__stack {
+  display: inline-block;
+  text-align: center;
+  width: 14%;
+}
+
+.groove {
+  background: #aaa;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+}
+
+.coin {
+  margin: 2px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
 .level {
   border: dashed 4px #ddd;
 }
