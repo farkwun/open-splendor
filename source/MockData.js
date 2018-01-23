@@ -291,3 +291,54 @@ export const coins = [
     amount: 5
   },
 ];
+
+export const players = [
+  {
+    id: "Alice",
+    prestige: 0,
+    coins: [
+    ],
+    cards: [
+    ],
+    discounts: [
+    ],
+    nobles: [
+    ]
+  },
+  {
+    id: "Bob",
+    prestige: 0,
+    coins: [
+    ],
+    cards: [
+    ],
+    discounts: [
+    ],
+    nobles: [
+    ]
+  },
+  {
+    id: "Carol",
+    prestige: 0,
+    coins: [
+    ],
+    cards: [
+    ],
+    discounts: [
+    ],
+    nobles: [
+    ]
+  },
+  {
+    id: "Dan",
+    prestige: 0,
+    coins: [
+    ],
+    cards: [
+    ],
+    discounts: [
+    ],
+    nobles: [
+    ]
+  }
+];
