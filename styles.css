@@ -32,13 +32,26 @@
   width: 14%;
 }
 
+.player__card {
+  display: inline-block;
+  width: 25%;
+}
+.card__stack {
+  display: inline-block;
+  width: 20%;
+}
+
 .groove {
   background: #aaa;
   margin: auto;
-  width: 50%;
+  width: 90%;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+}
+
+.player__name {
+  display: inline-block;
 }
 
 .coin {
@@ -85,6 +98,7 @@
 }
 
 .prestige {
+  display: inline-block;
   font-weight: 800;
   font-size: 40pt;
   -webkit-text-stroke: 3px black;
