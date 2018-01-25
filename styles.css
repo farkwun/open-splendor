@@ -3,30 +3,30 @@
 }
 
 .box__header {
-  padding: 0px;
-  margin: 0px;
+  padding: 0%;
+  margin: 0%;
   text-decoration: underline;
 }
 
 .game__board {
   background: #eee;
-  padding: 10px 10px 10px 10px;
+  padding: 2% 2% 2% 2%;
   border: 2px solid #e5e5df;
-  border-radius: 3px;
+  border-radius: 0.5%;
   box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
 }
 
 .level__board {
   background: #ccc;
-  padding: 10px 10px 10px 10px;
+  padding: 1% 1% 1% 1%;
   border: 2px solid #e5e5df;
-  border-radius: 10px;
+  border-radius: 1%;
   box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
 }
 
 .coin__board {
   background: #ccc;
-  padding: 10px 10px 10px 10px;
+  padding: 1% 1% 1% 1%;
   border: 2px solid #e5e5df;
   border-radius: 10px;
   box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
@@ -39,7 +39,7 @@
 }
 
 .player__card {
-  padding: 10px;
+  padding: 1%;
   vertical-align: text-top;
   display: inline-block;
   width: 20%;
@@ -48,25 +48,25 @@
 .noble__tray {
   vertical-align: text-top;
   display: inline-block;
-  margin: 5px;
+  margin: 1%;
   border: 6px solid #e5e5df;
-  width: 40%;
+  width: 43%;
   border-radius: 10px;
 }
 
 .wallet {
   vertical-align: text-top;
   display: inline-block;
-  margin: 5px;
+  margin: 1%;
   border: 6px solid #e5e5df;
-  width: 40%;
+  width: 43%;
   border-radius: 10px;
 }
 
 .counter {
   display: inline-block;
   text-align: center;
-  margin: 5px;
+  margin: 1%;
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -80,8 +80,8 @@
   background: #aaa;
   margin: auto;
   width: 90%;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 5%;
+  border-radius: 5%;
   box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
 }
 
@@ -90,8 +90,8 @@
 }
 
 .coin {
-  margin: 2px;
-  padding: 10px;
+  margin: 1%;
+  padding: 5%;
   border-radius: 10px;
 }
 
@@ -101,8 +101,8 @@
 
 .deck {
   background: #ddd;
-  padding: 10px 10px 10px 10px;
-  margin: 10px 10px 10px 10px;
+  padding: 2% 2% 2% 2%;
+  margin: 2% 2% 2% 2%;
   border: 2px solid #e5e5df;
   border-radius: 10px;
   box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
@@ -110,8 +110,8 @@
 
 .card {
   background: #ddd;
-  padding: 10px 10px 10px 10px;
-  margin: 10px 10px 10px 10px;
+  padding: 2% 2% 2% 2%;
+  margin: 2% 2% 2% 2%;
   border: 2px solid #e5e5df;
   border-radius: 10px;
   box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
@@ -128,26 +128,27 @@
 }
 
 .noble {
-  margin: 10px;
-  border-radius: 10px;
+  margin: 2%;
+  border-radius: 2%;
 }
 
 .prestige {
   display: inline-block;
   font-weight: 800;
-  font-size: 40pt;
+  font-size: 400%;
   -webkit-text-stroke: 3px black;
   color: white;
-  margin: 10px;
+  margin: 2%;
 }
 
 .cost {
+  text-align: center;
   font-weight: 800;
-  font-size: 20pt;
+  font-size: 100%;
   -webkit-text-stroke: 1px black;
   color: white;
-  padding: 10px;
-  margin: 10px;
-  width: 7%;
+  padding: 2%;
+  margin: 2%;
+  width: 10%;
   border-radius: 10px;
 }
