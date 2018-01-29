@@ -8,6 +8,14 @@
   text-decoration: underline;
 }
 
+.info {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  border: 3px solid #73AD21;
+  background-color: rgba(202,232,202,0.5)
+}
+
 .game__board {
   background: #eee;
   padding: 2% 2% 2% 2%;
