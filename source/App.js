@@ -13,6 +13,7 @@ class App extends React.Component {
       levels: mock.levels,
       coins: mock.coins,
       current_player: mock.current_player,
+      round_num: mock.round_num,
       players: mock.players
     };
   }

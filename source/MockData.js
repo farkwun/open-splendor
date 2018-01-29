@@ -375,3 +375,5 @@ export const players = [
 ];
 
 export const current_player = "Hello World";
+
+export const round_num = 1;
