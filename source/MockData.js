@@ -295,76 +295,95 @@ export const coins = [
 export const players = {
   "Alice": {
     id: "Alice",
-      prestige: 0,
-      coins: [
-      ],
-      cards: [
-      ],
-      nobles: [
-      ]
+    prestige: 0,
+    coins: [
+    ],
+    cards: [
+      {
+        id: 1,
+        prestige: 0,
+        type: "green",
+        costs: [
+          {
+            type: "red",
+            val: 1
+          },
+          {
+            type: "green",
+            val: 1
+          },
+          {
+            type: "blue",
+            val: 1
+          }
+        ]
+      }
+    ],
+    nobles: [
+    ]
   },
   "Bob": {
     id: "Bob",
-      prestige: 0,
-      coins: [
-        {
-          type: "green",
-          amount: 7
-        },
-        {
-          type: "blue",
-          amount: 7
-        },
-        {
-          type: "red",
-          amount: 7
-        },
-        {
-          type: "white",
-          amount: 7
-        }
-      ],
-      cards: [
-      ],
-      nobles: [
-      ]
+    prestige: 0,
+    coins: [
+      {
+        type: "green",
+        amount: 7
+      },
+      {
+        type: "blue",
+        amount: 7
+      },
+      {
+        type: "red",
+        amount: 7
+      },
+      {
+        type: "white",
+        amount: 7
+      }
+    ],
+    cards: [
+    ],
+    nobles: [
+    ]
   },
   "Carol": {
     id: "Carol",
-      prestige: 0,
-      coins: [
-      ],
-      cards: [
-      ],
-      nobles: [
-      ]
+    prestige: 0,
+    coins: [
+    ],
+    cards: [
+    ],
+    nobles: [
+    ]
   },
   "Dan": {
     id: "Dan",
-      prestige: 0,
-      coins: [
-      ],
-      cards: [
-      ],
-      discounts: [
-      ],
-      nobles: [
-        {
-          id: 1,
-          prestige: 3,
-          costs: [
-            {
-              type: "red",
-              val: 4
-            },
-            {
-              type: "green",
-              val: 4
-            },
-          ],
-          img_url: "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
-        }
-      ]
+    prestige: 0,
+    coins: [
+    ],
+    cards: [
+    ],
+    discounts: [
+    ],
+    nobles: [
+      {
+        id: 1,
+        prestige: 3,
+        costs: [
+          {
+            type: "red",
+            val: 4
+          },
+          {
+            type: "green",
+            val: 4
+          },
+        ],
+        img_url: "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+      }
+    ]
   }
 };
 
