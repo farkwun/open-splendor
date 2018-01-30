@@ -11,6 +11,17 @@ class NobleList extends React.Component {
         img_url={noble.img_url}
       />
     });
+
+    let placeholders = [];
+
+    while ((placeholders.length + nobles.length) < 5) {
+      placeholders.push(
+        <Noble placeholder="True"/>
+      );
+    }
+
+    nobles = placeholders.concat(nobles);
+
     return (
       <div className="noble__list">
         {nobles}

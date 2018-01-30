@@ -5,6 +5,14 @@ import Cost from './Cost';
 
 class Noble extends React.Component {
   render() {
+    if (this.props.placeholder) {
+      return (
+        <div className="noble__box">
+          <div className="noble__placeholder">
+          </div>
+        </div>
+      );
+    }
     var backgroundStyle={
       backgroundImage: "url(" + this.props.img_url + ")",
       backgroundSize: "contain"
@@ -14,7 +22,6 @@ class Noble extends React.Component {
       <Cost val={cost.val}
         type={cost.type} />
     ));
-
 
     return (
       <div className="noble__box">
