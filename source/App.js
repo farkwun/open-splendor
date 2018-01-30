@@ -21,11 +21,16 @@ class App extends React.Component {
 
   incrementPlayIndex() {
     let index = this.state.play_index + 1;
+    let round_num = this.state.round_num;
+
     if (index >= this.state.play_order.length){
       index = 0;
+      round_num = round_num + 1;
     }
+
     this.setState({
-      play_index: index
+      play_index: index,
+      round_num: round_num
     });
   }
 
