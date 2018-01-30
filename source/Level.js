@@ -12,6 +12,7 @@ class Level extends React.Component {
             prestige={card.prestige}
             costs={card.costs}
             type={card.type}
+            getBonus={this.props.getBonus}
           />
         </div>
       );

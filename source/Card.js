@@ -1,13 +1,14 @@
 import React from 'react';
 
 import Prestige from './Prestige';
+import Cost from './Cost';
 
 class Card extends React.Component {
   render() {
     let costs = this.props.costs.map((cost) => (
-      <div className="cost" style={{backgroundColor: cost.type}}>
-        {cost.val}
-      </div>
+      <Cost val={cost.val}
+        type={cost.type}
+        getBonus={this.props.getBonus}/>
     ));
 
     return (

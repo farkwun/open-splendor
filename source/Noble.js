@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Prestige from './Prestige';
+import Cost from './Cost';
 
 class Noble extends React.Component {
   render() {
@@ -10,9 +11,8 @@ class Noble extends React.Component {
     };
 
     let costs = this.props.costs.map((cost) => (
-      <div className="cost" style={{backgroundColor: cost.type}}>
-        {cost.val}
-      </div>
+      <Cost val={cost.val}
+        type={cost.type} />
     ));
 
 

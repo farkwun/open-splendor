@@ -29,6 +29,7 @@ class App extends React.Component {
     });
   }
 
+
   render () {
     let players = this.state.play_order.map((player_id) => {
       return this.state.players[player_id];
@@ -40,11 +41,19 @@ class App extends React.Component {
           levels={this.state.levels}
           coins={this.state.coins}
           players={players}
+          getBonus={this.getBonus}
         />
         <Info state={this.state} onClick={() => {
           this.incrementPlayIndex();
         }}/>
       </div>)
+  }
+
+  getBonus = (type) => {
+    let curr_player = this.state.play_order[this.state.play_index];
+    return this.state.players[curr_player].cards.filter((c) => {
+      return (c.type === type);
+    }).length;
   }
 }
 
