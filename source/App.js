@@ -127,6 +127,9 @@ class App extends React.Component {
   }
 
   render () {
+    let curr_player_id = this.state.play_order[this.state.play_index];
+    let player = this.state.players.find((player) => player.id === curr_player_id);
+
     return (
       <div className="app">
         <GameBoard nobles={this.state.nobles}
@@ -135,6 +138,7 @@ class App extends React.Component {
           stash={this.state.stash}
           players={this.state.players}
           getBonus={this.getBonus}
+          curr_player={player}
           removeFromStash={this.removeFromStash}
           addToStash={this.addToStash}
           takeStash={this.takeStash}

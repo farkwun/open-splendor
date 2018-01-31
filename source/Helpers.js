@@ -9,7 +9,11 @@ export function addCoinAmount(coins, type, val) {
   return new_coins;
 }
 
-export function stashIsValid(stash){
+export function canTakeStash(player, stash){
+  let player_coins = numCoins(player);
+  if (player_coins + stash.length > 10){
+    return false;
+  }
   let types = new Set();
   let coin;
   for (let i = 0; i < stash.length; i++){
@@ -19,7 +23,8 @@ export function stashIsValid(stash){
 
   return(
     (types.size == 3 && stash.length == 3) ||
-    (types.size == 1 && stash.length == 2)
+    (types.size == 1 && stash.length == 2) ||
+    (player_coins >= 8)
   );
 }
 
@@ -44,4 +49,12 @@ export function mergeCoins(coins, stash){
     }
   });
   return new_coins;
+}
+
+export function numCoins(player){
+  let num = 0;
+  player.coins.map((coin) => {
+    num += coin.amount;
+  });
+  return num;
 }
