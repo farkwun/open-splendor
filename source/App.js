@@ -13,10 +13,54 @@ class App extends React.Component {
       levels: mock.levels,
       coins: mock.coins,
       round_num: mock.round_num,
+      stash: [
+      ],
       play_order: mock.play_order,
       play_index: mock.play_index,
       players: mock.players
     };
+  }
+
+  getBonus = (type) => {
+    let curr_player = this.state.play_order[this.state.play_index];
+    return this.state.players[curr_player].cards.filter((c) => {
+      return (c.type === type);
+    }).length;
+  };
+
+  removeFromStash = (index) => {
+    let stash = [...this.state.stash];
+    let [coin] = stash.splice(index, 1);
+    let coins = this.addCoinAmount(this.state.coins, coin.type, 1);
+    this.setState({
+      stash,
+      coins
+    });
+  };
+
+  addToStash = (type) => {
+    let stack = this.state.coins.find((coin) => coin.type === type);
+    if (stack.amount == 0){
+      return;
+    }
+    let stash = [...this.state.stash, {type}];
+    let coins = this.addCoinAmount(this.state.coins, type, -1);
+
+    this.setState({
+      stash,
+      coins
+    });
+  }
+
+  addCoinAmount(coins, type, val) {
+    let new_coins = coins.map(coin => {
+      let new_coin = {...coin};
+      if (new_coin.type === type) {
+        new_coin.amount += val;
+      }
+      return new_coin;
+    });
+    return new_coins;
   }
 
   incrementPlayIndex() {
@@ -45,20 +89,16 @@ class App extends React.Component {
         <GameBoard nobles={this.state.nobles}
           levels={this.state.levels}
           coins={this.state.coins}
+          stash={this.state.stash}
           players={players}
           getBonus={this.getBonus}
+          removeFromStash={this.removeFromStash}
+          addToStash={this.addToStash}
         />
         <Info state={this.state} onClick={() => {
           this.incrementPlayIndex();
         }}/>
-      </div>)
-  }
-
-  getBonus = (type) => {
-    let curr_player = this.state.play_order[this.state.play_index];
-    return this.state.players[curr_player].cards.filter((c) => {
-      return (c.type === type);
-    }).length;
+    </div>)
   }
 }
 
