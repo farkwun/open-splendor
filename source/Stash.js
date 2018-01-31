@@ -19,13 +19,16 @@ class Stash extends React.Component {
         {coins.reverse()}
         <button className="take__stash"
           onClick={() => {
-            console.log(helpers.stashIsValid(this.props.stash));
+            if (helpers.stashIsValid(this.props.stash)){
+              this.props.takeStash();
+              this.props.clearStash(false);
+            }
           }}>
           Take Stash
         </button>
         <button className="clear__stash"
           onClick={() => {
-            this.props.clearStash();
+            this.props.clearStash(true);
           }}>
           Clear Stash
         </button>

@@ -78,16 +78,37 @@ class App extends React.Component {
     });
   }
 
-  clearStash = () => {
-    let stash = [];
-    let coins = this.state.coins;
-    this.state.stash.map((coin) => {
-      coins = helpers.addCoinAmount(coins, coin.type, 1);
-    });
+  takeStash = () => {
+    let curr_player_id = this.state.play_order[this.state.play_index];
+    let players = helpers.updatePlayer(curr_player_id,
+      this.state.players,
+      (player) => {
+        let new_player = {...player};
+        new_player.coins = helpers.mergeCoins(new_player.coins, this.state.stash);
+        return new_player;
+      }
+    );
     this.setState({
-      stash,
-      coins
+      players
     });
+  }
+
+  clearStash = (reset) => {
+    let stash = [];
+    if (reset){
+      let coins = this.state.coins;
+      this.state.stash.map((coin) => {
+        coins = helpers.addCoinAmount(coins, coin.type, 1);
+      });
+      this.setState({
+        stash,
+        coins
+      });
+    } else{
+      this.setState({
+        stash,
+      });
+    }
   }
 
   incrementPlayIndex = () => {
@@ -116,6 +137,7 @@ class App extends React.Component {
           getBonus={this.getBonus}
           removeFromStash={this.removeFromStash}
           addToStash={this.addToStash}
+          takeStash={this.takeStash}
           clearStash={this.clearStash}
         />
         <Info state={this.state} onClick={this.incrementPlayIndex}/>
