@@ -292,8 +292,8 @@ export const coins = [
   },
 ];
 
-export const players = {
-  "Alice": {
+export const players = [
+  {
     id: "Alice",
     prestige: 0,
     coins: [
@@ -322,7 +322,7 @@ export const players = {
     nobles: [
     ]
   },
-  "Bob": {
+  {
     id: "Bob",
     prestige: 0,
     coins: [
@@ -348,7 +348,7 @@ export const players = {
     nobles: [
     ]
   },
-  "Carol": {
+  {
     id: "Carol",
     prestige: 0,
     coins: [
@@ -358,7 +358,7 @@ export const players = {
     nobles: [
     ]
   },
-  "Dan": {
+  {
     id: "Dan",
     prestige: 0,
     coins: [
@@ -385,7 +385,7 @@ export const players = {
       }
     ]
   }
-};
+];
 
 export const current_player = "Hello World";
 

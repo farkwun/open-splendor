@@ -23,11 +23,36 @@ class App extends React.Component {
   }
 
   getBonus = (type) => {
-    let curr_player = this.state.play_order[this.state.play_index];
-    return this.state.players[curr_player].cards.filter((c) => {
+    let curr_player_id = this.state.play_order[this.state.play_index];
+    let curr_player = this.state.players.find((player) => player.id === curr_player_id);
+    return curr_player.cards.filter((c) => {
       return (c.type === type);
     }).length;
   };
+
+  removeFromStash = (index) => {
+    let stash = [...this.state.stash];
+    let [coin] = stash.splice(index, 1);
+    let coins = helpers.addCoinAmount(this.state.coins, coin.type, 1);
+    this.setState({
+      stash,
+      coins
+    });
+  };
+
+  addToStash = (type) => {
+    let stack = this.state.coins.find((coin) => coin.type === type);
+    if (stack.amount == 0 || this.state.stash.length >= 3){
+      return;
+    }
+    let stash = [...this.state.stash, {type}];
+    let coins = helpers.addCoinAmount(this.state.coins, type, -1);
+
+    this.setState({
+      stash,
+      coins
+    });
+  }
 
   removeFromStash = (index) => {
     let stash = [...this.state.stash];
@@ -81,17 +106,13 @@ class App extends React.Component {
   }
 
   render () {
-    let players = this.state.play_order.map((player_id) => {
-      return this.state.players[player_id];
-    });
-
     return (
       <div className="app">
         <GameBoard nobles={this.state.nobles}
           levels={this.state.levels}
           coins={this.state.coins}
           stash={this.state.stash}
-          players={players}
+          players={this.state.players}
           getBonus={this.getBonus}
           removeFromStash={this.removeFromStash}
           addToStash={this.addToStash}
