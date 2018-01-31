@@ -53,18 +53,7 @@ class App extends React.Component {
     });
   }
 
-  addCoinAmount(coins, type, val) {
-    let new_coins = coins.map(coin => {
-      let new_coin = {...coin};
-      if (new_coin.type === type) {
-        new_coin.amount += val;
-      }
-      return new_coin;
-    });
-    return new_coins;
-  }
-
-  incrementPlayIndex() {
+  incrementPlayIndex = () => {
     let index = this.state.play_index + 1;
     let round_num = this.state.round_num;
 
@@ -78,7 +67,6 @@ class App extends React.Component {
       round_num: round_num
     });
   }
-
 
   render () {
     let players = this.state.play_order.map((player_id) => {
@@ -96,9 +84,7 @@ class App extends React.Component {
           removeFromStash={this.removeFromStash}
           addToStash={this.addToStash}
         />
-        <Info state={this.state} onClick={() => {
-          this.incrementPlayIndex();
-        }}/>
+        <Info state={this.state} onClick={this.incrementPlayIndex}/>
     </div>)
   }
 }
