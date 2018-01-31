@@ -22,3 +22,26 @@ export function stashIsValid(stash){
     (types.size == 1 && stash.length == 2)
   );
 }
+
+export function updatePlayer(key, players, func){
+  let new_players = players.map((player) => {
+    if (player.id === key){
+      return (func(player));
+    }
+    return player;
+  });
+  return new_players;
+}
+
+export function mergeCoins(coins, stash){
+  let new_coins = [...coins];
+  stash.map((coin) => {
+    let new_coin = new_coins.find((nc) => nc.type === coin.type);
+    if (new_coin){
+      new_coin.amount += 1;
+    } else {
+      new_coins.push({type: coin.type, amount: 1})
+    }
+  });
+  return new_coins;
+}
