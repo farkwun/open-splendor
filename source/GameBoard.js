@@ -15,7 +15,8 @@ class GameBoard extends React.Component {
         <CoinBoard coins={this.props.coins}
           addToStash={this.props.addToStash}/>
         <Stash stash={this.props.stash}
-          removeFromStash={this.props.removeFromStash}/>
+          removeFromStash={this.props.removeFromStash}
+          clearStash={this.props.clearStash}/>
         <PlayerBoard players={this.props.players}/>
         {/* <LevelBoard decks={}/>
         <CoinBoard coins={}/>

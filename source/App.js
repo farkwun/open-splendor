@@ -53,6 +53,18 @@ class App extends React.Component {
     });
   }
 
+  clearStash = () => {
+    let stash = [];
+    let coins = this.state.coins;
+    this.state.stash.map((coin) => {
+      coins = helpers.addCoinAmount(coins, coin.type, 1);
+    });
+    this.setState({
+      stash,
+      coins
+    });
+  }
+
   incrementPlayIndex = () => {
     let index = this.state.play_index + 1;
     let round_num = this.state.round_num;
@@ -83,6 +95,7 @@ class App extends React.Component {
           getBonus={this.getBonus}
           removeFromStash={this.removeFromStash}
           addToStash={this.addToStash}
+          clearStash={this.clearStash}
         />
         <Info state={this.state} onClick={this.incrementPlayIndex}/>
     </div>)
