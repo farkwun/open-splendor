@@ -40,7 +40,7 @@ class App extends React.Component {
 
   addToStash = (type) => {
     let stack = this.state.coins.find((coin) => coin.type === type);
-    if (stack.amount == 0){
+    if (stack.amount == 0 || this.state.stash.length >= 3){
       return;
     }
     let stash = [...this.state.stash, {type}];
