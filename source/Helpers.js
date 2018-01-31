@@ -8,3 +8,17 @@ export function addCoinAmount(coins, type, val) {
   });
   return new_coins;
 }
+
+export function stashIsValid(stash){
+  let types = new Set();
+  let coin;
+  for (let i = 0; i < stash.length; i++){
+    coin = stash[i];
+    types.add(coin.type);
+  }
+
+  return(
+    (types.size == 3 && stash.length == 3) ||
+    (types.size == 1 && stash.length == 2)
+  );
+}
