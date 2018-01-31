@@ -4,6 +4,7 @@ import GameBoard from './GameBoard';
 import Info from './Info';
 
 import * as mock from './MockData';
+import * as helpers from './Helpers';
 
 class App extends React.Component {
   constructor(props){
@@ -31,7 +32,7 @@ class App extends React.Component {
   removeFromStash = (index) => {
     let stash = [...this.state.stash];
     let [coin] = stash.splice(index, 1);
-    let coins = this.addCoinAmount(this.state.coins, coin.type, 1);
+    let coins = helpers.addCoinAmount(this.state.coins, coin.type, 1);
     this.setState({
       stash,
       coins
@@ -44,7 +45,7 @@ class App extends React.Component {
       return;
     }
     let stash = [...this.state.stash, {type}];
-    let coins = this.addCoinAmount(this.state.coins, type, -1);
+    let coins = helpers.addCoinAmount(this.state.coins, type, -1);
 
     this.setState({
       stash,
