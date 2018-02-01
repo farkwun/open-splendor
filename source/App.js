@@ -91,6 +91,7 @@ class App extends React.Component {
     this.setState({
       players
     });
+    this.incrementPlayIndex();
   }
 
   clearStash = (reset) => {
