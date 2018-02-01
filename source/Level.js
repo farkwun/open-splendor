@@ -5,6 +5,7 @@ import Card from './Card';
 
 class Level extends React.Component {
   render() {
+    let player = this.props.curr_player;
     var cards = this.props.row_cards.map((card) => {
       return (
         <div className="level__box">

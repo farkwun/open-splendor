@@ -28,6 +28,23 @@ export function canTakeStash(player, stash){
   );
 }
 
+export function canBuyCard(player, card){
+  let player_coins = getCoinsFor(player);
+  let player_bonus = getBonusesFor(player);
+  let costs = 0;
+  card.costs.map((cost) => {
+    let type = cost.type;
+    let net_coins = player_coins[type] ? player_coins[type] : 0;
+    let net_bonus = player_bonus[type] ? player_bonus[type] : 0;
+
+    let net = cost.val - net_coins - net_bonus;
+    if (net > 0){
+      costs += 1;
+    }
+  });
+  return costs <= 0;
+}
+
 export function updatePlayer(key, players, func){
   let new_players = players.map((player) => {
     if (player.id === key){
@@ -57,4 +74,24 @@ export function numCoins(player){
     num += coin.amount;
   });
   return num;
+}
+
+export function getCoinsFor(player){
+  let coins = {};
+  player.coins.map((coin) => {
+    coins[coin.type] = coin.amount
+  });
+  return coins;
+}
+
+export function getBonusesFor(player){
+  let bonuses = {};
+  player.cards.map((card) => {
+    if (card.type in bonuses){
+      bonuses[card.type] += 1
+    } else{
+      bonuses[card.type] = 1
+    }
+  });
+  return bonuses;
 }
