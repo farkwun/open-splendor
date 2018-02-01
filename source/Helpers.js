@@ -28,9 +28,7 @@ export function canTakeStash(player, stash){
   );
 }
 
-export function canBuyCard(player, card){
-  let player_coins = getCoinsFor(player);
-  let player_bonus = getBonusesFor(player);
+export function canBuyCard(player_coins, player_bonus, card){
   let costs = 0;
   card.costs.map((cost) => {
     let type = cost.type;

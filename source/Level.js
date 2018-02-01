@@ -2,13 +2,21 @@ import React from 'react';
 
 import Deck from './Deck';
 import Card from './Card';
+import * as helpers from './Helpers';
 
 class Level extends React.Component {
   render() {
     let player = this.props.curr_player;
+    let player_coins = helpers.getCoinsFor(player);
+    let player_bonus = helpers.getBonusesFor(player);
     var cards = this.props.row_cards.map((card) => {
+      let buyable = helpers.canBuyCard(player_coins, player_bonus, card);
+      let className = "level__box";
+      if (buyable){
+        className = "level__box__buyable";
+      }
       return (
-        <div className="level__box">
+        <div className={className}>
           <Card id={card.id}
             prestige={card.prestige}
             costs={card.costs}
