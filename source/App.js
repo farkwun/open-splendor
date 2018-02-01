@@ -22,10 +22,13 @@ class App extends React.Component {
     };
   }
 
-  getBonus = (type) => {
+  getCurrPlayer() {
     let curr_player_id = this.state.play_order[this.state.play_index];
-    let curr_player = this.state.players.find((player) => player.id === curr_player_id);
-    return curr_player.cards.filter((c) => {
+    return this.state.players.find((player) => player.id === curr_player_id);
+  }
+
+  getBonus = (type) => {
+    return this.getCurrPlayer().cards.filter((c) => {
       return (c.type === type);
     }).length;
   };
@@ -79,7 +82,7 @@ class App extends React.Component {
   }
 
   takeStash = () => {
-    let curr_player_id = this.state.play_order[this.state.play_index];
+    let curr_player_id = this.getCurrPlayer().id;
     let players = helpers.updatePlayer(curr_player_id,
       this.state.players,
       (player) => {
@@ -128,8 +131,7 @@ class App extends React.Component {
   }
 
   render () {
-    let curr_player_id = this.state.play_order[this.state.play_index];
-    let player = this.state.players.find((player) => player.id === curr_player_id);
+    let player = this.getCurrPlayer();
 
     return (
       <div className="app">
