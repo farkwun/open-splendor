@@ -156,6 +156,8 @@
 
 .level__box__buyable:hover {
   border: 2px solid #66ff66;
+  border-radius: 10px;
+  background-color: #66ff66;
 }
 
 .noble {
