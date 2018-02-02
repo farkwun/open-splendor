@@ -58,6 +58,27 @@ class App extends React.Component {
         let new_player = {...player};
         new_player.cards = [...player.cards]
         new_player.cards.push(card);
+
+        let bonuses = helpers.getBonusesFor(player);
+        let costs = {};
+
+        card.costs.map((cost) => {
+          costs[cost.type] = cost.val
+        });
+
+        new_player.coins = [...player.coins]
+
+        new_player.coins = new_player.coins.map((coin) => {
+          let new_coin = {...coin}
+          if (coin.type in costs){
+            const bonus = bonuses[coin.type] ? bonuses[coin.type] : 0
+            new_coin.amount -= costs[coin.type] - bonus;
+          }
+          return new_coin
+        });
+
+        new_player.coins = new_player.coins.filter((coin) => coin.amount > 0);
+
         return new_player;
       }
     );
