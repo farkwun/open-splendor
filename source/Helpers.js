@@ -43,14 +43,14 @@ export function canBuyCard(player_coins, player_bonus, card){
   return costs <= 0;
 }
 
-export function updatePlayer(key, players, func){
-  let new_players = players.map((player) => {
-    if (player.id === key){
-      return (func(player));
+export function updateObject(key, objects, func){
+  let new_objects = objects.map((object) => {
+    if (object.id === key){
+      return (func(object));
     }
-    return player;
+    return object;
   });
-  return new_players;
+  return new_objects;
 }
 
 export function mergeCoins(coins, stash){

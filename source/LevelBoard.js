@@ -5,7 +5,8 @@ import Level from './Level';
 class LevelBoard extends React.Component {
   render() {
     var levels = this.props.levels.map((level) => {
-      return <Level id={level.level_id}
+      return <Level id={level.id}
+        buyCard={this.props.buyCard}
         row_cards={level.row_cards}
         curr_player={this.props.curr_player}
         getBonus={this.props.getBonus}

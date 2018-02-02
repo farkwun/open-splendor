@@ -33,6 +33,42 @@ class App extends React.Component {
     }).length;
   };
 
+  buyCard = (card, level_id) => {
+    let curr_player_id = this.state.play_order[this.state.play_index];
+
+    let levels = helpers.updateObject(level_id,
+      this.state.levels,
+      (level) => {
+        let new_level = {...level};
+        new_level.row_cards = level.row_cards.map((rc) => {
+          if (rc.id == card.id){
+            let new_card = {...card};
+            new_card.id = "null";
+            return new_card;
+          }
+          return rc;
+        });
+        return new_level;
+      }
+    );
+
+    let players = helpers.updateObject(curr_player_id,
+      this.state.players,
+      (player) => {
+        let new_player = {...player};
+        new_player.cards = [...player.cards]
+        new_player.cards.push(card);
+        return new_player;
+      }
+    );
+
+    this.setState({
+      levels,
+      players
+    });
+    this.incrementPlayIndex();
+  }
+
   removeFromStash = (index) => {
     let stash = [...this.state.stash];
     let [coin] = stash.splice(index, 1);
@@ -83,7 +119,7 @@ class App extends React.Component {
 
   takeStash = () => {
     let curr_player_id = this.getCurrPlayer().id;
-    let players = helpers.updatePlayer(curr_player_id,
+    let players = helpers.updateObject(curr_player_id,
       this.state.players,
       (player) => {
         let new_player = {...player};
@@ -142,13 +178,14 @@ class App extends React.Component {
           players={this.state.players}
           getBonus={this.getBonus}
           curr_player={player}
+          buyCard={this.buyCard}
           removeFromStash={this.removeFromStash}
           addToStash={this.addToStash}
           takeStash={this.takeStash}
           clearStash={this.clearStash}
         />
         <Info state={this.state} onClick={this.incrementPlayIndex}/>
-    </div>)
+      </div>)
   }
 }
 

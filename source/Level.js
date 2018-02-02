@@ -12,11 +12,15 @@ class Level extends React.Component {
     var cards = this.props.row_cards.map((card) => {
       let buyable = helpers.canBuyCard(player_coins, player_bonus, card);
       let className = "level__box";
+      let onClick;
       if (buyable){
         className = "level__box__buyable";
+        onClick = () => {
+          this.props.buyCard(card, this.props.id)
+        }
       }
       return (
-        <div className={className}>
+        <div className={className} onClick={onClick}>
           <Card id={card.id}
             prestige={card.prestige}
             costs={card.costs}

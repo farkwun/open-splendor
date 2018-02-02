@@ -5,6 +5,11 @@ import Cost from './Cost';
 
 class Card extends React.Component {
   render() {
+    if (this.props.id === "null"){
+      return (
+        <div className="card"/>
+      );
+    }
     let costs = this.props.costs.map((cost) => (
       <Cost val={cost.val}
         type={cost.type}

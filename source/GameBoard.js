@@ -12,6 +12,7 @@ class GameBoard extends React.Component {
       <div className="game__board">
         <NobleList nobles={this.props.nobles}/>
         <LevelBoard levels={this.props.levels}
+          buyCard={this.props.buyCard}
           getBonus={this.props.getBonus}
           curr_player={this.props.curr_player}/>
         <CoinBoard coins={this.props.coins}

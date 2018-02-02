@@ -78,7 +78,7 @@ export const nobles = [
 
 export const levels = [
   {
-    level_id: 1,
+    id: 1,
     row_cards: [
       {
         id: 1,
@@ -140,7 +140,7 @@ export const levels = [
     ]
   },
   {
-    level_id: 2,
+    id: 2,
     row_cards: [
       {
         id: 4,
@@ -202,7 +202,7 @@ export const levels = [
     ]
   },
   {
-    level_id: 3,
+    id: 3,
     row_cards: [
       {
         id: 7,
