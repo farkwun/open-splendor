@@ -83,8 +83,31 @@ class App extends React.Component {
       }
     );
 
+    let coins = [...this.state.coins];
+    const curr_player = this.state.players.find((player) => (
+      player.id === curr_player_id
+    ));
+
+
+    const bonuses = helpers.getBonusesFor(curr_player);
+    const costs = {};
+
+    card.costs.map((cost) => {
+      costs[cost.type] = cost.val
+    });
+
+    coins = coins.map((coin) => {
+      let new_coin = {...coin}
+      if (coin.type in costs){
+        const bonus = bonuses[coin.type] ? bonuses[coin.type] : 0
+        new_coin.amount += costs[coin.type] - bonus;
+      }
+      return new_coin
+    });
+
     this.setState({
       levels,
+      coins,
       players
     });
     this.incrementPlayIndex();
