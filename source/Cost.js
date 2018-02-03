@@ -19,7 +19,7 @@ class Cost extends React.Component {
       style.color = "#00ff00";
     }
 
-    val = val - bonus;
+    val = Math.max(0, val - bonus);
 
     return (
       <div className="cost" style={style}>
