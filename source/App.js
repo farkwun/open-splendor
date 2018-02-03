@@ -114,16 +114,6 @@ class App extends React.Component {
     });
   }
 
-  removeFromStash = (index) => {
-    let stash = [...this.state.stash];
-    let [coin] = stash.splice(index, 1);
-    let coins = helpers.addCoinAmount(this.state.coins, coin.type, 1);
-    this.setState({
-      stash,
-      coins
-    });
-  };
-
   addToStash = (type) => {
     let stack = this.state.coins.find((coin) => coin.type === type);
     if (stack.amount == 0 || this.state.stash.length >= 3){
