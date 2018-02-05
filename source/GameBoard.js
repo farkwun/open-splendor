@@ -29,9 +29,6 @@ class GameBoard extends React.Component {
           clearStash={this.props.clearStash}
         />
         <PlayerBoard players={this.props.players} />
-        {/* <LevelBoard decks={}/>
-        <CoinBoard coins={}/>
-        <PlayerBoard players={}/>*/}
       </div>
     );
   }
