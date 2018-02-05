@@ -7,8 +7,8 @@ import * as helpers from "./Helpers";
 class Level extends React.Component {
   render() {
     let player = this.props.curr_player;
-    let player_coins = helpers.getCoinsFor(player);
-    let player_bonus = helpers.getBonusesFor(player);
+    let player_coins = helpers.getCoinAggregateFor(player);
+    let player_bonus = helpers.getBonusAggregateFor(player);
     var cards = this.props.row_cards.map(card => {
       let buyable = helpers.canBuyCard(player_coins, player_bonus, card);
       let className = "level__box";

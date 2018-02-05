@@ -10,16 +10,12 @@ export function addCoinAmount(coins, type, val) {
 }
 
 export function canTakeStash(player, stash) {
-  let player_coins = numCoins(player);
+  const player_coins = numCoins(player);
   if (player_coins + stash.length > 10) {
     return false;
   }
-  let types = new Set();
-  let coin;
-  for (let i = 0; i < stash.length; i++) {
-    coin = stash[i];
-    types.add(coin.type);
-  }
+
+  const types = stash.reduce((acc, coin) => acc.add(coin.type), new Set());
 
   return (
     (types.size == 3 && stash.length == 3) ||
@@ -29,31 +25,25 @@ export function canTakeStash(player, stash) {
 }
 
 export function canBuyCard(player_coins, player_bonus, card) {
-  let costs = 0;
-  card.costs.map(cost => {
-    let type = cost.type;
-    let net_coins = player_coins[type] ? player_coins[type] : 0;
-    let net_bonus = player_bonus[type] ? player_bonus[type] : 0;
-
-    let net = cost.val - net_coins - net_bonus;
-    if (net > 0) {
-      costs += 1;
-    }
-  });
-  return costs <= 0;
+  return card.costs.reduce((acc, cost) => {
+    const type = cost.type;
+    const net_coins = player_coins[type] ? player_coins[type] : 0;
+    const net_bonus = player_bonus[type] ? player_bonus[type] : 0;
+    return cost.val - net_coins - net_bonus <= 0 && acc;
+  }, true);
 }
 
 export function updateObject(key, objects, func) {
-  let new_objects = objects.map(object => {
+  return objects.map(object => {
     if (object.id === key) {
       return func(object);
     }
     return object;
   });
-  return new_objects;
 }
 
 export function mergeCoins(coins, stash) {
+  //TODO: Rewrite this function without using unnecessary map()
   let new_coins = [...coins];
   stash.map(coin => {
     let new_coin = new_coins.find(nc => nc.type === coin.type);
@@ -67,29 +57,23 @@ export function mergeCoins(coins, stash) {
 }
 
 export function numCoins(player) {
-  let num = 0;
-  player.coins.map(coin => {
-    num += coin.amount;
-  });
-  return num;
+  return player.coins.reduce((amount, coin) => amount + coin.amount, 0);
 }
 
-export function getCoinsFor(player) {
-  let coins = {};
-  player.coins.map(coin => {
-    coins[coin.type] = coin.amount;
-  });
-  return coins;
+export function getCoinAggregateFor(player) {
+  return player.coins.reduce(
+    (coin_dict, coin) => ((coin_dict[coin.type] = coin.amount), coin_dict),
+    {}
+  );
 }
 
-export function getBonusesFor(player) {
-  let bonuses = {};
-  player.cards.map(card => {
-    if (card.type in bonuses) {
-      bonuses[card.type] += 1;
+export function getBonusAggregateFor(player) {
+  return player.cards.reduce((bonus_dict, card) => {
+    if (card.type in bonus_dict) {
+      bonus_dict[card.type] += 1;
     } else {
-      bonuses[card.type] = 1;
+      bonus_dict[card.type] = 1;
     }
-  });
-  return bonuses;
+    return bonus_dict;
+  }, {});
 }
