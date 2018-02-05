@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   getCurrPlayer() {
-    let curr_player_id = this.state.play_order[this.state.play_index];
+    const curr_player_id = this.state.play_order[this.state.play_index];
     return this.state.players.find(player => player.id === curr_player_id);
   }
 
@@ -33,9 +33,10 @@ class App extends React.Component {
   };
 
   buyCard = (card, level_id) => {
-    let curr_player_id = this.state.play_order[this.state.play_index];
+    //TODO: Reformat this awful, awful function
+    const curr_player_id = this.state.play_order[this.state.play_index];
 
-    let levels = helpers.updateObject(level_id, this.state.levels, level => {
+    const levels = helpers.updateObject(level_id, this.state.levels, level => {
       let new_level = { ...level };
       new_level.row_cards = level.row_cards.map(rc => {
         if (rc.id == card.id) {
@@ -48,7 +49,7 @@ class App extends React.Component {
       return new_level;
     });
 
-    let players = helpers.updateObject(
+    const players = helpers.updateObject(
       curr_player_id,
       this.state.players,
       player => {
@@ -56,7 +57,7 @@ class App extends React.Component {
         new_player.cards = [...player.cards];
         new_player.cards.push(card);
 
-        let bonuses = helpers.getBonusesFor(player);
+        let bonuses = helpers.getBonusAggregateFor(player);
         let costs = {};
 
         card.costs.map(cost => {
@@ -80,19 +81,18 @@ class App extends React.Component {
       }
     );
 
-    let coins = [...this.state.coins];
     const curr_player = this.state.players.find(
       player => player.id === curr_player_id
     );
 
-    const bonuses = helpers.getBonusesFor(curr_player);
+    const bonuses = helpers.getBonusAggregateFor(curr_player);
     const costs = {};
 
     card.costs.map(cost => {
       costs[cost.type] = cost.val;
     });
 
-    coins = coins.map(coin => {
+    const coins = this.state.coins.map(coin => {
       let new_coin = { ...coin };
       if (coin.type in costs) {
         const bonus = bonuses[coin.type] ? bonuses[coin.type] : 0;
@@ -110,9 +110,9 @@ class App extends React.Component {
   };
 
   removeFromStash = index => {
-    let stash = [...this.state.stash];
-    let [coin] = stash.splice(index, 1);
-    let coins = helpers.addCoinAmount(this.state.coins, coin.type, 1);
+    const stash = [...this.state.stash];
+    const [coin] = stash.splice(index, 1);
+    const coins = helpers.addCoinAmount(this.state.coins, coin.type, 1);
     this.setState({
       stash,
       coins
@@ -120,26 +120,12 @@ class App extends React.Component {
   };
 
   addToStash = type => {
-    let stack = this.state.coins.find(coin => coin.type === type);
+    const stack = this.state.coins.find(coin => coin.type === type);
     if (stack.amount == 0 || this.state.stash.length >= 3) {
       return;
     }
-    let stash = [...this.state.stash, { type }];
-    let coins = helpers.addCoinAmount(this.state.coins, type, -1);
-
-    this.setState({
-      stash,
-      coins
-    });
-  };
-
-  addToStash = type => {
-    let stack = this.state.coins.find(coin => coin.type === type);
-    if (stack.amount == 0 || this.state.stash.length >= 3) {
-      return;
-    }
-    let stash = [...this.state.stash, { type }];
-    let coins = helpers.addCoinAmount(this.state.coins, type, -1);
+    const stash = [...this.state.stash, { type }];
+    const coins = helpers.addCoinAmount(this.state.coins, type, -1);
 
     this.setState({
       stash,
@@ -148,8 +134,8 @@ class App extends React.Component {
   };
 
   takeStash = () => {
-    let curr_player_id = this.getCurrPlayer().id;
-    let players = helpers.updateObject(
+    const curr_player_id = this.getCurrPlayer().id;
+    const players = helpers.updateObject(
       curr_player_id,
       this.state.players,
       player => {
@@ -168,7 +154,7 @@ class App extends React.Component {
   };
 
   clearStash = reset => {
-    let stash = [];
+    const stash = [];
     if (reset) {
       let coins = this.state.coins;
       this.state.stash.map(coin => {
@@ -201,7 +187,7 @@ class App extends React.Component {
   };
 
   render() {
-    let player = this.getCurrPlayer();
+    const player = this.getCurrPlayer();
 
     return (
       <div className="app">
