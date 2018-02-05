@@ -10,9 +10,10 @@ export const nobles = [
       {
         type: "green",
         val: 4
-      },
+      }
     ],
-    img_url: "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+    img_url:
+      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   {
     id: 2,
@@ -25,9 +26,10 @@ export const nobles = [
       {
         type: "red",
         val: 4
-      },
+      }
     ],
-    img_url: "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+    img_url:
+      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   {
     id: 3,
@@ -40,9 +42,10 @@ export const nobles = [
       {
         type: "green",
         val: 4
-      },
+      }
     ],
-    img_url: "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+    img_url:
+      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   {
     id: 4,
@@ -55,9 +58,10 @@ export const nobles = [
       {
         type: "green",
         val: 4
-      },
+      }
     ],
-    img_url: "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+    img_url:
+      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   {
     id: 5,
@@ -70,10 +74,11 @@ export const nobles = [
       {
         type: "green",
         val: 4
-      },
+      }
     ],
-    img_url: "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
-  },
+    img_url:
+      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+  }
 ];
 
 export const levels = [
@@ -149,7 +154,7 @@ export const levels = [
         costs: [
           {
             type: "red",
-            val: 2 
+            val: 2
           },
           {
             type: "green",
@@ -289,15 +294,14 @@ export const coins = [
   {
     type: "yellow",
     amount: 5
-  },
+  }
 ];
 
 export const players = [
   {
     id: "Alice",
     prestige: 0,
-    coins: [
-    ],
+    coins: [],
     cards: [
       {
         id: 1,
@@ -319,8 +323,7 @@ export const players = [
         ]
       }
     ],
-    nobles: [
-    ]
+    nobles: []
   },
   {
     id: "Bob",
@@ -343,30 +346,22 @@ export const players = [
         amount: 7
       }
     ],
-    cards: [
-    ],
-    nobles: [
-    ]
+    cards: [],
+    nobles: []
   },
   {
     id: "Carol",
     prestige: 0,
-    coins: [
-    ],
-    cards: [
-    ],
-    nobles: [
-    ]
+    coins: [],
+    cards: [],
+    nobles: []
   },
   {
     id: "Dan",
     prestige: 0,
-    coins: [
-    ],
-    cards: [
-    ],
-    discounts: [
-    ],
+    coins: [],
+    cards: [],
+    discounts: [],
     nobles: [
       {
         id: 1,
@@ -379,9 +374,10 @@ export const players = [
           {
             type: "green",
             val: 4
-          },
+          }
         ],
-        img_url: "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+        img_url:
+          "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
       }
     ]
   }

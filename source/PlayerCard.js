@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import Prestige from './Prestige';
-import CardTray from './CardTray';
-import NobleTray from './NobleTray';
-import Wallet from './Wallet';
+import Prestige from "./Prestige";
+import CardTray from "./CardTray";
+import NobleTray from "./NobleTray";
+import Wallet from "./Wallet";
 
 class PlayerCard extends React.Component {
   render() {
