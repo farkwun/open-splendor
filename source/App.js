@@ -33,7 +33,6 @@ class App extends React.Component {
   };
 
   buyCard = (card, level_id) => {
-    //TODO: Reformat this awful, awful function
     const curr_player_id = this.state.play_order[this.state.play_index];
     const curr_player = this.state.players.find(
       player => player.id === curr_player_id
@@ -75,9 +74,15 @@ class App extends React.Component {
   };
 
   removeFromStash = index => {
-    const stash = [...this.state.stash];
-    const [coin] = stash.splice(index, 1);
-    const coins = helpers.addCoinAmount(this.state.coins, coin.type, 1);
+    const { type } = this.state.stash[index];
+    const coins = helpers.updateIn(
+      this.state.coins,
+      coin => coin.type === type,
+      coin => ({ ...coin, amount: coin.amount + 1 })
+    );
+
+    const stash = this.state.stash.filter((coin, idx) => idx !== index);
+
     this.setState({
       stash,
       coins
@@ -90,7 +95,11 @@ class App extends React.Component {
       return;
     }
     const stash = [...this.state.stash, { type }];
-    const coins = helpers.addCoinAmount(this.state.coins, type, -1);
+    const coins = helpers.updateIn(
+      this.state.coins,
+      coin => coin.type === type,
+      coin => ({ ...coin, amount: coin.amount - 1 })
+    );
 
     this.setState({
       stash,
@@ -121,19 +130,23 @@ class App extends React.Component {
   clearStash = reset => {
     const stash = [];
     if (reset) {
-      let coins = this.state.coins;
-      this.state.stash.map(coin => {
-        coins = helpers.addCoinAmount(coins, coin.type, 1);
-      });
+      const coins = this.state.stash.reduce(
+        (new_coins, { type }) =>
+          helpers.updateIn(
+            new_coins,
+            coin => coin.type === type,
+            coin => ({ ...coin, amount: coin.amount + 1 })
+          ),
+        this.state.coins
+      );
+
       this.setState({
-        stash,
         coins
       });
-    } else {
-      this.setState({
-        stash
-      });
     }
+    this.setState({
+      stash
+    });
   };
 
   incrementPlayIndex = () => {
