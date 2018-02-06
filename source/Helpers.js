@@ -77,3 +77,37 @@ export function getBonusAggregateFor(player) {
     return bonus_dict;
   }, {});
 }
+
+export function coinsSpent(card, player) {
+  const bonuses = getBonusAggregateFor(player);
+  return card.costs.reduce((spent, cost) => {
+    const bonus = bonuses[cost.type] ? bonuses[cost.type] : 0;
+    spent[cost.type] = cost.val - bonus;
+    return spent;
+  }, {});
+}
+
+export function replenishedCoins(coins_spent, coins) {
+  return coins.map(coin => {
+    const added = coins_spent[coin.type] ? coins_spent[coin.type] : 0;
+    return { ...coin, amount: coin.amount + added };
+  });
+}
+
+export function getCoinsLeft(coins, card, player) {
+  const costs = getCostAggregate(card.costs);
+  const bonuses = getBonusAggregateFor(player);
+  return coins
+    .map(coin => {
+      if (coin.type in costs) {
+        const bonus = bonuses[coin.type] ? bonuses[coin.type] : 0;
+        return { ...coin, amount: coin.amount - costs[coin.type] - bonus };
+      }
+      return coin;
+    })
+    .filter(coin => coin.amount > 0);
+}
+
+export function getCostAggregate(costs) {
+  return costs.reduce((dict, cost) => ((dict[cost.type] = cost.val), dict), {});
+}

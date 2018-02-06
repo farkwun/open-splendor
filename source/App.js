@@ -35,77 +35,38 @@ class App extends React.Component {
   buyCard = (card, level_id) => {
     //TODO: Reformat this awful, awful function
     const curr_player_id = this.state.play_order[this.state.play_index];
+    const curr_player = this.state.players.find(
+      player => player.id === curr_player_id
+    );
 
     const levels = helpers.updateObject(level_id, this.state.levels, level => {
-      let new_level = { ...level };
-      new_level.row_cards = level.row_cards.map(rc => {
-        if (rc.id == card.id) {
-          let new_card = { ...card };
-          new_card.id = "null";
-          return new_card;
-        }
-        return rc;
-      });
-      return new_level;
+      const row_cards = level.row_cards.map(
+        r_c => (r_c.id === card.id ? { ...card, id: "null" } : r_c)
+      );
+      return { ...level, row_cards };
     });
 
     const players = helpers.updateObject(
       curr_player_id,
       this.state.players,
-      player => {
-        let new_player = { ...player };
-        new_player.cards = [...player.cards];
-        new_player.cards.push(card);
-
-        let bonuses = helpers.getBonusAggregateFor(player);
-        let costs = {};
-
-        card.costs.map(cost => {
-          costs[cost.type] = cost.val;
-        });
-
-        new_player.coins = [...player.coins];
-
-        new_player.coins = new_player.coins.map(coin => {
-          let new_coin = { ...coin };
-          if (coin.type in costs) {
-            const bonus = bonuses[coin.type] ? bonuses[coin.type] : 0;
-            new_coin.amount -= costs[coin.type] - bonus;
-          }
-          return new_coin;
-        });
-
-        new_player.coins = new_player.coins.filter(coin => coin.amount > 0);
-
-        return new_player;
-      }
+      player => ({
+        ...player,
+        cards: [...player.cards, card],
+        coins: helpers.getCoinsLeft(player.coins, card, player)
+      })
     );
 
-    const curr_player = this.state.players.find(
-      player => player.id === curr_player_id
+    const coins = helpers.replenishedCoins(
+      helpers.coinsSpent(card, curr_player),
+      this.state.coins
     );
-
-    const bonuses = helpers.getBonusAggregateFor(curr_player);
-    const costs = {};
-
-    card.costs.map(cost => {
-      costs[cost.type] = cost.val;
-    });
-
-    const coins = this.state.coins.map(coin => {
-      let new_coin = { ...coin };
-      if (coin.type in costs) {
-        const bonus = bonuses[coin.type] ? bonuses[coin.type] : 0;
-        new_coin.amount += costs[coin.type] - bonus;
-      }
-      return new_coin;
-    });
 
     this.setState({
       levels,
       coins,
       players
     });
+
     this.incrementPlayIndex();
   };
 
