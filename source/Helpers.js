@@ -33,9 +33,9 @@ export function canBuyCard(player_coins, player_bonus, card) {
   }, true);
 }
 
-export function updateObject(key, objects, func) {
-  return objects.map(object => {
-    if (object.id === key) {
+export function updateIn(list, cond, func) {
+  return list.map(object => {
+    if (cond(object)) {
       return func(object);
     }
     return object;

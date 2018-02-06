@@ -39,16 +39,20 @@ class App extends React.Component {
       player => player.id === curr_player_id
     );
 
-    const levels = helpers.updateObject(level_id, this.state.levels, level => {
-      const row_cards = level.row_cards.map(
-        r_c => (r_c.id === card.id ? { ...card, id: "null" } : r_c)
-      );
-      return { ...level, row_cards };
-    });
+    const levels = helpers.updateIn(
+      this.state.levels,
+      level => level.id === level_id,
+      level => {
+        const row_cards = level.row_cards.map(
+          r_c => (r_c.id === card.id ? { ...card, id: "null" } : r_c)
+        );
+        return { ...level, row_cards };
+      }
+    );
 
-    const players = helpers.updateObject(
-      curr_player_id,
+    const players = helpers.updateIn(
       this.state.players,
+      player => player.id === curr_player_id,
       player => ({
         ...player,
         cards: [...player.cards, card],
@@ -96,9 +100,9 @@ class App extends React.Component {
 
   takeStash = () => {
     const curr_player_id = this.getCurrPlayer().id;
-    const players = helpers.updateObject(
-      curr_player_id,
+    const players = helpers.updateIn(
       this.state.players,
+      player => player.id === curr_player_id,
       player => {
         let new_player = { ...player };
         new_player.coins = helpers.mergeCoins(
