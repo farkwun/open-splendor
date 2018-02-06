@@ -111,3 +111,7 @@ export function getCoinsLeft(coins, card, player) {
 export function getCostAggregate(costs) {
   return costs.reduce((dict, cost) => ((dict[cost.type] = cost.val), dict), {});
 }
+
+export function getPrestigeFor(list) {
+  return list.reduce((prestige, item) => (prestige += item.prestige), 0);
+}
