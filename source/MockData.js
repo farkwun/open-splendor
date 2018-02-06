@@ -270,38 +270,21 @@ export const levels = [
   }
 ];
 
-export const coins = [
-  {
-    type: "green",
-    amount: 7
-  },
-  {
-    type: "blue",
-    amount: 7
-  },
-  {
-    type: "red",
-    amount: 7
-  },
-  {
-    type: "white",
-    amount: 7
-  },
-  {
-    type: "black",
-    amount: 7
-  },
-  {
-    type: "yellow",
-    amount: 5
-  }
-];
+export const coins = {
+  green: 7,
+  blue: 7,
+  red: 7,
+  white: 7,
+  black: 7,
+  green: 7,
+  yellow: 5
+};
 
 export const players = [
   {
     id: "Alice",
     prestige: 0,
-    coins: [],
+    coins: {},
     cards: [
       {
         id: 1,
@@ -328,38 +311,26 @@ export const players = [
   {
     id: "Bob",
     prestige: 0,
-    coins: [
-      {
-        type: "green",
-        amount: 7
-      },
-      {
-        type: "blue",
-        amount: 7
-      },
-      {
-        type: "red",
-        amount: 7
-      },
-      {
-        type: "white",
-        amount: 7
-      }
-    ],
+    coins: {
+      green: 7,
+      blue: 7,
+      red: 7,
+      white: 7
+    },
     cards: [],
     nobles: []
   },
   {
     id: "Carol",
     prestige: 0,
-    coins: [],
+    coins: {},
     cards: [],
     nobles: []
   },
   {
     id: "Dan",
     prestige: 0,
-    coins: [],
+    coins: {},
     cards: [],
     discounts: [],
     nobles: [
