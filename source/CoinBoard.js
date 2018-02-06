@@ -4,8 +4,14 @@ import CoinStack from "./CoinStack";
 
 class CoinBoard extends React.Component {
   render() {
-    var stacks = this.props.coins.map(coin => {
-      return <CoinStack coin={coin} addToStash={this.props.addToStash} />;
+    var stacks = Object.keys(this.props.coins).map(key => {
+      return (
+        <CoinStack
+          type={key}
+          amount={this.props.coins[key]}
+          addToStash={this.props.addToStash}
+        />
+      );
     });
     return <div className="coin__board">{stacks}</div>;
   }

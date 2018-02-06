@@ -6,11 +6,11 @@ import * as helpers from "./Helpers";
 
 class Level extends React.Component {
   render() {
-    let player = this.props.curr_player;
-    let player_coins = helpers.getCoinAggregateFor(player);
-    let player_bonus = helpers.getBonusAggregateFor(player);
-    var cards = this.props.row_cards.map(card => {
-      let buyable = helpers.canBuyCard(player_coins, player_bonus, card);
+    const player = this.props.curr_player;
+    const player_coins = player.coins;
+    const player_bonus = helpers.getBonusAggregateFor(player);
+    const cards = this.props.row_cards.map(card => {
+      const buyable = helpers.canBuyCard(player_coins, player_bonus, card);
       let className = "level__box";
       let onClick;
       if (buyable) {

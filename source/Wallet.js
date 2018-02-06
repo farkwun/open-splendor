@@ -2,10 +2,10 @@ import React from "react";
 
 class Wallet extends React.Component {
   render() {
-    let coins = this.props.coins.map(coin => {
+    const coins = Object.keys(this.props.coins).map(key => {
       return (
-        <div className="counter" style={{ backgroundColor: coin.type }}>
-          {coin.amount}
+        <div className="counter" style={{ backgroundColor: key }}>
+          {this.props.coins[key]}
         </div>
       );
     });
