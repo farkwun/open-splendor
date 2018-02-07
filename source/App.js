@@ -34,9 +34,7 @@ class App extends React.Component {
 
   buyCard = (card, level_id) => {
     const curr_player_id = this.state.play_order[this.state.play_index];
-    const curr_player = this.state.players.find(
-      player => player.id === curr_player_id
-    );
+    const curr_player = this.state.players[curr_player_id];
 
     const levels = helpers.updateIn(
       this.state.levels,
@@ -49,15 +47,14 @@ class App extends React.Component {
       }
     );
 
-    const players = helpers.updateIn(
-      this.state.players,
-      player => player.id === curr_player_id,
-      player => ({
-        ...player,
-        cards: [...player.cards, card],
-        coins: helpers.getCoinsLeft(player.coins, card, player)
-      })
-    );
+    const players = {
+      ...this.state.players,
+      [curr_player_id]: {
+        ...curr_player,
+        cards: [...curr_player.cards, card],
+        coins: helpers.getCoinsLeft(curr_player.coins, card, curr_player)
+      }
+    };
 
     const coins = helpers.replenishedCoins(
       helpers.coinsSpent(card, curr_player),
@@ -101,19 +98,16 @@ class App extends React.Component {
   };
 
   takeStash = () => {
-    const curr_player_id = this.getCurrPlayer().id;
-    const players = helpers.updateIn(
-      this.state.players,
-      player => player.id === curr_player_id,
-      player => {
-        let new_player = { ...player };
-        new_player.coins = helpers.mergeCoins(
-          new_player.coins,
-          this.state.stash
-        );
-        return new_player;
+    const curr_player_id = this.state.play_order[this.state.play_index];
+    const curr_player = this.state.players[curr_player_id];
+    const players = {
+      ...this.state.players,
+      [curr_player_id]: {
+        ...curr_player,
+        coins: helpers.mergeCoins(curr_player.coins, this.state.stash)
       }
-    );
+    };
+
     this.setState({
       players
     });
