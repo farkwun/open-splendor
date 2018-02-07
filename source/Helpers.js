@@ -78,9 +78,9 @@ export function getBonusAggregateFor(player) {
 
 export function coinsSpent(card, player) {
   const bonuses = getBonusAggregateFor(player);
-  return card.costs.reduce((spent, cost) => {
-    const bonus = bonuses[cost.type] ? bonuses[cost.type] : 0;
-    spent[cost.type] = cost.val - bonus;
+  return Object.keys(card.costs).reduce((spent, type) => {
+    const bonus = bonuses[type] ? bonuses[type] : 0;
+    spent[type] = card.costs[type] - bonus;
     return spent;
   }, {});
 }
@@ -93,7 +93,7 @@ export function replenishedCoins(coins_spent, coins) {
 }
 
 export function getCoinsLeft(coins, card, player) {
-  const costs = getCostAggregate(card.costs);
+  const costs = card.costs;
   const bonuses = getBonusAggregateFor(player);
   return Object.keys(coins).reduce((coins_left, key) => {
     const bonus = bonuses[key] ? bonuses[key] : 0;
