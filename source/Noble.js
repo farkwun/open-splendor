@@ -12,13 +12,13 @@ class Noble extends React.Component {
         </div>
       );
     }
-    var backgroundStyle = {
+    const backgroundStyle = {
       backgroundImage: "url(" + this.props.img_url + ")",
       backgroundSize: "contain"
     };
 
-    let costs = this.props.costs.map(cost => (
-      <Cost val={cost.val} type={cost.type} />
+    const costs = Object.keys(this.props.costs).map(key => (
+      <Cost val={this.props.costs[key]} type={key} />
     ));
 
     return (

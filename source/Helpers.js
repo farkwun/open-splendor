@@ -25,11 +25,10 @@ export function canTakeStash(player, stash) {
 }
 
 export function canBuyCard(player_coins, player_bonus, card) {
-  return card.costs.reduce((acc, cost) => {
-    const type = cost.type;
+  return Object.keys(card.costs).reduce((buyable, type) => {
     const net_coins = player_coins[type] ? player_coins[type] : 0;
     const net_bonus = player_bonus[type] ? player_bonus[type] : 0;
-    return cost.val - net_coins - net_bonus <= 0 && acc;
+    return card.costs[type] - net_coins - net_bonus <= 0 && buyable;
   }, true);
 }
 

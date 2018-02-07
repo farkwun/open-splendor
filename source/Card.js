@@ -8,8 +8,12 @@ class Card extends React.Component {
     if (this.props.id === "null") {
       return <div className="card" />;
     }
-    let costs = this.props.costs.map(cost => (
-      <Cost val={cost.val} type={cost.type} getBonus={this.props.getBonus} />
+    const costs = Object.keys(this.props.costs).map(key => (
+      <Cost
+        val={this.props.costs[key]}
+        type={key}
+        getBonus={this.props.getBonus}
+      />
     ));
 
     return (
