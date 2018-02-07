@@ -43,21 +43,20 @@ export function updateIn(list, cond, func) {
 }
 
 export function mergeCoins(coins, stash) {
-  //TODO: Rewrite this function without using unnecessary map()
-  let new_coins = [...coins];
-  stash.map(coin => {
-    let new_coin = new_coins.find(nc => nc.type === coin.type);
-    if (new_coin) {
-      new_coin.amount += 1;
-    } else {
-      new_coins.push({ type: coin.type, amount: 1 });
-    }
-  });
-  return new_coins;
+  return stash.reduce(
+    (new_coins, { type }) =>
+      new_coins[type] === undefined
+        ? { ...new_coins, [type]: 1 }
+        : ((new_coins[type] += 1), new_coins),
+    coins
+  );
 }
 
 export function numCoins(player) {
-  return player.coins.reduce((amount, coin) => amount + coin.amount, 0);
+  return Object.keys(player.coins).reduce(
+    (amount, key) => amount + player.coins[key],
+    0
+  );
 }
 
 export function getCoinAggregateFor(player) {
@@ -88,24 +87,23 @@ export function coinsSpent(card, player) {
 }
 
 export function replenishedCoins(coins_spent, coins) {
-  return coins.map(coin => {
-    const added = coins_spent[coin.type] ? coins_spent[coin.type] : 0;
-    return { ...coin, amount: coin.amount + added };
-  });
+  return Object.keys(coins_spent).reduce(
+    (new_coins, key) => ((new_coins[key] += coins_spent[key]), new_coins),
+    coins
+  );
 }
 
 export function getCoinsLeft(coins, card, player) {
   const costs = getCostAggregate(card.costs);
   const bonuses = getBonusAggregateFor(player);
-  return coins
-    .map(coin => {
-      if (coin.type in costs) {
-        const bonus = bonuses[coin.type] ? bonuses[coin.type] : 0;
-        return { ...coin, amount: coin.amount - costs[coin.type] - bonus };
-      }
-      return coin;
-    })
-    .filter(coin => coin.amount > 0);
+  return Object.keys(coins).reduce((coins_left, key) => {
+    const bonus = bonuses[key] ? bonuses[key] : 0;
+    const cost = costs[key] ? costs[key] : 0;
+    if (coins[key] != cost - bonus) {
+      coins_left[key] = coins[key] - cost + bonus;
+    }
+    return coins_left;
+  }, {});
 }
 
 export function getCostAggregate(costs) {

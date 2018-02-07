@@ -75,11 +75,8 @@ class App extends React.Component {
 
   removeFromStash = index => {
     const { type } = this.state.stash[index];
-    const coins = helpers.updateIn(
-      this.state.coins,
-      coin => coin.type === type,
-      coin => ({ ...coin, amount: coin.amount + 1 })
-    );
+    const coinsLeft = this.state.coins[type];
+    const coins = { ...this.state.coins, [type]: coinsLeft + 1 };
 
     const stash = this.state.stash.filter((coin, idx) => idx !== index);
 
@@ -90,16 +87,12 @@ class App extends React.Component {
   };
 
   addToStash = type => {
-    const stack = this.state.coins.find(coin => coin.type === type);
-    if (stack.amount == 0 || this.state.stash.length >= 3) {
+    const coinsLeft = this.state.coins[type];
+    if (coinsLeft == 0 || this.state.stash.length >= 3) {
       return;
     }
     const stash = [...this.state.stash, { type }];
-    const coins = helpers.updateIn(
-      this.state.coins,
-      coin => coin.type === type,
-      coin => ({ ...coin, amount: coin.amount - 1 })
-    );
+    const coins = { ...this.state.coins, [type]: coinsLeft - 1 };
 
     this.setState({
       stash,
@@ -131,12 +124,7 @@ class App extends React.Component {
     const stash = [];
     if (reset) {
       const coins = this.state.stash.reduce(
-        (new_coins, { type }) =>
-          helpers.updateIn(
-            new_coins,
-            coin => coin.type === type,
-            coin => ({ ...coin, amount: coin.amount + 1 })
-          ),
+        (new_coins, { type }) => ((new_coins[type] += 1), new_coins),
         this.state.coins
       );
 
