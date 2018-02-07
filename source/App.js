@@ -23,7 +23,7 @@ class App extends React.Component {
 
   getCurrPlayer() {
     const curr_player_id = this.state.play_order[this.state.play_index];
-    return this.state.players.find(player => player.id === curr_player_id);
+    return this.state.players[curr_player_id];
   }
 
   getBonus = type => {
@@ -163,6 +163,7 @@ class App extends React.Component {
           coins={this.state.coins}
           stash={this.state.stash}
           players={this.state.players}
+          play_order={this.state.play_order}
           getBonus={this.getBonus}
           curr_player={player}
           buyCard={this.buyCard}

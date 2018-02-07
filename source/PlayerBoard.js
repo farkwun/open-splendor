@@ -4,8 +4,8 @@ import PlayerCard from "./PlayerCard";
 
 class PlayerBoard extends React.Component {
   render() {
-    var players = this.props.players.map(player => {
-      return <PlayerCard player={player} />;
+    const players = this.props.play_order.map(player_id => {
+      return <PlayerCard player={this.props.players[player_id]} />;
     });
     return <div className="player__board">{players}</div>;
   }

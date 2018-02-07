@@ -28,7 +28,10 @@ class GameBoard extends React.Component {
           takeStash={this.props.takeStash}
           clearStash={this.props.clearStash}
         />
-        <PlayerBoard players={this.props.players} />
+        <PlayerBoard
+          play_order={this.props.play_order}
+          players={this.props.players}
+        />
       </div>
     );
   }
