@@ -4,7 +4,8 @@ import Noble from "./Noble";
 
 class NobleList extends React.Component {
   render() {
-    var nobles = this.props.nobles.map(noble => {
+    const nobles = this.props.noble_list.map(noble_id => {
+      const noble = this.props.nobles[noble_id];
       return (
         <Noble
           id={noble.id}
@@ -21,9 +22,7 @@ class NobleList extends React.Component {
       placeholders.push(<Noble placeholder="True" />);
     }
 
-    nobles = placeholders.concat(nobles);
-
-    return <div className="noble__list">{nobles}</div>;
+    return <div className="noble__list">{placeholders.concat(nobles)}</div>;
   }
 }
 

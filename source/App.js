@@ -10,6 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      noble_list: mock.noble_list,
       nobles: mock.nobles,
       levels: mock.levels,
       cards: mock.cards,
@@ -160,6 +161,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <GameBoard
+          noble_list={this.state.noble_list}
           nobles={this.state.nobles}
           levels={this.state.levels}
           cards={this.state.cards}

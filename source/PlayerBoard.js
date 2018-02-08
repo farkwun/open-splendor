@@ -8,6 +8,7 @@ class PlayerBoard extends React.Component {
       return (
         <PlayerCard
           cards={this.props.cards}
+          nobles={this.props.nobles}
           player={this.props.players[player_id]}
         />
       );

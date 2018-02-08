@@ -4,7 +4,8 @@ import Noble from "./Noble";
 
 class NobleTray extends React.Component {
   render() {
-    var nobles = this.props.nobles.map(noble => {
+    const nobles = this.props.player_nobles.map(noble_id => {
+      const noble = this.props.nobles[noble_id];
       return (
         <Noble
           id={noble.id}
