@@ -113,3 +113,15 @@ export function getCostAggregate(costs) {
 export function getPrestigeFor(list) {
   return list.reduce((prestige, item) => (prestige += item.prestige), 0);
 }
+
+export function range(a, b = null) {
+  let ret = [];
+  const min = b ? a : 0;
+  const max = b || a;
+
+  for (let i = min; i < max; i++) {
+    ret.push(i);
+  }
+
+  return ret;
+}
