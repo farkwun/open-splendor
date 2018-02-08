@@ -4,12 +4,12 @@ import PlayerCard from "./PlayerCard";
 
 class PlayerBoard extends React.Component {
   render() {
-    const players = this.props.play_order.map(player_id => {
+    const players = this.props.playOrder.map(playerId => {
       return (
         <PlayerCard
           cards={this.props.cards}
           nobles={this.props.nobles}
-          player={this.props.players[player_id]}
+          player={this.props.players[playerId]}
         />
       );
     });

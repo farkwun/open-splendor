@@ -24,9 +24,7 @@ class Stash extends React.Component {
         <button
           className="take__stash"
           onClick={() => {
-            if (
-              helpers.canTakeStash(this.props.curr_player, this.props.stash)
-            ) {
+            if (helpers.canTakeStash(this.props.currPlayer, this.props.stash)) {
               this.props.takeStash();
               this.props.clearStash(false);
             }

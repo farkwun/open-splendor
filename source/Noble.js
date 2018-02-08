@@ -13,7 +13,7 @@ class Noble extends React.Component {
       );
     }
     const backgroundStyle = {
-      backgroundImage: "url(" + this.props.img_url + ")",
+      backgroundImage: "url(" + this.props.imgURL + ")",
       backgroundSize: "contain"
     };
 

@@ -11,7 +11,7 @@ class GameBoard extends React.Component {
     return (
       <div className="game__board">
         <NobleList
-          noble_list={this.props.noble_list}
+          nobleList={this.props.nobleList}
           nobles={this.props.nobles}
         />
         <LevelBoard
@@ -19,7 +19,7 @@ class GameBoard extends React.Component {
           cards={this.props.cards}
           buyCard={this.props.buyCard}
           getBonus={this.props.getBonus}
-          curr_player={this.props.curr_player}
+          currPlayer={this.props.currPlayer}
         />
         <CoinBoard
           coins={this.props.coins}
@@ -27,7 +27,7 @@ class GameBoard extends React.Component {
         />
         <Stash
           stash={this.props.stash}
-          curr_player={this.props.curr_player}
+          currPlayer={this.props.currPlayer}
           removeFromStash={this.props.removeFromStash}
           takeStash={this.props.takeStash}
           clearStash={this.props.clearStash}
@@ -35,7 +35,7 @@ class GameBoard extends React.Component {
         <PlayerBoard
           cards={this.props.cards}
           nobles={this.props.nobles}
-          play_order={this.props.play_order}
+          playOrder={this.props.playOrder}
           players={this.props.players}
         />
       </div>

@@ -1,17 +1,17 @@
-export const noble_list = [1, 2, 3, 4, 5];
+export const nobleList = [1, 2, 3, 4, 5];
 
 export const levels = [
   {
     id: 1,
-    row_cards: [1, 2, 3]
+    rowCards: [1, 2, 3]
   },
   {
     id: 2,
-    row_cards: [4, 5, 6]
+    rowCards: [4, 5, 6]
   },
   {
     id: 3,
-    row_cards: [7, 8, 9]
+    rowCards: [7, 8, 9]
   }
 ];
 
@@ -172,7 +172,7 @@ export const nobles = {
       red: 4,
       green: 4
     },
-    img_url:
+    imgURL:
       "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   2: {
@@ -182,7 +182,7 @@ export const nobles = {
       black: 4,
       red: 4
     },
-    img_url:
+    imgURL:
       "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   3: {
@@ -192,7 +192,7 @@ export const nobles = {
       red: 4,
       green: 4
     },
-    img_url:
+    imgURL:
       "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   4: {
@@ -202,7 +202,7 @@ export const nobles = {
       black: 4,
       red: 4
     },
-    img_url:
+    imgURL:
       "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   5: {
@@ -212,7 +212,7 @@ export const nobles = {
       red: 4,
       green: 4
     },
-    img_url:
+    imgURL:
       "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   6: {
@@ -222,15 +222,15 @@ export const nobles = {
       red: 4,
       green: 4
     },
-    img_url:
+    imgURL:
       "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   }
 };
 
-export const current_player = "Hello World";
+export const currentPlayer = "Hello World";
 
-export const round_num = 1;
+export const roundNum = 1;
 
-export const play_order = ["Alice", "Bob", "Carol", "Dan"];
+export const playOrder = ["Alice", "Bob", "Carol", "Dan"];
 
-export const play_index = 0;
+export const playIndex = 0;

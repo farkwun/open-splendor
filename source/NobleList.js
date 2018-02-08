@@ -4,14 +4,14 @@ import Noble from "./Noble";
 
 class NobleList extends React.Component {
   render() {
-    const nobles = this.props.noble_list.map(noble_id => {
-      const noble = this.props.nobles[noble_id];
+    const nobles = this.props.nobleList.map(nobleId => {
+      const noble = this.props.nobles[nobleId];
       return (
         <Noble
           id={noble.id}
           prestige={noble.prestige}
           costs={noble.costs}
-          img_url={noble.img_url}
+          imgURL={noble.imgURL}
         />
       );
     });

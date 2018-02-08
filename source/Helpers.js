@@ -1,34 +1,34 @@
 export function addCoinAmount(coins, type, val) {
-  let new_coins = coins.map(coin => {
-    let new_coin = { ...coin };
-    if (new_coin.type === type) {
-      new_coin.amount += val;
+  let newCoins = coins.map(coin => {
+    let newCoin = { ...coin };
+    if (newCoin.type === type) {
+      newCoin.amount += val;
     }
-    return new_coin;
+    return newCoin;
   });
-  return new_coins;
+  return newCoins;
 }
 
 export function canTakeStash(player, stash) {
-  const player_coins = numCoins(player);
-  if (player_coins + stash.length > 10) {
+  const playerCoins = numCoins(player);
+  if (playerCoins + stash.length > 10) {
     return false;
   }
 
   const types = stash.reduce((acc, coin) => acc.add(coin.type), new Set());
 
   return (
-    (types.size == 3 && stash.length == 3) ||
-    (types.size == 1 && stash.length == 2) ||
-    player_coins >= 8
+    (types.size === 3 && stash.length === 3) ||
+    (types.size === 1 && stash.length === 2) ||
+    playerCoins >= 8
   );
 }
 
-export function canBuyCard(player_coins, player_bonus, card) {
+export function canBuyCard(playerCoins, playerBonus, card) {
   return Object.keys(card.costs).reduce((buyable, type) => {
-    const net_coins = player_coins[type] ? player_coins[type] : 0;
-    const net_bonus = player_bonus[type] ? player_bonus[type] : 0;
-    return card.costs[type] - net_coins - net_bonus <= 0 && buyable;
+    const netCoins = playerCoins[type] ? playerCoins[type] : 0;
+    const netBonus = playerBonus[type] ? playerBonus[type] : 0;
+    return card.costs[type] - netCoins - netBonus <= 0 && buyable;
   }, true);
 }
 
@@ -43,10 +43,10 @@ export function updateIn(list, cond, func) {
 
 export function mergeCoins(coins, stash) {
   return stash.reduce(
-    (new_coins, { type }) =>
-      new_coins[type] === undefined
-        ? { ...new_coins, [type]: 1 }
-        : ((new_coins[type] += 1), new_coins),
+    (newCoins, { type }) =>
+      newCoins[type] === undefined
+        ? { ...newCoins, [type]: 1 }
+        : ((newCoins[type] += 1), newCoins),
     coins
   );
 }
@@ -60,20 +60,20 @@ export function numCoins(player) {
 
 export function getCoinAggregateFor(player) {
   return player.coins.reduce(
-    (coin_dict, coin) => ((coin_dict[coin.type] = coin.amount), coin_dict),
+    (coinDict, coin) => ((coinDict[coin.type] = coin.amount), coinDict),
     {}
   );
 }
 
 export function getBonusAggregateFor(player, cards) {
-  return player.cards.reduce((bonus_dict, card_id) => {
-    const card = cards[card_id];
-    if (card.type in bonus_dict) {
-      bonus_dict[card.type] += 1;
+  return player.cards.reduce((bonusDict, cardId) => {
+    const card = cards[cardId];
+    if (card.type in bonusDict) {
+      bonusDict[card.type] += 1;
     } else {
-      bonus_dict[card.type] = 1;
+      bonusDict[card.type] = 1;
     }
-    return bonus_dict;
+    return bonusDict;
   }, {});
 }
 
@@ -86,9 +86,9 @@ export function coinsSpent(card, player, cards) {
   }, {});
 }
 
-export function replenishedCoins(coins_spent, coins) {
-  return Object.keys(coins_spent).reduce(
-    (new_coins, key) => ((new_coins[key] += coins_spent[key]), new_coins),
+export function replenishedCoins(coinsSpent, coins) {
+  return Object.keys(coinsSpent).reduce(
+    (newCoins, key) => ((newCoins[key] += coinsSpent[key]), newCoins),
     coins
   );
 }
@@ -96,13 +96,13 @@ export function replenishedCoins(coins_spent, coins) {
 export function getCoinsLeft(coins, card, player, cards) {
   const costs = card.costs;
   const bonuses = getBonusAggregateFor(player, cards);
-  return Object.keys(coins).reduce((coins_left, key) => {
+  return Object.keys(coins).reduce((coinsLeft, key) => {
     const bonus = bonuses[key] ? bonuses[key] : 0;
     const cost = costs[key] ? costs[key] : 0;
-    if (coins[key] != cost - bonus) {
-      coins_left[key] = coins[key] - cost + bonus;
+    if (coins[key] !== cost - bonus) {
+      coinsLeft[key] = coins[key] - cost + bonus;
     }
-    return coins_left;
+    return coinsLeft;
   }, {});
 }
 

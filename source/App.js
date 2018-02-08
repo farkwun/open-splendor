@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 
 import GameBoard from "./GameBoard";
 import Info from "./Info";
@@ -10,63 +11,63 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      noble_list: mock.noble_list,
+      nobleList: mock.nobleList,
       nobles: mock.nobles,
       levels: mock.levels,
       cards: mock.cards,
       coins: mock.coins,
-      round_num: mock.round_num,
+      roundNum: mock.roundNum,
       stash: [],
-      play_order: mock.play_order,
-      play_index: mock.play_index,
+      playOrder: mock.playOrder,
+      playIndex: mock.playIndex,
       players: mock.players
     };
   }
 
   getCurrPlayer() {
-    const curr_player_id = this.state.play_order[this.state.play_index];
-    return this.state.players[curr_player_id];
+    const currPlayerId = this.state.playOrder[this.state.playIndex];
+    return this.state.players[currPlayerId];
   }
 
   getBonus = type => {
     return this.getCurrPlayer().cards.filter(
-      c_id => this.state.cards[c_id].type === type
+      cardId => this.state.cards[cardId].type === type
     ).length;
   };
 
-  buyCard = (card_id, level_id) => {
-    const curr_player_id = this.state.play_order[this.state.play_index];
-    const curr_player = this.state.players[curr_player_id];
+  buyCard = (cardId, levelId) => {
+    const currPlayerId = this.state.playOrder[this.state.playIndex];
+    const currPlayer = this.state.players[currPlayerId];
 
-    const card = this.state.cards[card_id];
+    const card = this.state.cards[cardId];
 
     const levels = helpers.updateIn(
       this.state.levels,
-      level => level.id === level_id,
+      level => level.id === levelId,
       level => {
-        const row_cards = level.row_cards.map(
-          r_c_id => (r_c_id === card_id ? null : r_c_id)
+        const rowCards = level.rowCards.map(
+          rowCardId => (rowCardId === cardId ? null : rowCardId)
         );
-        return { ...level, row_cards };
+        return { ...level, rowCards };
       }
     );
 
     const players = {
       ...this.state.players,
-      [curr_player_id]: {
-        ...curr_player,
-        cards: [...curr_player.cards, card_id],
+      [currPlayerId]: {
+        ...currPlayer,
+        cards: [...currPlayer.cards, cardId],
         coins: helpers.getCoinsLeft(
-          curr_player.coins,
+          currPlayer.coins,
           card,
-          curr_player,
+          currPlayer,
           this.state.cards
         )
       }
     };
 
     const coins = helpers.replenishedCoins(
-      helpers.coinsSpent(card, curr_player, this.state.cards),
+      helpers.coinsSpent(card, currPlayer, this.state.cards),
       this.state.coins
     );
 
@@ -94,7 +95,7 @@ class App extends React.Component {
 
   addToStash = type => {
     const coinsLeft = this.state.coins[type];
-    if (coinsLeft == 0 || this.state.stash.length >= 3) {
+    if (coinsLeft === 0 || this.state.stash.length >= 3) {
       return;
     }
     const stash = [...this.state.stash, { type }];
@@ -107,13 +108,13 @@ class App extends React.Component {
   };
 
   takeStash = () => {
-    const curr_player_id = this.state.play_order[this.state.play_index];
-    const curr_player = this.state.players[curr_player_id];
+    const currPlayerId = this.state.playOrder[this.state.playIndex];
+    const currPlayer = this.state.players[currPlayerId];
     const players = {
       ...this.state.players,
-      [curr_player_id]: {
-        ...curr_player,
-        coins: helpers.mergeCoins(curr_player.coins, this.state.stash)
+      [currPlayerId]: {
+        ...currPlayer,
+        coins: helpers.mergeCoins(currPlayer.coins, this.state.stash)
       }
     };
 
@@ -127,7 +128,7 @@ class App extends React.Component {
     const stash = [];
     if (reset) {
       const coins = this.state.stash.reduce(
-        (new_coins, { type }) => ((new_coins[type] += 1), new_coins),
+        (newCoins, { type }) => ((newCoins[type] += 1), newCoins),
         this.state.coins
       );
 
@@ -141,17 +142,17 @@ class App extends React.Component {
   };
 
   incrementPlayIndex = () => {
-    let index = this.state.play_index + 1;
-    let round_num = this.state.round_num;
+    let index = this.state.playIndex + 1;
+    let roundNum = this.state.roundNum;
 
-    if (index >= this.state.play_order.length) {
+    if (index >= this.state.playOrder.length) {
       index = 0;
-      round_num = round_num + 1;
+      roundNum = roundNum + 1;
     }
 
     this.setState({
-      play_index: index,
-      round_num: round_num
+      playIndex: index,
+      roundNum: roundNum
     });
   };
 
@@ -161,16 +162,16 @@ class App extends React.Component {
     return (
       <div className="app">
         <GameBoard
-          noble_list={this.state.noble_list}
+          nobleList={this.state.nobleList}
           nobles={this.state.nobles}
           levels={this.state.levels}
           cards={this.state.cards}
           coins={this.state.coins}
           stash={this.state.stash}
           players={this.state.players}
-          play_order={this.state.play_order}
+          playOrder={this.state.playOrder}
           getBonus={this.getBonus}
-          curr_player={player}
+          currPlayer={player}
           buyCard={this.buyCard}
           removeFromStash={this.removeFromStash}
           addToStash={this.addToStash}
@@ -183,4 +184,4 @@ class App extends React.Component {
   }
 }
 
-React.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
