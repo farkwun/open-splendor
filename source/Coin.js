@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class Coin extends React.Component {
   render() {
@@ -9,5 +10,9 @@ class Coin extends React.Component {
     );
   }
 }
+
+Coin.propTypes = {
+  type: PropTypes.string.isRequired
+};
 
 export default Coin;

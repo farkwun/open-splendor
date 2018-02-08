@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Prestige from "./Prestige";
 import Cost from "./Cost";
@@ -26,5 +27,15 @@ class Card extends React.Component {
     );
   }
 }
+
+Card.propTypes = {
+  id: PropTypes.string,
+  prestige: PropTypes.number,
+  type: PropTypes.string,
+
+  costs: PropTypes.object,
+
+  getBonus: PropTypes.func
+};
 
 export default Card;

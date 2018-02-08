@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class Wallet extends React.Component {
   render() {
@@ -17,5 +18,9 @@ class Wallet extends React.Component {
     );
   }
 }
+
+Wallet.propTypes = {
+  coins: PropTypes.object.isRequired
+};
 
 export default Wallet;

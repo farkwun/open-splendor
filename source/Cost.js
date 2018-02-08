@@ -1,7 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class Cost extends React.Component {
   render() {
+    // TODO: Refactor
     let type = this.props.type;
     let val = this.props.val;
     let bonus = 0;
@@ -28,5 +30,12 @@ class Cost extends React.Component {
     );
   }
 }
+
+Cost.propTypes = {
+  type: PropTypes.string.isRequired,
+  val: PropTypes.number.isRequired,
+
+  getBonus: PropTypes.func
+};
 
 export default Cost;

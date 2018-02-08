@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Deck from "./Deck";
 import Card from "./Card";
@@ -47,5 +48,17 @@ class Level extends React.Component {
     );
   }
 }
+
+Level.propTypes = {
+  id: PropTypes.string.isRequired,
+
+  rowCards: PropTypes.array.isRequired,
+
+  cards: PropTypes.object.isRequired,
+  currPlayer: PropTypes.object.isRequired,
+
+  buyCard: PropTypes.func.isRequired,
+  getBonus: PropTypes.func.isRequired
+};
 
 export default Level;

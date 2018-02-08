@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Coin from "./Coin";
 
@@ -22,4 +23,12 @@ class CoinStack extends React.Component {
     );
   }
 }
+
+CoinStack.propTypes = {
+  amount: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
+
+  addToStash: PropTypes.func.isRequired
+};
+
 export default CoinStack;

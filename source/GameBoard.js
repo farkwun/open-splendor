@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import NobleList from "./NobleList";
 import LevelBoard from "./LevelBoard";
@@ -42,5 +43,25 @@ class GameBoard extends React.Component {
     );
   }
 }
+
+GameBoard.propTypes = {
+  nobleList: PropTypes.array.isRequired,
+  levels: PropTypes.array.isRequired,
+  stash: PropTypes.array.isRequired,
+  playOrder: PropTypes.array.isRequired,
+
+  players: PropTypes.object.isRequired,
+  cards: PropTypes.object.isRequired,
+  nobles: PropTypes.object.isRequired,
+  coins: PropTypes.object.isRequired,
+  currPlayer: PropTypes.object.isRequired,
+
+  buyCard: PropTypes.func.isRequired,
+  getBonus: PropTypes.func.isRequired,
+  addToStash: PropTypes.func.isRequired,
+  removeFromStash: PropTypes.func.isRequired,
+  takeStash: PropTypes.func.isRequired,
+  clearStash: PropTypes.func.isRequired
+};
 
 export default GameBoard;

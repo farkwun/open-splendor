@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class Info extends React.Component {
   render() {
@@ -13,5 +14,11 @@ class Info extends React.Component {
     );
   }
 }
+
+Info.propTypes = {
+  state: PropTypes.object.isRequired,
+
+  onClick: PropTypes.func
+};
 
 export default Info;

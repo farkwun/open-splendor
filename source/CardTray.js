@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import CardStack from "./CardStack";
 
@@ -15,5 +16,9 @@ class CardTray extends React.Component {
     );
   }
 }
+
+CardTray.propTypes = {
+  cards: PropTypes.array
+};
 
 export default CardTray;

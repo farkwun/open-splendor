@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import CoinStack from "./CoinStack";
 
@@ -17,5 +18,11 @@ class CoinBoard extends React.Component {
     return <div className="coin__board">{stacks}</div>;
   }
 }
+
+CoinBoard.propTypes = {
+  coins: PropTypes.object,
+
+  addToStash: PropTypes.func
+};
 
 export default CoinBoard;

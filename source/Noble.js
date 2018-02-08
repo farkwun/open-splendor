@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Prestige from "./Prestige";
 import Cost from "./Cost";
@@ -31,5 +32,13 @@ class Noble extends React.Component {
     );
   }
 }
+
+Noble.propTypes = {
+  placeholder: PropTypes.bool,
+  prestige: PropTypes.number,
+  imgURL: PropTypes.string,
+
+  costs: PropTypes.object
+};
 
 export default Noble;

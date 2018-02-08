@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Level from "./Level";
 
@@ -21,4 +22,13 @@ class LevelBoard extends React.Component {
   }
 }
 
+LevelBoard.propTypes = {
+  levels: PropTypes.array.isRequired,
+
+  cards: PropTypes.object.isRequired,
+  currPlayer: PropTypes.object.isRequired,
+
+  buyCard: PropTypes.func.isRequired,
+  getBonus: PropTypes.func.isRequired
+};
 export default LevelBoard;

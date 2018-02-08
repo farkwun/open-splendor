@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Coin from "./Coin";
 
@@ -45,5 +46,15 @@ class Stash extends React.Component {
     );
   }
 }
+
+Stash.propTypes = {
+  stash: PropTypes.array.isRequired,
+
+  currPlayer: PropTypes.object.isRequired,
+
+  removeFromStash: PropTypes.func.isRequired,
+  takeStash: PropTypes.func.isRequired,
+  clearStash: PropTypes.func.isRequired
+};
 
 export default Stash;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import PlayerCard from "./PlayerCard";
 
@@ -17,5 +18,13 @@ class PlayerBoard extends React.Component {
     return <div className="player__board">{players}</div>;
   }
 }
+
+PlayerBoard.propTypes = {
+  playOrder: PropTypes.array.isRequired,
+
+  cards: PropTypes.object.isRequired,
+  nobles: PropTypes.object.isRequired,
+  players: PropTypes.object.isRequired
+};
 
 export default PlayerBoard;

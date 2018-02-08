@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Noble from "./Noble";
 
 class NobleTray extends React.Component {
   render() {
-    const nobles = this.props.player_nobles.map(noble_id => {
-      const noble = this.props.nobles[noble_id];
+    const nobles = this.props.playerNobles.map(nobleId => {
+      const noble = this.props.nobles[nobleId];
       return (
         <Noble
           key={noble.id}
@@ -24,5 +25,11 @@ class NobleTray extends React.Component {
     );
   }
 }
+
+NobleTray.propTypes = {
+  playerNobles: PropTypes.array.isRequired,
+
+  nobles: PropTypes.object.isRequired
+};
 
 export default NobleTray;
