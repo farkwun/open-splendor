@@ -8,7 +8,7 @@ class NobleTray extends React.Component {
       const noble = this.props.nobles[noble_id];
       return (
         <Noble
-          id={noble.id}
+          key={noble.id}
           prestige={noble.prestige}
           costs={noble.costs}
           img_url={noble.img_url}

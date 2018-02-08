@@ -9,6 +9,7 @@ class Stash extends React.Component {
     let coins = this.props.stash.map((coin, index) => {
       return (
         <div
+          key={index}
           onClick={() => {
             this.props.removeFromStash(index);
           }}

@@ -8,7 +8,7 @@ class NobleList extends React.Component {
       const noble = this.props.nobles[nobleId];
       return (
         <Noble
-          id={noble.id}
+          key={noble.id}
           prestige={noble.prestige}
           costs={noble.costs}
           imgURL={noble.imgURL}

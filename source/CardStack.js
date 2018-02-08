@@ -9,9 +9,9 @@ class CardStack extends React.Component {
     let cards = this.props.cards.map(card => {
       if (card.type === type) {
         return (
-          <div className="stack">
+          <div key={card.id} className="stack">
             <Card
-              id={card.id}
+              key={card.id}
               prestige={card.prestige}
               costs={card.costs}
               type={card.type}

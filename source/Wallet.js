@@ -4,7 +4,7 @@ class Wallet extends React.Component {
   render() {
     const coins = Object.keys(this.props.coins).map(key => {
       return (
-        <div className="counter" style={{ backgroundColor: key }}>
+        <div key={key} className="counter" style={{ backgroundColor: key }}>
           {this.props.coins[key]}
         </div>
       );

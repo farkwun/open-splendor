@@ -8,6 +8,7 @@ class LevelBoard extends React.Component {
       return (
         <Level
           id={level.id}
+          key={level.id}
           buyCard={this.props.buyCard}
           cards={this.props.cards}
           rowCards={level.rowCards}

@@ -10,6 +10,7 @@ class Card extends React.Component {
     }
     const costs = Object.keys(this.props.costs).map(key => (
       <Cost
+        key={key}
         val={this.props.costs[key]}
         type={key}
         getBonus={this.props.getBonus}

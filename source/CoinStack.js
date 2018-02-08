@@ -2,11 +2,12 @@ import React from "react";
 
 import Coin from "./Coin";
 
+import { range } from "./Helpers";
+
 class CoinStack extends React.Component {
   render() {
-    var null_arr = new Array(Math.max(this.props.amount, 0)).fill(0);
-    var coins = null_arr.map(() => {
-      return <Coin type={this.props.type} />;
+    const coins = range(this.props.amount).map(idx => {
+      return <Coin key={idx} type={this.props.type} />;
     });
 
     return (

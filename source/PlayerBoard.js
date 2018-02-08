@@ -7,6 +7,7 @@ class PlayerBoard extends React.Component {
     const players = this.props.playOrder.map(playerId => {
       return (
         <PlayerCard
+          key={playerId}
           cards={this.props.cards}
           nobles={this.props.nobles}
           player={this.props.players[playerId]}

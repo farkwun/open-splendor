@@ -18,7 +18,7 @@ class Noble extends React.Component {
     };
 
     const costs = Object.keys(this.props.costs).map(key => (
-      <Cost val={this.props.costs[key]} type={key} />
+      <Cost key={key} val={this.props.costs[key]} type={key} />
     ));
 
     return (
