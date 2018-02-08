@@ -1,17 +1,17 @@
-export const nobleList = [1, 2, 3, 4, 5];
+export const nobleList = ["1", "2", "3", "4", "5"];
 
 export const levels = [
   {
-    id: 1,
-    rowCards: [1, 2, 3]
+    id: "1",
+    rowCards: ["1", "2", "3"]
   },
   {
-    id: 2,
-    rowCards: [4, 5, 6]
+    id: "2",
+    rowCards: ["4", "5", "6"]
   },
   {
-    id: 3,
-    rowCards: [7, 8, 9]
+    id: "3",
+    rowCards: ["7", "8", "9"]
   }
 ];
 
@@ -29,7 +29,7 @@ export const players = {
     id: "Alice",
     prestige: 0,
     coins: {},
-    cards: [10],
+    cards: ["10"],
     nobles: []
   },
   Bob: {
