@@ -12,6 +12,7 @@ class App extends React.Component {
     this.state = {
       nobles: mock.nobles,
       levels: mock.levels,
+      cards: mock.cards,
       coins: mock.coins,
       round_num: mock.round_num,
       stash: [],
@@ -27,21 +28,23 @@ class App extends React.Component {
   }
 
   getBonus = type => {
-    return this.getCurrPlayer().cards.filter(c => {
-      return c.type === type;
-    }).length;
+    return this.getCurrPlayer().cards.filter(
+      c_id => this.state.cards[c_id].type === type
+    ).length;
   };
 
-  buyCard = (card, level_id) => {
+  buyCard = (card_id, level_id) => {
     const curr_player_id = this.state.play_order[this.state.play_index];
     const curr_player = this.state.players[curr_player_id];
+
+    const card = this.state.cards[card_id];
 
     const levels = helpers.updateIn(
       this.state.levels,
       level => level.id === level_id,
       level => {
         const row_cards = level.row_cards.map(
-          r_c => (r_c.id === card.id ? { ...card, id: "null" } : r_c)
+          r_c_id => (r_c_id === card_id ? null : r_c_id)
         );
         return { ...level, row_cards };
       }
@@ -51,13 +54,18 @@ class App extends React.Component {
       ...this.state.players,
       [curr_player_id]: {
         ...curr_player,
-        cards: [...curr_player.cards, card],
-        coins: helpers.getCoinsLeft(curr_player.coins, card, curr_player)
+        cards: [...curr_player.cards, card_id],
+        coins: helpers.getCoinsLeft(
+          curr_player.coins,
+          card,
+          curr_player,
+          this.state.cards
+        )
       }
     };
 
     const coins = helpers.replenishedCoins(
-      helpers.coinsSpent(card, curr_player),
+      helpers.coinsSpent(card, curr_player, this.state.cards),
       this.state.coins
     );
 
@@ -154,6 +162,7 @@ class App extends React.Component {
         <GameBoard
           nobles={this.state.nobles}
           levels={this.state.levels}
+          cards={this.state.cards}
           coins={this.state.coins}
           stash={this.state.stash}
           players={this.state.players}

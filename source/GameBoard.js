@@ -13,6 +13,7 @@ class GameBoard extends React.Component {
         <NobleList nobles={this.props.nobles} />
         <LevelBoard
           levels={this.props.levels}
+          cards={this.props.cards}
           buyCard={this.props.buyCard}
           getBonus={this.props.getBonus}
           curr_player={this.props.curr_player}
@@ -29,6 +30,7 @@ class GameBoard extends React.Component {
           clearStash={this.props.clearStash}
         />
         <PlayerBoard
+          cards={this.props.cards}
           play_order={this.props.play_order}
           players={this.props.players}
         />

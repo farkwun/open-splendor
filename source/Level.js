@@ -8,20 +8,25 @@ class Level extends React.Component {
   render() {
     const player = this.props.curr_player;
     const player_coins = player.coins;
-    const player_bonus = helpers.getBonusAggregateFor(player);
-    const cards = this.props.row_cards.map(card => {
+    const player_bonus = helpers.getBonusAggregateFor(player, this.props.cards);
+    const cards = this.props.row_cards.map(card_id => {
+      if (card_id === null) {
+        return <div className={"level__box"} />;
+      }
+      const card = this.props.cards[card_id];
       const buyable = helpers.canBuyCard(player_coins, player_bonus, card);
       let className = "level__box";
       let onClick;
       if (buyable) {
         className = "level__box__buyable";
         onClick = () => {
-          this.props.buyCard(card, this.props.id);
+          this.props.buyCard(card_id, this.props.id);
         };
       }
       return (
         <div className={className} onClick={onClick}>
           <Card
+            card={card}
             id={card.id}
             prestige={card.prestige}
             costs={card.costs}

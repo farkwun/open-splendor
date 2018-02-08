@@ -65,8 +65,9 @@ export function getCoinAggregateFor(player) {
   );
 }
 
-export function getBonusAggregateFor(player) {
-  return player.cards.reduce((bonus_dict, card) => {
+export function getBonusAggregateFor(player, cards) {
+  return player.cards.reduce((bonus_dict, card_id) => {
+    const card = cards[card_id];
     if (card.type in bonus_dict) {
       bonus_dict[card.type] += 1;
     } else {
@@ -76,8 +77,8 @@ export function getBonusAggregateFor(player) {
   }, {});
 }
 
-export function coinsSpent(card, player) {
-  const bonuses = getBonusAggregateFor(player);
+export function coinsSpent(card, player, cards) {
+  const bonuses = getBonusAggregateFor(player, cards);
   return Object.keys(card.costs).reduce((spent, type) => {
     const bonus = bonuses[type] ? bonuses[type] : 0;
     spent[type] = card.costs[type] - bonus;
@@ -92,9 +93,9 @@ export function replenishedCoins(coins_spent, coins) {
   );
 }
 
-export function getCoinsLeft(coins, card, player) {
+export function getCoinsLeft(coins, card, player, cards) {
   const costs = card.costs;
-  const bonuses = getBonusAggregateFor(player);
+  const bonuses = getBonusAggregateFor(player, cards);
   return Object.keys(coins).reduce((coins_left, key) => {
     const bonus = bonuses[key] ? bonuses[key] : 0;
     const cost = costs[key] ? costs[key] : 0;
