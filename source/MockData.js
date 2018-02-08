@@ -1,55 +1,4 @@
-export const nobles = [
-  {
-    id: 1,
-    prestige: 3,
-    costs: {
-      red: 4,
-      green: 4
-    },
-    img_url:
-      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
-  },
-  {
-    id: 2,
-    prestige: 3,
-    costs: {
-      black: 4,
-      red: 4
-    },
-    img_url:
-      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
-  },
-  {
-    id: 3,
-    prestige: 3,
-    costs: {
-      red: 4,
-      green: 4
-    },
-    img_url:
-      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
-  },
-  {
-    id: 4,
-    prestige: 3,
-    costs: {
-      black: 4,
-      red: 4
-    },
-    img_url:
-      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
-  },
-  {
-    id: 5,
-    prestige: 3,
-    costs: {
-      red: 4,
-      green: 4
-    },
-    img_url:
-      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
-  }
-];
+export const noble_list = [1, 2, 3, 4, 5];
 
 export const levels = [
   {
@@ -108,18 +57,7 @@ export const players = {
     coins: {},
     cards: [],
     discounts: [],
-    nobles: [
-      {
-        id: 1,
-        prestige: 3,
-        costs: {
-          red: 4,
-          green: 4
-        },
-        img_url:
-          "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
-      }
-    ]
+    nobles: [6]
   }
 };
 
@@ -223,6 +161,69 @@ export const cards = {
       green: 1,
       blue: 1
     }
+  }
+};
+
+export const nobles = {
+  1: {
+    id: 1,
+    prestige: 3,
+    costs: {
+      red: 4,
+      green: 4
+    },
+    img_url:
+      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+  },
+  2: {
+    id: 2,
+    prestige: 3,
+    costs: {
+      black: 4,
+      red: 4
+    },
+    img_url:
+      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+  },
+  3: {
+    id: 3,
+    prestige: 3,
+    costs: {
+      red: 4,
+      green: 4
+    },
+    img_url:
+      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+  },
+  4: {
+    id: 4,
+    prestige: 3,
+    costs: {
+      black: 4,
+      red: 4
+    },
+    img_url:
+      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+  },
+  5: {
+    id: 5,
+    prestige: 3,
+    costs: {
+      red: 4,
+      green: 4
+    },
+    img_url:
+      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
+  },
+  6: {
+    id: 6,
+    prestige: 3,
+    costs: {
+      red: 4,
+      green: 4
+    },
+    img_url:
+      "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   }
 };
 
