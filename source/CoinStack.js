@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Coin from "./Coin";
 
 import { range } from "./Helpers";
 
-class CoinStack extends React.Component {
+class CoinStack extends Component {
   render() {
     const coins = range(this.props.amount).map(idx => {
       return <Coin key={idx} type={this.props.type} />;

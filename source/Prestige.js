@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class Prestige extends React.Component {
+class Prestige extends Component {
   render() {
     return <div className="prestige">{this.props.prestige}</div>;
   }

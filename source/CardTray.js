@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import CardStack from "./CardStack";
 
-class CardTray extends React.Component {
+class CardTray extends Component {
   render() {
     return (
       <div className="card__tray">

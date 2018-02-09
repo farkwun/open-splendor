@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Level from "./Level";
 
-class LevelBoard extends React.Component {
+class LevelBoard extends Component {
   render() {
     var levels = this.props.levels.map(level => {
       return (

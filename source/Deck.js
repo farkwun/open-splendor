@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class Deck extends React.Component {
+class Deck extends Component {
   render() {
     return <div className="deck">{this.props.id}</div>;
   }

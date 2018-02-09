@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class Info extends React.Component {
+class Info extends Component {
   render() {
     let currentPlayer = this.props.state.playOrder[this.props.state.playIndex];
     let currentPlayerPrompt = "The current player is [" + currentPlayer + "]";

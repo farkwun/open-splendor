@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import CoinStack from "./CoinStack";
 
-class CoinBoard extends React.Component {
+class CoinBoard extends Component {
   render() {
     const stacks = Object.keys(this.props.coins).map(key => {
       return (

@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Noble from "./Noble";
 
-class NobleList extends React.Component {
+class NobleList extends Component {
   render() {
     const nobles = this.props.nobleList.map(nobleId => {
       const noble = this.props.nobles[nobleId];

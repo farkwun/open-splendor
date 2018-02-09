@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Noble from "./Noble";
 
-class NobleTray extends React.Component {
+class NobleTray extends Component {
   render() {
     const nobles = this.props.playerNobles.map(nobleId => {
       const noble = this.props.nobles[nobleId];

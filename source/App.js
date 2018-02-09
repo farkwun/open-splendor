@@ -1,13 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from "react";
+import { render } from "react-dom";
 
 import GameBoard from "./GameBoard";
 import Info from "./Info";
 
 import * as mock from "./MockData";
-import * as helpers from "./Helpers";
+import {
+  updateIn,
+  getCoinsLeft,
+  replenishedCoins,
+  coinsSpent,
+  mergeCoins
+} from "./Helpers";
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,7 +47,7 @@ class App extends React.Component {
 
     const card = this.state.cards[cardId];
 
-    const levels = helpers.updateIn(
+    const levels = updateIn(
       this.state.levels,
       level => level.id === levelId,
       level => {
@@ -57,7 +63,7 @@ class App extends React.Component {
       [currPlayerId]: {
         ...currPlayer,
         cards: [...currPlayer.cards, cardId],
-        coins: helpers.getCoinsLeft(
+        coins: getCoinsLeft(
           currPlayer.coins,
           card,
           currPlayer,
@@ -66,8 +72,8 @@ class App extends React.Component {
       }
     };
 
-    const coins = helpers.replenishedCoins(
-      helpers.coinsSpent(card, currPlayer, this.state.cards),
+    const coins = replenishedCoins(
+      coinsSpent(card, currPlayer, this.state.cards),
       this.state.coins
     );
 
@@ -114,7 +120,7 @@ class App extends React.Component {
       ...this.state.players,
       [currPlayerId]: {
         ...currPlayer,
-        coins: helpers.mergeCoins(currPlayer.coins, this.state.stash)
+        coins: mergeCoins(currPlayer.coins, this.state.stash)
       }
     };
 
@@ -184,4 +190,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById("root"));

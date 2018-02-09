@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class Wallet extends React.Component {
+class Wallet extends Component {
   render() {
     const coins = Object.keys(this.props.coins).map(key => {
       return (

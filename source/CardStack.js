@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Card from "./Card";
 
-class CardStack extends React.Component {
+class CardStack extends Component {
   render() {
     const type = this.props.type;
 

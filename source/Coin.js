@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class Coin extends React.Component {
+class Coin extends Component {
   render() {
     return (
       <div className="coin" style={{ backgroundColor: this.props.type }}>

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class Cost extends React.Component {
+class Cost extends Component {
   render() {
     // TODO: Refactor
     let type = this.props.type;

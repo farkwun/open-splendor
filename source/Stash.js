@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Coin from "./Coin";
 
-import * as helpers from "./Helpers";
+import { canTakeStash } from "./Helpers";
 
-class Stash extends React.Component {
+class Stash extends Component {
   render() {
     let coins = this.props.stash.map((coin, index) => {
       return (
@@ -26,7 +26,7 @@ class Stash extends React.Component {
         <button
           className="take__stash"
           onClick={() => {
-            if (helpers.canTakeStash(this.props.currPlayer, this.props.stash)) {
+            if (canTakeStash(this.props.currPlayer, this.props.stash)) {
               this.props.takeStash();
               this.props.clearStash(false);
             }

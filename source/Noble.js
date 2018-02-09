@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Prestige from "./Prestige";
 import Cost from "./Cost";
 
-class Noble extends React.Component {
+class Noble extends Component {
   render() {
     if (this.props.placeholder) {
       return (

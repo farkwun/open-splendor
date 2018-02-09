@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import NobleList from "./NobleList";
@@ -7,7 +7,7 @@ import CoinBoard from "./CoinBoard";
 import Stash from "./Stash";
 import PlayerBoard from "./PlayerBoard";
 
-class GameBoard extends React.Component {
+class GameBoard extends Component {
   render() {
     return (
       <div className="game__board">

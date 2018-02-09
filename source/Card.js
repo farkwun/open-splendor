@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Prestige from "./Prestige";
 import Cost from "./Cost";
 
-class Card extends React.Component {
+class Card extends Component {
   render() {
     if (this.props.id === "null") {
       return <div className="card" />;

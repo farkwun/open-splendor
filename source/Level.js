@@ -1,21 +1,21 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Deck from "./Deck";
 import Card from "./Card";
-import * as helpers from "./Helpers";
+import { getBonusAggregateFor, canBuyCard } from "./Helpers";
 
-class Level extends React.Component {
+class Level extends Component {
   render() {
     const player = this.props.currPlayer;
     const playerCoins = player.coins;
-    const playerBonus = helpers.getBonusAggregateFor(player, this.props.cards);
+    const playerBonus = getBonusAggregateFor(player, this.props.cards);
     const cards = this.props.rowCards.map((cardId, idx) => {
       if (cardId === null) {
         return <div key={idx} className={"level__box"} />;
       }
       const card = this.props.cards[cardId];
-      const buyable = helpers.canBuyCard(playerCoins, playerBonus, card);
+      const buyable = canBuyCard(playerCoins, playerBonus, card);
       let className = "level__box";
       let onClick;
       if (buyable) {

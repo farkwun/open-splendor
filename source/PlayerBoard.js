@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import PlayerCard from "./PlayerCard";
 
-class PlayerBoard extends React.Component {
+class PlayerBoard extends Component {
   render() {
     const players = this.props.playOrder.map(playerId => {
       return (

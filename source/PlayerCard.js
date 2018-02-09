@@ -1,20 +1,20 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Prestige from "./Prestige";
 import CardTray from "./CardTray";
 import NobleTray from "./NobleTray";
 import Wallet from "./Wallet";
-import * as helpers from "./Helpers";
+import { getPrestigeFor } from "./Helpers";
 
-class PlayerCard extends React.Component {
+class PlayerCard extends Component {
   render() {
     const cards = this.props.player.cards.map(id => this.props.cards[id]);
     const nobles = this.props.player.nobles.map(id => this.props.nobles[id]);
     const netPrestige =
       this.props.player.prestige +
-      helpers.getPrestigeFor(cards) +
-      helpers.getPrestigeFor(nobles);
+      getPrestigeFor(cards) +
+      getPrestigeFor(nobles);
 
     return (
       <div className="player__card">
