@@ -1,14 +1,3 @@
-export function addCoinAmount(coins, type, val) {
-  let newCoins = coins.map(coin => {
-    let newCoin = { ...coin };
-    if (newCoin.type === type) {
-      newCoin.amount += val;
-    }
-    return newCoin;
-  });
-  return newCoins;
-}
-
 export function canTakeStash(player, stash) {
   const playerCoins = numCoins(player);
   if (playerCoins + stash.length > 10) {
@@ -58,13 +47,6 @@ export function numCoins(player) {
   );
 }
 
-export function getCoinAggregateFor(player) {
-  return player.coins.reduce(
-    (coinDict, coin) => ((coinDict[coin.type] = coin.amount), coinDict),
-    {}
-  );
-}
-
 export function getBonusAggregateFor(player, cards) {
   return player.cards.reduce((bonusDict, cardId) => {
     const card = cards[cardId];
@@ -104,10 +86,6 @@ export function getCoinsLeft(coins, card, player, cards) {
     }
     return coinsLeft;
   }, {});
-}
-
-export function getCostAggregate(costs) {
-  return costs.reduce((dict, cost) => ((dict[cost.type] = cost.val), dict), {});
 }
 
 export function getPrestigeFor(list) {
