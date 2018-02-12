@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { render } from "react-dom";
+import { connect } from "react-redux";
 
 import GameBoard from "./GameBoard";
 import Info from "./Info";
 
-import * as mock from "../helpers/MockData";
 import {
   updateIn,
   getCoinsLeft,
@@ -14,41 +13,25 @@ import {
 } from "../helpers/Helpers";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      nobleList: mock.nobleList,
-      nobles: mock.nobles,
-      levels: mock.levels,
-      cards: mock.cards,
-      coins: mock.coins,
-      roundNum: mock.roundNum,
-      stash: [],
-      playOrder: mock.playOrder,
-      playIndex: mock.playIndex,
-      players: mock.players
-    };
-  }
-
   getCurrPlayer() {
-    const currPlayerId = this.state.playOrder[this.state.playIndex];
-    return this.state.players[currPlayerId];
+    const currPlayerId = this.props.playOrder[this.props.playIndex];
+    return this.props.players[currPlayerId];
   }
 
   getBonus = type => {
     return this.getCurrPlayer().cards.filter(
-      cardId => this.state.cards[cardId].type === type
+      cardId => this.props.cards[cardId].type === type
     ).length;
   };
 
   buyCard = (cardId, levelId) => {
-    const currPlayerId = this.state.playOrder[this.state.playIndex];
-    const currPlayer = this.state.players[currPlayerId];
+    const currPlayerId = this.props.playOrder[this.props.playIndex];
+    const currPlayer = this.props.players[currPlayerId];
 
-    const card = this.state.cards[cardId];
+    const card = this.props.cards[cardId];
 
     const levels = updateIn(
-      this.state.levels,
+      this.props.levels,
       level => level.id === levelId,
       level => {
         const rowCards = level.rowCards.map(
@@ -59,7 +42,7 @@ class App extends Component {
     );
 
     const players = {
-      ...this.state.players,
+      ...this.props.players,
       [currPlayerId]: {
         ...currPlayer,
         cards: [...currPlayer.cards, cardId],
@@ -67,14 +50,14 @@ class App extends Component {
           currPlayer.coins,
           card,
           currPlayer,
-          this.state.cards
+          this.props.cards
         )
       }
     };
 
     const coins = replenishedCoins(
-      coinsSpent(card, currPlayer, this.state.cards),
-      this.state.coins
+      coinsSpent(card, currPlayer, this.props.cards),
+      this.props.coins
     );
 
     this.setState({
@@ -87,11 +70,11 @@ class App extends Component {
   };
 
   removeFromStash = index => {
-    const { type } = this.state.stash[index];
-    const coinsLeft = this.state.coins[type];
-    const coins = { ...this.state.coins, [type]: coinsLeft + 1 };
+    const { type } = this.props.stash[index];
+    const coinsLeft = this.props.coins[type];
+    const coins = { ...this.props.coins, [type]: coinsLeft + 1 };
 
-    const stash = this.state.stash.filter((coin, idx) => idx !== index);
+    const stash = this.props.stash.filter((coin, idx) => idx !== index);
 
     this.setState({
       stash,
@@ -100,12 +83,12 @@ class App extends Component {
   };
 
   addToStash = type => {
-    const coinsLeft = this.state.coins[type];
-    if (coinsLeft === 0 || this.state.stash.length >= 3) {
+    const coinsLeft = this.props.coins[type];
+    if (coinsLeft === 0 || this.props.stash.length >= 3) {
       return;
     }
-    const stash = [...this.state.stash, { type }];
-    const coins = { ...this.state.coins, [type]: coinsLeft - 1 };
+    const stash = [...this.props.stash, { type }];
+    const coins = { ...this.props.coins, [type]: coinsLeft - 1 };
 
     this.setState({
       stash,
@@ -114,13 +97,13 @@ class App extends Component {
   };
 
   takeStash = () => {
-    const currPlayerId = this.state.playOrder[this.state.playIndex];
-    const currPlayer = this.state.players[currPlayerId];
+    const currPlayerId = this.props.playOrder[this.props.playIndex];
+    const currPlayer = this.props.players[currPlayerId];
     const players = {
-      ...this.state.players,
+      ...this.props.players,
       [currPlayerId]: {
         ...currPlayer,
-        coins: mergeCoins(currPlayer.coins, this.state.stash)
+        coins: mergeCoins(currPlayer.coins, this.props.stash)
       }
     };
 
@@ -133,9 +116,9 @@ class App extends Component {
   clearStash = reset => {
     const stash = [];
     if (reset) {
-      const coins = this.state.stash.reduce(
+      const coins = this.props.stash.reduce(
         (newCoins, { type }) => ((newCoins[type] += 1), newCoins),
-        this.state.coins
+        this.props.coins
       );
 
       this.setState({
@@ -148,10 +131,10 @@ class App extends Component {
   };
 
   incrementPlayIndex = () => {
-    let index = this.state.playIndex + 1;
-    let roundNum = this.state.roundNum;
+    let index = this.props.playIndex + 1;
+    let roundNum = this.props.roundNum;
 
-    if (index >= this.state.playOrder.length) {
+    if (index >= this.props.playOrder.length) {
       index = 0;
       roundNum = roundNum + 1;
     }
@@ -168,14 +151,14 @@ class App extends Component {
     return (
       <div className="app">
         <GameBoard
-          nobleList={this.state.nobleList}
-          nobles={this.state.nobles}
-          levels={this.state.levels}
-          cards={this.state.cards}
-          coins={this.state.coins}
-          stash={this.state.stash}
-          players={this.state.players}
-          playOrder={this.state.playOrder}
+          nobleList={this.props.nobleList}
+          nobles={this.props.nobles}
+          levels={this.props.levels}
+          cards={this.props.cards}
+          coins={this.props.coins}
+          stash={this.props.stash}
+          players={this.props.players}
+          playOrder={this.props.playOrder}
           getBonus={this.getBonus}
           currPlayer={player}
           buyCard={this.buyCard}
@@ -184,10 +167,25 @@ class App extends Component {
           takeStash={this.takeStash}
           clearStash={this.clearStash}
         />
-        <Info state={this.state} onClick={this.incrementPlayIndex} />
+        <Info state={this.props} onClick={this.incrementPlayIndex} />
       </div>
     );
   }
 }
 
-render(<App />, document.getElementById("root"));
+function mapStateToProps(state) {
+  return {
+    nobleList: state.nobleList,
+    nobles: state.nobles,
+    levels: state.levels,
+    cards: state.cards,
+    coins: state.coins,
+    roundNum: state.roundNum,
+    stash: [],
+    playOrder: state.playOrder,
+    playIndex: state.playIndex,
+    players: state.players
+  };
+}
+
+export default connect(mapStateToProps)(App);
