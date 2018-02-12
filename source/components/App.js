@@ -4,14 +4,14 @@ import { render } from "react-dom";
 import GameBoard from "./GameBoard";
 import Info from "./Info";
 
-import * as mock from "./MockData";
+import * as mock from "../helpers/MockData";
 import {
   updateIn,
   getCoinsLeft,
   replenishedCoins,
   coinsSpent,
   mergeCoins
-} from "./Helpers";
+} from "../helpers/Helpers";
 
 class App extends Component {
   constructor(props) {

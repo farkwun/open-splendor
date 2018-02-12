@@ -5,7 +5,7 @@ import Prestige from "./Prestige";
 import CardTray from "./CardTray";
 import NobleTray from "./NobleTray";
 import Wallet from "./Wallet";
-import { getPrestigeFor } from "./Helpers";
+import { getPrestigeFor } from "../helpers/Helpers";
 
 class PlayerCard extends Component {
   render() {

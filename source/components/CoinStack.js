@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Coin from "./Coin";
 
-import { range } from "./Helpers";
+import { range } from "../helpers/Helpers";
 
 class CoinStack extends Component {
   render() {

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Deck from "./Deck";
 import Card from "./Card";
-import { getBonusAggregateFor, canBuyCard } from "./Helpers";
+import { getBonusAggregateFor, canBuyCard } from "../helpers/Helpers";
 
 class Level extends Component {
   render() {

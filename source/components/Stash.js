@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Coin from "./Coin";
 
-import { canTakeStash } from "./Helpers";
+import { canTakeStash } from "../helpers/Helpers";
 
 class Stash extends Component {
   render() {
