@@ -7,18 +7,16 @@ import { canTakeStash } from "../helpers/Helpers";
 
 class Stash extends Component {
   render() {
-    let coins = this.props.stash.map((coin, index) => {
-      return (
-        <div
-          key={index}
-          onClick={() => {
-            this.props.removeFromStash(index);
-          }}
-        >
-          <Coin type={coin.type} />
-        </div>
-      );
-    });
+    let coins = this.props.stash.map((coin, index) => (
+      <div
+        key={index}
+        onClick={() => {
+          this.props.removeFromStash(coin.type, index);
+        }}
+      >
+        <Coin type={coin.type} />
+      </div>
+    ));
 
     return (
       <div className="stash">
@@ -28,7 +26,6 @@ class Stash extends Component {
           onClick={() => {
             if (canTakeStash(this.props.currPlayer, this.props.stash)) {
               this.props.takeStash();
-              this.props.clearStash(false);
             }
           }}
         >
@@ -37,7 +34,7 @@ class Stash extends Component {
         <button
           className="clear__stash"
           onClick={() => {
-            this.props.clearStash(true);
+            this.props.clearStash(this.props.stash);
           }}
         >
           Clear Stash

@@ -12,6 +12,13 @@ import {
   mergeCoins
 } from "../helpers/Helpers";
 
+import {
+  addCoinToStash,
+  removeCoinFromStash,
+  resetStash,
+  takeCoinsFromStash
+} from "../redux/modules/shared";
+
 class App extends Component {
   getCurrPlayer() {
     const currPlayerId = this.props.playOrder[this.props.playIndex];
@@ -69,65 +76,17 @@ class App extends Component {
     this.incrementPlayIndex();
   };
 
-  removeFromStash = index => {
-    const { type } = this.props.stash[index];
-    const coinsLeft = this.props.coins[type];
-    const coins = { ...this.props.coins, [type]: coinsLeft + 1 };
-
-    const stash = this.props.stash.filter((coin, idx) => idx !== index);
-
-    this.setState({
-      stash,
-      coins
-    });
-  };
-
   addToStash = type => {
     const coinsLeft = this.props.coins[type];
     if (coinsLeft === 0 || this.props.stash.length >= 3) {
       return;
     }
-    const stash = [...this.props.stash, { type }];
-    const coins = { ...this.props.coins, [type]: coinsLeft - 1 };
-
-    this.setState({
-      stash,
-      coins
-    });
+    this.props.addToStash(type);
   };
 
   takeStash = () => {
     const currPlayerId = this.props.playOrder[this.props.playIndex];
-    const currPlayer = this.props.players[currPlayerId];
-    const players = {
-      ...this.props.players,
-      [currPlayerId]: {
-        ...currPlayer,
-        coins: mergeCoins(currPlayer.coins, this.props.stash)
-      }
-    };
-
-    this.setState({
-      players
-    });
-    this.incrementPlayIndex();
-  };
-
-  clearStash = reset => {
-    const stash = [];
-    if (reset) {
-      const coins = this.props.stash.reduce(
-        (newCoins, { type }) => ((newCoins[type] += 1), newCoins),
-        this.props.coins
-      );
-
-      this.setState({
-        coins
-      });
-    }
-    this.setState({
-      stash
-    });
+    this.props.takeStash(currPlayerId, this.props.stash);
   };
 
   incrementPlayIndex = () => {
@@ -162,10 +121,10 @@ class App extends Component {
           getBonus={this.getBonus}
           currPlayer={player}
           buyCard={this.buyCard}
-          removeFromStash={this.removeFromStash}
+          removeFromStash={this.props.removeFromStash}
           addToStash={this.addToStash}
           takeStash={this.takeStash}
-          clearStash={this.clearStash}
+          clearStash={this.props.clearStash}
         />
         <Info state={this.props} onClick={this.incrementPlayIndex} />
       </div>
@@ -181,11 +140,28 @@ function mapStateToProps(state) {
     cards: state.cards,
     coins: state.coins,
     roundNum: state.roundNum,
-    stash: [],
+    stash: state.stash,
     playOrder: state.playOrder,
     playIndex: state.playIndex,
     players: state.players
   };
 }
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+  return {
+    addToStash: type => {
+      dispatch(addCoinToStash(type));
+    },
+    removeFromStash: (type, index) => {
+      dispatch(removeCoinFromStash(type, index));
+    },
+    clearStash: stash => {
+      dispatch(resetStash(stash));
+    },
+    takeStash: (playerId, stash) => {
+      dispatch(takeCoinsFromStash(playerId, stash));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
