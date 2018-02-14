@@ -16,7 +16,8 @@ import {
   addCoinToStash,
   removeCoinFromStash,
   resetStash,
-  takeCoinsFromStash
+  takeCoinsFromStash,
+  buyCard
 } from "../redux/modules/shared";
 
 import { setPlayIndex } from "../redux/modules/playIndex";
@@ -28,6 +29,7 @@ class App extends Component {
     return this.props.players[currPlayerId];
   }
 
+  // TODO: turn this into a helper
   getBonus = type => {
     return this.getCurrPlayer().cards.filter(
       cardId => this.props.cards[cardId].type === type
@@ -37,45 +39,9 @@ class App extends Component {
   buyCard = (cardId, levelId) => {
     const currPlayerId = this.props.playOrder[this.props.playIndex];
     const currPlayer = this.props.players[currPlayerId];
-
     const card = this.props.cards[cardId];
 
-    const levels = updateIn(
-      this.props.levels,
-      level => level.id === levelId,
-      level => {
-        const rowCards = level.rowCards.map(
-          rowCardId => (rowCardId === cardId ? null : rowCardId)
-        );
-        return { ...level, rowCards };
-      }
-    );
-
-    const players = {
-      ...this.props.players,
-      [currPlayerId]: {
-        ...currPlayer,
-        cards: [...currPlayer.cards, cardId],
-        coins: getCoinsLeft(
-          currPlayer.coins,
-          card,
-          currPlayer,
-          this.props.cards
-        )
-      }
-    };
-
-    const coins = replenishedCoins(
-      coinsSpent(card, currPlayer, this.props.cards),
-      this.props.coins
-    );
-
-    this.setState({
-      levels,
-      coins,
-      players
-    });
-
+    this.props.buyCardFor(card, currPlayer, levelId, this.props.cards);
     this.incrementPlayIndex();
   };
 
@@ -168,6 +134,9 @@ function mapDispatchToProps(dispatch) {
     },
     setRound: num => {
       dispatch(setRoundNum(num));
+    },
+    buyCardFor: (card, player, levelId, cards) => {
+      dispatch(buyCard(card, player, levelId, cards));
     }
   };
 }
