@@ -63,7 +63,7 @@ export const players = {
 
 export const cards = {
   1: {
-    id: 1,
+    id: "1",
     prestige: 0,
     type: "blue",
     costs: {
@@ -73,7 +73,7 @@ export const cards = {
     }
   },
   2: {
-    id: 2,
+    id: "2",
     prestige: 0,
     type: "blue",
     costs: {
@@ -83,7 +83,7 @@ export const cards = {
     }
   },
   3: {
-    id: 3,
+    id: "3",
     prestige: 0,
     type: "blue",
     costs: {
@@ -93,7 +93,7 @@ export const cards = {
     }
   },
   4: {
-    id: 4,
+    id: "4",
     prestige: 1,
     type: "green",
     costs: {
@@ -103,7 +103,7 @@ export const cards = {
     }
   },
   5: {
-    id: 5,
+    id: "5",
     prestige: 1,
     type: "green",
     costs: {
@@ -113,7 +113,7 @@ export const cards = {
     }
   },
   6: {
-    id: 6,
+    id: "6",
     prestige: 1,
     type: "green",
     costs: {
@@ -123,7 +123,7 @@ export const cards = {
     }
   },
   7: {
-    id: 7,
+    id: "7",
     prestige: 2,
     type: "red",
     costs: {
@@ -133,7 +133,7 @@ export const cards = {
     }
   },
   8: {
-    id: 8,
+    id: "8",
     prestige: 2,
     type: "red",
     costs: {
@@ -143,7 +143,7 @@ export const cards = {
     }
   },
   9: {
-    id: 9,
+    id: "9",
     prestige: 2,
     type: "red",
     costs: {
@@ -153,7 +153,7 @@ export const cards = {
     }
   },
   10: {
-    id: 1,
+    id: "10",
     prestige: 0,
     type: "green",
     costs: {
@@ -166,7 +166,7 @@ export const cards = {
 
 export const nobles = {
   1: {
-    id: 1,
+    id: "1",
     prestige: 3,
     costs: {
       red: 4,
@@ -176,7 +176,7 @@ export const nobles = {
       "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   2: {
-    id: 2,
+    id: "2",
     prestige: 3,
     costs: {
       black: 4,
@@ -186,7 +186,7 @@ export const nobles = {
       "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   3: {
-    id: 3,
+    id: "3",
     prestige: 3,
     costs: {
       red: 4,
@@ -196,7 +196,7 @@ export const nobles = {
       "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   4: {
-    id: 4,
+    id: "4",
     prestige: 3,
     costs: {
       black: 4,
@@ -206,7 +206,7 @@ export const nobles = {
       "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   5: {
-    id: 5,
+    id: "5",
     prestige: 3,
     costs: {
       red: 4,
@@ -216,7 +216,7 @@ export const nobles = {
       "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   },
   6: {
-    id: 6,
+    id: "6",
     prestige: 3,
     costs: {
       red: 4,
