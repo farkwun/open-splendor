@@ -19,6 +19,9 @@ import {
   takeCoinsFromStash
 } from "../redux/modules/shared";
 
+import { setPlayIndex } from "../redux/modules/playIndex";
+import { setRoundNum } from "../redux/modules/roundNum";
+
 class App extends Component {
   getCurrPlayer() {
     const currPlayerId = this.props.playOrder[this.props.playIndex];
@@ -87,6 +90,7 @@ class App extends Component {
   takeStash = () => {
     const currPlayerId = this.props.playOrder[this.props.playIndex];
     this.props.takeStash(currPlayerId, this.props.stash);
+    this.incrementPlayIndex();
   };
 
   incrementPlayIndex = () => {
@@ -98,10 +102,8 @@ class App extends Component {
       roundNum = roundNum + 1;
     }
 
-    this.setState({
-      playIndex: index,
-      roundNum: roundNum
-    });
+    this.props.setCurrPlayer(index);
+    this.props.setRound(roundNum);
   };
 
   render() {
@@ -160,6 +162,12 @@ function mapDispatchToProps(dispatch) {
     },
     takeStash: (playerId, stash) => {
       dispatch(takeCoinsFromStash(playerId, stash));
+    },
+    setCurrPlayer: index => {
+      dispatch(setPlayIndex(index));
+    },
+    setRound: num => {
+      dispatch(setRoundNum(num));
     }
   };
 }
