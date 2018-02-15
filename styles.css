@@ -42,20 +42,38 @@
   box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
 }
 
+.clear__stash:hover {
+  background-color: #fff;
+}
+
+.take__stash:hover {
+  background-color: #fff;
+}
+
+.clear__stash {
+  border: 2px solid #FB0808;
+  margin: 10px;
+}
+
+.take__stash {
+  border: 2px solid #94FB08;
+  margin: 10px;
+}
+
 .stash {
-  display: inline-block;
-  width: 15%;
+  position: fixed;
+  bottom: 45px;
+  right: 0;
   background: #ccc;
-  padding: 1% 1% 1% 1%;
-  border: 2px solid #e5e5df;
-  border-radius: 10px;
-  box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+  padding: 1%;
+  border: 2px solid #000;
 }
 
 .coin__stack {
   display: inline-block;
   text-align: center;
   width: 14%;
+  padding: 1%;
 }
 
 .player__card {
@@ -98,11 +116,16 @@
   width: 20%;
 }
 
+.groove:hover {
+  border: 2px solid #000;
+}
+
 .groove {
   background: #aaa;
   margin: auto;
   width: 90%;
   padding: 5%;
+  border: 2px solid transparent;
   border-radius: 5%;
   box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
 }
@@ -111,10 +134,15 @@
   display: inline-block;
 }
 
+.coin:hover {
+  border: 1px solid #66ff66;
+}
+
 .coin {
   margin: 1%;
   padding: 5%;
   border-radius: 10px;
+  border: 1px solid transparent;
 }
 
 .level {
