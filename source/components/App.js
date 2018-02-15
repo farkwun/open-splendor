@@ -5,14 +5,6 @@ import GameBoard from "./GameBoard";
 import Info from "./Info";
 
 import {
-  updateIn,
-  getCoinsLeft,
-  replenishedCoins,
-  coinsSpent,
-  mergeCoins
-} from "../helpers/Helpers";
-
-import {
   addCoinToStash,
   removeCoinFromStash,
   resetStash,
@@ -26,32 +18,22 @@ import { setRoundNum } from "../redux/modules/roundNum";
 import { cards } from "../data/static";
 
 class App extends Component {
-  getCurrPlayer() {
-    const currPlayerId = this.props.playOrder[this.props.playIndex];
-    return this.props.players[currPlayerId];
-  }
+  getCurrPlayer = () =>
+    this.props.players[this.props.playOrder[this.props.playIndex]];
 
-  // TODO: turn this into a helper
-  getBonus = type => {
-    return this.getCurrPlayer().cards.filter(
-      cardId => cards[cardId].type === type
-    ).length;
-  };
+  getBonus = type =>
+    this.getCurrPlayer().cards.filter(cardId => cards[cardId].type === type)
+      .length;
 
   buyCard = (cardId, levelId) => {
-    const currPlayerId = this.props.playOrder[this.props.playIndex];
-    const currPlayer = this.props.players[currPlayerId];
-
-    this.props.buyCardFor(cardId, currPlayer, levelId);
+    this.props.buyCardFor(cardId, this.getCurrPlayer(), levelId);
     this.incrementPlayIndex();
   };
 
   addToStash = type => {
-    const coinsLeft = this.props.coins[type];
-    if (coinsLeft === 0 || this.props.stash.length >= 3) {
-      return;
+    if (this.props.coins[type] > 0 && this.props.stash.length < 3) {
+      this.props.addToStash(type);
     }
-    this.props.addToStash(type);
   };
 
   takeStash = () => {
