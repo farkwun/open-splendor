@@ -19,10 +19,7 @@ export default (state = mock.coins, action) => {
         state
       );
     case BUY_CARD:
-      return replenishedCoins(
-        coinsSpent(action.card, action.player, action.cards),
-        state
-      );
+      return replenishedCoins(coinsSpent(action.cardId, action.player), state);
     default:
       return state;
   }

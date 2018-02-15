@@ -23,6 +23,8 @@ import {
 import { setPlayIndex } from "../redux/modules/playIndex";
 import { setRoundNum } from "../redux/modules/roundNum";
 
+import { cards } from "../data/static";
+
 class App extends Component {
   getCurrPlayer() {
     const currPlayerId = this.props.playOrder[this.props.playIndex];
@@ -32,16 +34,15 @@ class App extends Component {
   // TODO: turn this into a helper
   getBonus = type => {
     return this.getCurrPlayer().cards.filter(
-      cardId => this.props.cards[cardId].type === type
+      cardId => cards[cardId].type === type
     ).length;
   };
 
   buyCard = (cardId, levelId) => {
     const currPlayerId = this.props.playOrder[this.props.playIndex];
     const currPlayer = this.props.players[currPlayerId];
-    const card = this.props.cards[cardId];
 
-    this.props.buyCardFor(card, currPlayer, levelId, this.props.cards);
+    this.props.buyCardFor(cardId, currPlayer, levelId);
     this.incrementPlayIndex();
   };
 
@@ -79,9 +80,7 @@ class App extends Component {
       <div className="app">
         <GameBoard
           nobleList={this.props.nobleList}
-          nobles={this.props.nobles}
           levels={this.props.levels}
-          cards={this.props.cards}
           coins={this.props.coins}
           stash={this.props.stash}
           players={this.props.players}
@@ -103,9 +102,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     nobleList: state.nobleList,
-    nobles: state.nobles,
     levels: state.levels,
-    cards: state.cards,
     coins: state.coins,
     roundNum: state.roundNum,
     stash: state.stash,
@@ -135,8 +132,8 @@ function mapDispatchToProps(dispatch) {
     setRound: num => {
       dispatch(setRoundNum(num));
     },
-    buyCardFor: (card, player, levelId, cards) => {
-      dispatch(buyCard(card, player, levelId, cards));
+    buyCardFor: (card, player, levelId) => {
+      dispatch(buyCard(card, player, levelId));
     }
   };
 }

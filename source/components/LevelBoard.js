@@ -11,7 +11,6 @@ class LevelBoard extends Component {
           id={level.id}
           key={level.id}
           buyCard={this.props.buyCard}
-          cards={this.props.cards}
           rowCards={level.rowCards}
           currPlayer={this.props.currPlayer}
           getBonus={this.props.getBonus}
@@ -25,7 +24,6 @@ class LevelBoard extends Component {
 LevelBoard.propTypes = {
   levels: PropTypes.array.isRequired,
 
-  cards: PropTypes.object.isRequired,
   currPlayer: PropTypes.object.isRequired,
 
   buyCard: PropTypes.func.isRequired,

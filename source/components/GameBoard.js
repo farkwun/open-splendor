@@ -11,13 +11,9 @@ class GameBoard extends Component {
   render() {
     return (
       <div className="game__board">
-        <NobleList
-          nobleList={this.props.nobleList}
-          nobles={this.props.nobles}
-        />
+        <NobleList nobleList={this.props.nobleList} />
         <LevelBoard
           levels={this.props.levels}
-          cards={this.props.cards}
           buyCard={this.props.buyCard}
           getBonus={this.props.getBonus}
           currPlayer={this.props.currPlayer}
@@ -34,8 +30,6 @@ class GameBoard extends Component {
           clearStash={this.props.clearStash}
         />
         <PlayerBoard
-          cards={this.props.cards}
-          nobles={this.props.nobles}
           playOrder={this.props.playOrder}
           players={this.props.players}
         />
@@ -51,8 +45,6 @@ GameBoard.propTypes = {
   playOrder: PropTypes.array.isRequired,
 
   players: PropTypes.object.isRequired,
-  cards: PropTypes.object.isRequired,
-  nobles: PropTypes.object.isRequired,
   coins: PropTypes.object.isRequired,
   currPlayer: PropTypes.object.isRequired,
 

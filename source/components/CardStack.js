@@ -7,16 +7,11 @@ class CardStack extends Component {
   render() {
     const type = this.props.type;
 
-    let cards = this.props.cards.map(card => {
+    const cards = this.props.cards.map(card => {
       if (card.type === type) {
         return (
           <div key={card.id} className="stack">
-            <Card
-              key={card.id}
-              prestige={card.prestige}
-              costs={card.costs}
-              type={card.type}
-            />
+            <Card key={card.id} id={card.id} />
           </div>
         );
       }

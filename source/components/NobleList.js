@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Noble from "./Noble";
+import { nobles } from "../data/static";
 
 class NobleList extends Component {
   render() {
-    const nobles = this.props.nobleList.map(nobleId => {
-      const noble = this.props.nobles[nobleId];
+    const theNobles = this.props.nobleList.map(nobleId => {
+      const noble = nobles[nobleId];
       return (
         <Noble
           key={noble.id}
@@ -19,18 +20,16 @@ class NobleList extends Component {
 
     let placeholders = [];
 
-    while (placeholders.length + nobles.length < 5) {
+    while (placeholders.length + theNobles.length < 5) {
       placeholders.push(<Noble placeholder="True" />);
     }
 
-    return <div className="noble__list">{placeholders.concat(nobles)}</div>;
+    return <div className="noble__list">{placeholders.concat(theNobles)}</div>;
   }
 }
 
 NobleList.propTypes = {
-  nobleList: PropTypes.array.isRequired,
-
-  nobles: PropTypes.object.isRequired
+  nobleList: PropTypes.array.isRequired
 };
 
 export default NobleList;

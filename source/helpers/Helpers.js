@@ -1,3 +1,5 @@
+import { cards } from "../data/static";
+
 export function canTakeStash(player, stash) {
   const playerCoins = numCoins(player);
   if (playerCoins + stash.length > 10) {
@@ -13,11 +15,12 @@ export function canTakeStash(player, stash) {
   );
 }
 
-export function canBuyCard(playerCoins, playerBonus, card) {
-  return Object.keys(card.costs).reduce((buyable, type) => {
-    const netCoins = playerCoins[type] ? playerCoins[type] : 0;
+export function canBuyCard(player, cardId) {
+  const playerBonus = getBonusAggregateFor(player);
+  return Object.keys(cards[cardId].costs).reduce((buyable, type) => {
+    const netCoins = player.coins[type] ? player.coins[type] : 0;
     const netBonus = playerBonus[type] ? playerBonus[type] : 0;
-    return card.costs[type] - netCoins - netBonus <= 0 && buyable;
+    return cards[cardId].costs[type] - netCoins - netBonus <= 0 && buyable;
   }, true);
 }
 
@@ -47,7 +50,7 @@ export function numCoins(player) {
   );
 }
 
-export function getBonusAggregateFor(player, cards) {
+export function getBonusAggregateFor(player) {
   return player.cards.reduce((bonusDict, cardId) => {
     const card = cards[cardId];
     if (card.type in bonusDict) {
@@ -59,11 +62,11 @@ export function getBonusAggregateFor(player, cards) {
   }, {});
 }
 
-export function coinsSpent(card, player, cards) {
-  const bonuses = getBonusAggregateFor(player, cards);
-  return Object.keys(card.costs).reduce((spent, type) => {
+export function coinsSpent(cardId, player) {
+  const bonuses = getBonusAggregateFor(player);
+  return Object.keys(cards[cardId].costs).reduce((spent, type) => {
     const bonus = bonuses[type] ? bonuses[type] : 0;
-    spent[type] = card.costs[type] - bonus;
+    spent[type] = cards[cardId].costs[type] - bonus;
     return spent;
   }, {});
 }
@@ -75,9 +78,9 @@ export function replenishedCoins(coinsSpent, coins) {
   );
 }
 
-export function getCoinsLeft(coins, card, player, cards) {
-  const costs = card.costs;
-  const bonuses = getBonusAggregateFor(player, cards);
+export function getCoinsLeft(coins, cardId, player) {
+  const costs = cards[cardId].costs;
+  const bonuses = getBonusAggregateFor(player);
   return Object.keys(coins).reduce((coinsLeft, key) => {
     const bonus = bonuses[key] ? bonuses[key] : 0;
     const cost = costs[key] ? costs[key] : 0;

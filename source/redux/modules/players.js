@@ -18,13 +18,8 @@ export default (state = mock.players, action) => {
         ...state,
         [action.player.id]: {
           ...action.player,
-          cards: [...action.player.cards, action.card.id],
-          coins: getCoinsLeft(
-            action.player.coins,
-            action.card,
-            action.player,
-            action.cards
-          )
+          cards: [...action.player.cards, action.cardId],
+          coins: getCoinsLeft(action.player.coins, action.cardId, action.player)
         }
       };
     default:

@@ -11,7 +11,7 @@ export default (state = mock.levels, action) => {
         level => level.id === action.levelId,
         level => {
           const rowCards = level.rowCards.map(
-            rowCardId => (rowCardId === action.card.id ? null : rowCardId)
+            rowCardId => (rowCardId === action.cardId ? null : rowCardId)
           );
           return { ...level, rowCards };
         }

@@ -27,10 +27,9 @@ export const takeCoinsFromStash = (playerId, stash) => ({
   stash
 });
 
-export const buyCard = (card, player, levelId, cards) => ({
+export const buyCard = (cardId, player, levelId) => ({
   type: BUY_CARD,
-  card,
-  cards,
+  cardId,
   player,
   levelId
 });

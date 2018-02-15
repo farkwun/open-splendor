@@ -3,16 +3,18 @@ import PropTypes from "prop-types";
 
 import Prestige from "./Prestige";
 import Cost from "./Cost";
+import { cards } from "../data/static";
 
 class Card extends Component {
   render() {
     if (this.props.id === "null") {
       return <div className="card" />;
     }
-    const costs = Object.keys(this.props.costs).map(key => (
+    const card = cards[this.props.id];
+    const costs = Object.keys(card.costs).map(key => (
       <Cost
         key={key}
-        val={this.props.costs[key]}
+        val={card.costs[key]}
         type={key}
         getBonus={this.props.getBonus}
       />
@@ -20,8 +22,8 @@ class Card extends Component {
 
     return (
       <div className="card">
-        <Prestige prestige={this.props.prestige} />
-        {this.props.type}
+        <Prestige prestige={card.prestige} />
+        {card.type}
         {costs}
       </div>
     );
@@ -30,10 +32,6 @@ class Card extends Component {
 
 Card.propTypes = {
   id: PropTypes.string,
-  prestige: PropTypes.number,
-  type: PropTypes.string,
-
-  costs: PropTypes.object,
 
   getBonus: PropTypes.func
 };
