@@ -27,6 +27,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "prettier": "1.10.2",
     "prettier-eslint": "^8.8.1",
+    "react-router-dom": "^4.2.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
   },
