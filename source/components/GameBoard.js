@@ -6,6 +6,7 @@ import LevelBoard from "./LevelBoard";
 import CoinBoard from "./CoinBoard";
 import Stash from "./Stash";
 import PlayerBoard from "./PlayerBoard";
+import Info from "./Info";
 
 class GameBoard extends Component {
   render() {
@@ -33,12 +34,18 @@ class GameBoard extends Component {
           playOrder={this.props.playOrder}
           players={this.props.players}
         />
+        <Info
+          currPlayer={this.props.currPlayer}
+          roundNum={this.props.roundNum}
+          incrementIndex={this.props.incrementIndex}
+        />
       </div>
     );
   }
 }
 
 GameBoard.propTypes = {
+  roundNum: PropTypes.number.isRequired,
   nobleList: PropTypes.array.isRequired,
   levels: PropTypes.array.isRequired,
   stash: PropTypes.array.isRequired,
@@ -53,7 +60,8 @@ GameBoard.propTypes = {
   addToStash: PropTypes.func.isRequired,
   removeFromStash: PropTypes.func.isRequired,
   takeStash: PropTypes.func.isRequired,
-  clearStash: PropTypes.func.isRequired
+  clearStash: PropTypes.func.isRequired,
+  incrementIndex: PropTypes.func.isRequired
 };
 
 export default GameBoard;

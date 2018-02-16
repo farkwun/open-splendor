@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import GameBoard from "./GameBoard";
-import Info from "./Info";
 
 import {
   addCoinToStash,
@@ -74,8 +73,9 @@ class App extends Component {
           addToStash={this.addToStash}
           takeStash={this.takeStash}
           clearStash={this.props.clearStash}
+          roundNum={this.props.roundNum}
+          incrementIndex={this.incrementPlayIndex}
         />
-        <Info state={this.props} onClick={this.incrementPlayIndex} />
       </div>
     );
   }
