@@ -4,7 +4,8 @@
   "description": "An open implementation of Splendor by Marc Andre",
   "author": "Bryan Chu",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "build": "webpack source/index.js bundle.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
