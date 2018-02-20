@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import NewGameForm from "./NewGameForm";
 import JoinGameForm from "./JoinGameForm";
@@ -24,7 +25,7 @@ class Welcome extends Component {
       case JOIN_GAME:
         return (
           <JoinGameForm
-            submit={this.props.bar}
+            submit={this.props.joinGame}
             back={this.props.moveModeTo(MAIN)}
           />
         );
@@ -50,6 +51,10 @@ class Welcome extends Component {
   }
 }
 
+Welcome.propTypes = {
+  mode: PropTypes.string.isRequired
+};
+
 function mapStateToProps(state) {
   return {
     mode: state.welcome
@@ -58,6 +63,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    joinGame: name => () => {
+      console.log(name);
+    },
     createGame: name => () => {
       console.log(name);
     },
