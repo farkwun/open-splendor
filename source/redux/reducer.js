@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 
+import isLoading from "./modules/loading";
 import welcome from "./modules/welcome";
 import nobleList from "./modules/nobleList";
 import levels from "./modules/levels";
@@ -11,6 +12,7 @@ import playIndex from "./modules/playIndex";
 import players from "./modules/players";
 
 export default combineReducers({
+  isLoading,
   welcome,
   nobleList,
   levels,

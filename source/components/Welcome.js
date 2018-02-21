@@ -12,6 +12,8 @@ import {
   changeMode
 } from "../redux/modules/welcome";
 
+import { LOADING, toggleLoadState } from "../redux/modules/loading";
+
 class Welcome extends Component {
   renderMode = () => {
     switch (this.props.mode) {
@@ -64,7 +66,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     joinGame: name => () => {
-      console.log(name);
+      dispatch(toggleLoadState());
     },
     createGame: name => () => {
       console.log(name);
