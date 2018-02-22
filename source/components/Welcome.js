@@ -14,6 +14,8 @@ import {
 
 import { LOADING, startLoad, stopLoad } from "../redux/modules/loading";
 
+import { getNewGame } from "../redux/modules/shared";
+
 class Welcome extends Component {
   renderMode = () => {
     switch (this.props.mode) {
@@ -72,7 +74,7 @@ function mapDispatchToProps(dispatch) {
       }, 3000);
     },
     createGame: name => () => {
-      console.log(name);
+      dispatch(getNewGame());
     },
     moveModeTo: mode => () => {
       dispatch(changeMode(mode));
