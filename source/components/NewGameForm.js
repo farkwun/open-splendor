@@ -21,7 +21,12 @@ class NewGameForm extends Component {
           value={this.state.value}
           onChange={this.changeValue}
         />
-        <button onClick={this.props.submit(this.state.value)}>Create</button>
+        <button
+          disabled={!this.state.value}
+          onClick={this.props.submit(this.state.value)}
+        >
+          Create
+        </button>
         <button onClick={this.props.back}>Back</button>
       </div>
     );

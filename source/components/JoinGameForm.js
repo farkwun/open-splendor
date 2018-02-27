@@ -33,6 +33,7 @@ class JoinGameForm extends Component {
           onChange={this.changeName}
         />
         <button
+          disabled={!this.state.roomId || !this.state.name}
           onClick={this.props.submit({
             roomId: this.state.roomId,
             name: this.state.name
