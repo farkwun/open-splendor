@@ -74,7 +74,7 @@ function mapDispatchToProps(dispatch) {
       }, 3000);
     },
     createGame: name => () => {
-      dispatch(getNewGame());
+      dispatch(getNewGame(name));
     },
     moveModeTo: mode => () => {
       dispatch(changeMode(mode));

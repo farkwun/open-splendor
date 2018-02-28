@@ -1,10 +1,10 @@
-import * as mock from "./MockData";
-
 import { mergeCoins, getCoinsLeft } from "../../helpers/Helpers";
-import { TAKE_STASH, BUY_CARD } from "./shared";
+import { TAKE_STASH, BUY_CARD, UPDATE_STATE, newState } from "./shared";
 
-export default (state = mock.players, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
+    case UPDATE_STATE:
+      return newState(action.state.players, state);
     case TAKE_STASH:
       return {
         ...state,

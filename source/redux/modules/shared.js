@@ -6,7 +6,14 @@ export const CLEAR_STASH = "clear_stash";
 export const TAKE_STASH = "take_stash";
 export const BUY_CARD = "buy_card";
 
+export const UPDATE_STATE = "update_state";
+
 // Action creators
+export const updateState = state => ({
+  type: UPDATE_STATE,
+  state
+});
+
 export const resetStash = stash => ({
   type: CLEAR_STASH,
   stash
@@ -36,15 +43,36 @@ export const buyCard = (cardId, player, levelId) => ({
 });
 
 // Thunks
-export const getNewGame = () => {
+const URI = "http://localhost:5000/new";
+
+export const getNewGame = name => {
   return (dispatch, getState) => {
     dispatch(startLoad());
-    fetch("http://localhost:5000/")
-      .then(response => response.json())
+
+    const body = { user: name };
+
+    const options = {
+      method: "POST",
+      mode: "cors"
+    };
+
+    options.body = JSON.stringify(body);
+
+    fetch(URI, options)
+      .then(response => {
+        return response.json();
+      })
       .then(json => {
-        console.log(json.message);
+        console.log(json);
+        dispatch(updateState(json));
         dispatch(stopLoad());
       })
-      .catch(error => console.log("Fetch failed with error: ", error));
+      .catch(error => {
+        console.log("Error is: ", error);
+        dispatch(stopLoad());
+      });
   };
 };
+
+// Helpers
+export const newState = (next, curr) => (next !== undefined ? next : curr);
