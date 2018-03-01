@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class JoinGameForm extends Component {
   constructor(props) {
@@ -32,15 +33,14 @@ class JoinGameForm extends Component {
           value={this.state.name}
           onChange={this.changeName}
         />
-        <button
-          disabled={!this.state.roomId || !this.state.name}
-          onClick={this.props.submit({
-            roomId: this.state.roomId,
-            name: this.state.name
-          })}
-        >
-          Join Game
-        </button>
+        <Link to="/game">
+          <button
+            disabled={!this.state.roomId || !this.state.name}
+            onClick={this.props.submit(this.state.name, this.state.roomId)}
+          >
+            Join Game
+          </button>
+        </Link>
         <button onClick={this.props.back}>Back</button>
       </div>
     );

@@ -14,7 +14,7 @@ import {
 
 import { LOADING, startLoad, stopLoad } from "../redux/modules/loading";
 
-import { getNewGame } from "../redux/modules/shared";
+import { getNewGame, joinGame } from "../redux/modules/shared";
 
 class Welcome extends Component {
   renderMode = () => {
@@ -29,7 +29,7 @@ class Welcome extends Component {
       case JOIN_GAME:
         return (
           <JoinGameForm
-            submit={this.props.joinGame}
+            submit={this.props.joinExisting}
             back={this.props.moveModeTo(MAIN)}
           />
         );
@@ -67,11 +67,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    joinGame: name => () => {
-      dispatch(startLoad());
-      setTimeout(() => {
-        dispatch(stopLoad());
-      }, 3000);
+    joinExisting: (name, roomId) => () => {
+      dispatch(joinGame(name, roomId));
     },
     createGame: name => () => {
       dispatch(getNewGame(name));

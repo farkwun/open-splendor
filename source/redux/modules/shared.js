@@ -47,12 +47,14 @@ const URI = "http://localhost:5000/";
 
 /* POST TYPES */
 const NEW_GAME = "new";
+const JOIN_GAME = "join";
 const MOVE = "move";
 const ACTIVATE = "activate";
 const UPDATE = "update";
 
 /* ENDPOINTS */
 const NEW = "new";
+const JOIN = "join";
 const GAME = "game";
 
 /* REQUEST TYPES */
@@ -113,6 +115,21 @@ export const getNewGame = name => {
       dispatch(updateState(json));
       dispatch(pollGameState(getState().roomId));
     });
+  };
+};
+
+export const joinGame = (name, roomId) => {
+  return (dispatch, getState) => {
+    makeRequest(dispatch)(
+      POST,
+      JOIN_GAME,
+      JOIN,
+      { user: name, roomId },
+      json => {
+        dispatch(updateState(json));
+        dispatch(pollGameState(getState().roomId));
+      }
+    );
   };
 };
 
