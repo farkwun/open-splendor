@@ -14,6 +14,7 @@ class Game extends Component {
       <WaitingRoom
         roomId={this.props.roomId}
         players={Object.keys(this.props.players)}
+        start={this.props.start}
       />
     );
   };
@@ -32,4 +33,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Game);
+function mapDispatchToProps(dispatch) {
+  return {
+    start: roomId => () => {}
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game);
