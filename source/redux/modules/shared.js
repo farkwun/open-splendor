@@ -43,36 +43,84 @@ export const buyCard = (cardId, player, levelId) => ({
 });
 
 // Thunks
-const URI = "http://localhost:5000/new";
+const URI = "http://localhost:5000/";
+
+/* POST TYPES */
+const NEW_GAME = "new";
+const MOVE = "move";
+const ACTIVATE = "activate";
+const UPDATE = "update";
+
+/* ENDPOINTS */
+const NEW = "new";
+const GAME = "game";
+
+/* REQUEST TYPES */
+const POST = "POST";
+const GET = "GET";
+
+const makeRequest = dispatch => (method, type, endpoint, body, action) => {
+  dispatch(startLoad());
+
+  const options = {
+    method,
+    mode: "cors",
+    body: method === POST ? JSON.stringify({ ...body, type }) : undefined
+  };
+
+  console.log(options);
+
+  if (method === GET) {
+    console.log(makeQueryString(body));
+    endpoint = endpoint.concat(makeQueryString(body));
+  }
+
+  console.log(URI.concat(endpoint));
+
+  fetch(URI.concat(endpoint), options)
+    .then(response => {
+      console.log(response.status);
+      return response.json();
+    })
+    .then(json => {
+      console.log(json);
+      action(json);
+      dispatch(stopLoad());
+    })
+    .catch(error => {
+      console.log("Error is: ", error);
+      dispatch(stopLoad());
+    });
+};
+
+const pollTime = 5000;
+
+export const pollGameState = roomId => {
+  return (dispatch, getState) => {
+    setInterval(
+      () =>
+        makeRequest(dispatch)(GET, UPDATE, GAME, { roomId }, json => {
+          dispatch(updateState(json));
+        }),
+      pollTime
+    );
+  };
+};
 
 export const getNewGame = name => {
   return (dispatch, getState) => {
-    dispatch(startLoad());
-
-    const body = { user: name };
-
-    const options = {
-      method: "POST",
-      mode: "cors"
-    };
-
-    options.body = JSON.stringify(body);
-
-    fetch(URI, options)
-      .then(response => {
-        return response.json();
-      })
-      .then(json => {
-        console.log(json);
-        dispatch(updateState(json));
-        dispatch(stopLoad());
-      })
-      .catch(error => {
-        console.log("Error is: ", error);
-        dispatch(stopLoad());
-      });
+    makeRequest(dispatch)(POST, NEW_GAME, NEW, { user: name }, json => {
+      dispatch(updateState(json));
+      dispatch(pollGameState(getState().roomId));
+    });
   };
 };
 
 // Helpers
 export const newState = (next, curr) => (next !== undefined ? next : curr);
+
+const makeQueryString = dict =>
+  Object.keys(dict).reduce(
+    (qs, key) => qs.concat(key.concat("=".concat(dict[key]))),
+    "?"
+  );
