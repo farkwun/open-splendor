@@ -15,6 +15,6 @@ export default (state = MAIN, action) => {
     case CHANGE_MODE:
       return action.mode;
     default:
-      return MAIN;
+      return state;
   }
 };
