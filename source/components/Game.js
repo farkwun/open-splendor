@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import GameBoard from "./GameBoard";
 import WaitingRoom from "./WaitingRoom";
 
+import { activateGame } from "../redux/modules/shared";
+
 class Game extends Component {
   renderMode = () => {
     if (this.props.active) {
@@ -35,7 +37,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    start: roomId => () => {}
+    start: roomId => () => {
+      dispatch(activateGame(roomId));
+    }
   };
 }
 

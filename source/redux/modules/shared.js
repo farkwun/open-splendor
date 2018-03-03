@@ -133,6 +133,14 @@ export const joinGame = (name, roomId) => {
   };
 };
 
+export const activateGame = roomId => {
+  return (dispatch, getState) => {
+    makeRequest(dispatch)(POST, ACTIVATE, GAME, { roomId }, json => {
+      dispatch(updateState(json));
+    });
+  };
+};
+
 // Helpers
 export const newState = (next, curr) => (next !== undefined ? next : curr);
 

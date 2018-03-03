@@ -1,3 +1,10 @@
-import * as mock from "./MockData";
+import { UPDATE_STATE, newState } from "./shared";
 
-export default (state = mock.playOrder) => state;
+export default (state = [], action) => {
+  switch (action.type) {
+    case UPDATE_STATE:
+      return newState(action.state.playOrder, state);
+    default:
+      return state;
+  }
+};

@@ -1,4 +1,4 @@
-import * as mock from "./MockData";
+import { UPDATE_STATE, newState } from "./MockData";
 
 // Action types
 const SET_ROUND = "set_round";
@@ -10,8 +10,10 @@ export const setRoundNum = num => ({
 });
 
 // Reducer
-export default (state = mock.roundNum, action) => {
+export default (state = 1, action) => {
   switch (action.type) {
+    case UPDATE_STATE:
+      return newState(action.state.roundNum, state);
     case SET_ROUND:
       return action.num;
     default:
