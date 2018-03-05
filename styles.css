@@ -220,3 +220,13 @@
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
 }
+
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  border: 3px solid #73AD21;
+  background-color: rgba(202,232,202,0.5)
+}
