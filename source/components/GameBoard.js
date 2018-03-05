@@ -14,7 +14,8 @@ import {
   removeCoinFromStash,
   resetStash,
   takeCoinsFromStash,
-  buyCard
+  buyCard,
+  toast
 } from "../redux/modules/shared";
 
 import { setPlayIndex } from "../redux/modules/playIndex";
@@ -29,6 +30,11 @@ class GameBoard extends Component {
   getBonus = type =>
     this.getCurrPlayer().cards.filter(cardId => cards[cardId].type === type)
       .length;
+
+  ifActive = func =>
+    this.active() ? func : this.props.setToast("It isn't your turn!");
+
+  active = () => this.props.me === this.props.playOrder[this.props.playIndex];
 
   buyCard = (cardId, levelId) => {
     this.props.buyCardFor(cardId, this.getCurrPlayer(), levelId);
@@ -68,17 +74,20 @@ class GameBoard extends Component {
         <NobleList nobleList={this.props.nobleList} />
         <LevelBoard
           levels={this.props.levels}
-          buyCard={this.buyCard}
+          buyCard={this.ifActive(this.buyCard)}
           getBonus={this.getBonus}
           currPlayer={player}
         />
-        <CoinBoard coins={this.props.coins} addToStash={this.addToStash} />
+        <CoinBoard
+          coins={this.props.coins}
+          addToStash={this.ifActive(this.addToStash)}
+        />
         <Stash
           stash={this.props.stash}
           currPlayer={player}
-          removeFromStash={this.props.removeFromStash}
-          takeStash={this.takeStash}
-          clearStash={this.props.clearStash}
+          removeFromStash={this.ifActive(this.props.removeFromStash)}
+          takeStash={this.ifActive(this.takeStash)}
+          clearStash={this.ifActive(this.props.clearStash)}
         />
         <PlayerBoard
           playOrder={this.props.playOrder}
@@ -95,6 +104,7 @@ class GameBoard extends Component {
 }
 
 GameBoard.propTypes = {
+  me: PropTypes.string.isRequired,
   playIndex: PropTypes.number.isRequired,
   roundNum: PropTypes.number.isRequired,
   nobleList: PropTypes.array.isRequired,
@@ -116,6 +126,7 @@ GameBoard.propTypes = {
 
 function mapStateToProps(state) {
   return {
+    me: state.me,
     nobleList: state.nobleList,
     levels: state.levels,
     coins: state.coins,
@@ -149,6 +160,9 @@ function mapDispatchToProps(dispatch) {
     },
     buyCardFor: (card, player, levelId) => {
       dispatch(buyCard(card, player, levelId));
+    },
+    setToast: text => () => {
+      dispatch(toast(text));
     }
   };
 }

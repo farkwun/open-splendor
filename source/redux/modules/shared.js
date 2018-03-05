@@ -1,4 +1,7 @@
 import { startLoad, stopLoad } from "./loading";
+import { setToast, clearToast } from "./toastText";
+import { startToast, stopToast } from "./showToast";
+import { setMe } from "./me";
 
 export const ADD_TO_STASH = "add_to_stash";
 export const REMOVE_FROM_STASH = "remove_from_stash";
@@ -44,6 +47,7 @@ export const buyCard = (cardId, player, levelId) => ({
 
 // Thunks
 const URI = "http://localhost:5000/";
+const TOAST_TIME = 1000;
 
 /* POST TYPES */
 const NEW_GAME = "new";
@@ -112,6 +116,7 @@ export const pollGameState = roomId => {
 export const getNewGame = name => {
   return (dispatch, getState) => {
     makeRequest(dispatch)(POST, NEW_GAME, NEW, { user: name }, json => {
+      dispatch(setMe(name));
       dispatch(updateState(json));
       dispatch(pollGameState(getState().roomId));
     });
@@ -126,6 +131,7 @@ export const joinGame = (name, roomId) => {
       JOIN,
       { user: name, roomId },
       json => {
+        dispatch(setMe(name));
         dispatch(updateState(json));
         dispatch(pollGameState(getState().roomId));
       }
@@ -138,6 +144,17 @@ export const activateGame = roomId => {
     makeRequest(dispatch)(POST, ACTIVATE, GAME, { roomId }, json => {
       dispatch(updateState(json));
     });
+  };
+};
+
+export const toast = text => {
+  return (dispatch, getState) => {
+    dispatch(setToast(text));
+    dispatch(startToast());
+    setTimeout(() => {
+      dispatch(stopToast());
+      dispatch(clearToast());
+    }, TOAST_TIME);
   };
 };
 

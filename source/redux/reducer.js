@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 
+import me from "./modules/me";
 import roomId from "./modules/roomid";
 import active from "./modules/active";
 import isLoading from "./modules/loading";
@@ -16,6 +17,7 @@ import playIndex from "./modules/playIndex";
 import players from "./modules/players";
 
 export default combineReducers({
+  me,
   roomId,
   active,
   isLoading,
