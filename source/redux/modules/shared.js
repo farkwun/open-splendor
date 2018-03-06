@@ -1,6 +1,4 @@
 import { startLoad, stopLoad } from "./loading";
-import { setToast, clearToast } from "./toastText";
-import { startToast, stopToast } from "./showToast";
 import { setMe } from "./me";
 
 export const ADD_TO_STASH = "add_to_stash";
@@ -49,7 +47,6 @@ export const buyCard = (cardId, player, levelId) => ({
 
 // Thunks
 const URI = "http://localhost:5000/";
-const TOAST_TIME = 1000;
 
 /* POST TYPES */
 const NEW_GAME = "new";
@@ -157,17 +154,6 @@ export const activateGame = roomId => {
     makeRequest(dispatch)(POST, ACTIVATE, GAME, { roomId }, json => {
       dispatch(updateState(json));
     });
-  };
-};
-
-export const toast = text => {
-  return (dispatch, getState) => {
-    dispatch(setToast(text));
-    dispatch(startToast());
-    setTimeout(() => {
-      dispatch(stopToast());
-      dispatch(clearToast());
-    }, TOAST_TIME);
   };
 };
 

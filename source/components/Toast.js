@@ -19,8 +19,8 @@ Toast.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    showToast: state.showToast,
-    toastText: state.toastText
+    showToast: state.toast.showToast,
+    toastText: state.toast.toastText
   };
 }
 

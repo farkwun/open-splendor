@@ -14,12 +14,12 @@ import {
   removeCoinFromStash,
   resetStash,
   takeCoinsFromStash,
-  buyCard,
-  toast
+  buyCard
 } from "../redux/modules/shared";
 
 import { setPlayIndex } from "../redux/modules/playIndex";
 import { setRoundNum } from "../redux/modules/roundNum";
+import { toast } from "../redux/modules/toast";
 
 import { cards } from "../data/static";
 
