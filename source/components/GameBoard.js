@@ -9,6 +9,8 @@ import Stash from "./Stash";
 import PlayerBoard from "./PlayerBoard";
 import Info from "./Info";
 
+import { canTakeStash } from "../helpers/Helpers";
+
 import {
   addCoinToStash,
   removeCoinFromStash,
@@ -48,9 +50,12 @@ class GameBoard extends Component {
   };
 
   takeStash = () => {
-    const currPlayerId = this.props.playOrder[this.props.playIndex];
-    this.props.takeStash(currPlayerId, this.props.stash);
-    this.incrementPlayIndex();
+    if (canTakeStash(this.props.players[this.props.me], this.props.stash)) {
+      this.props.takeStash(this.props.me, this.props.stash);
+      this.incrementPlayIndex();
+    } else {
+      this.props.setToast("Stash invalid!")();
+    }
   };
 
   incrementPlayIndex = () => {

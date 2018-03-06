@@ -24,9 +24,7 @@ class Stash extends Component {
         <button
           className="take__stash"
           onClick={() => {
-            if (canTakeStash(this.props.currPlayer, this.props.stash)) {
-              this.props.takeStash();
-            }
+            this.props.takeStash();
           }}
         >
           Take Stash
