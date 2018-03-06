@@ -98,7 +98,7 @@ const makeRequest = dispatch => (method, type, endpoint, body, action) => {
     });
 };
 
-const pollTime = 5000;
+const pollTime = 1000;
 
 let interval;
 
