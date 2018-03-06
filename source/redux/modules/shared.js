@@ -11,6 +11,8 @@ export const BUY_CARD = "buy_card";
 
 export const UPDATE_STATE = "update_state";
 
+const STOP_POLL = "stop_poll";
+
 // Action creators
 export const updateState = state => ({
   type: UPDATE_STATE,
@@ -101,11 +103,22 @@ const makeRequest = dispatch => (method, type, endpoint, body, action) => {
 
 const pollTime = 5000;
 
+let interval;
+
+export const stopPoll = () => dispatch => {
+  clearInterval(interval);
+  return dispatch({ type: STOP_POLL });
+};
+
 export const pollGameState = roomId => {
   return (dispatch, getState) => {
-    setInterval(
+    clearInterval(interval);
+    interval = setInterval(
       () =>
         makeRequest(dispatch)(GET, UPDATE, GAME, { roomId }, json => {
+          if (isMyTurn(getState(), json.playOrder, json.playIndex)) {
+            dispatch(stopPoll());
+          }
           dispatch(updateState(json));
         }),
       pollTime
@@ -166,3 +179,6 @@ const makeQueryString = dict =>
     (qs, key) => qs.concat(key.concat("=".concat(dict[key]))),
     "?"
   );
+
+const isMyTurn = (state, playOrder, playIndex) =>
+  state.active && state.me === playOrder[playIndex];
