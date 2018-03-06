@@ -38,11 +38,6 @@ class GameBoard extends Component {
 
   active = () => this.props.me === this.props.playOrder[this.props.playIndex];
 
-  buyCard = (cardId, levelId) => {
-    this.props.buyCardFor(cardId, this.getCurrPlayer(), levelId);
-    this.incrementPlayIndex();
-  };
-
   addToStash = type => {
     if (this.props.coins[type] > 0 && this.props.stash.length < 3) {
       this.props.addToStash(type);
@@ -51,8 +46,7 @@ class GameBoard extends Component {
 
   takeStash = () => {
     if (canTakeStash(this.props.players[this.props.me], this.props.stash)) {
-      this.props.takeStash(this.props.me, this.props.stash);
-      this.incrementPlayIndex();
+      this.props.takeStash(this.props.stash);
     } else {
       this.props.setToast("Stash invalid!")();
     }
@@ -79,7 +73,7 @@ class GameBoard extends Component {
         <NobleList nobleList={this.props.nobleList} />
         <LevelBoard
           levels={this.props.levels}
-          buyCard={this.ifActive(this.buyCard)}
+          buyCard={this.ifActive(this.props.buyCardFor)}
           getBonus={this.getBonus}
           currPlayer={player}
         />
@@ -154,8 +148,8 @@ function mapDispatchToProps(dispatch) {
     clearStash: stash => {
       dispatch(resetStash(stash));
     },
-    takeStash: (playerId, stash) => {
-      dispatch(takeCoinsFromStash(playerId, stash));
+    takeStash: stash => {
+      dispatch(takeCoinsFromStash(stash));
     },
     setCurrPlayer: index => {
       dispatch(setPlayIndex(index));
@@ -163,8 +157,8 @@ function mapDispatchToProps(dispatch) {
     setRound: num => {
       dispatch(setRoundNum(num));
     },
-    buyCardFor: (card, player, levelId) => {
-      dispatch(buyCard(card, player, levelId));
+    buyCardFor: card => {
+      dispatch(buyCard(card));
     },
     setToast: text => () => {
       dispatch(toast(text));

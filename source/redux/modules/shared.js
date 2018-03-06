@@ -32,19 +32,6 @@ export const removeCoinFromStash = (coinType, index) => ({
   index
 });
 
-export const takeCoinsFromStash = (playerId, stash) => ({
-  type: TAKE_STASH,
-  playerId,
-  stash
-});
-
-export const buyCard = (cardId, player, levelId) => ({
-  type: BUY_CARD,
-  cardId,
-  player,
-  levelId
-});
-
 // Thunks
 const URI = "http://localhost:5000/";
 
@@ -157,6 +144,45 @@ export const activateGame = roomId => {
   };
 };
 
+const makeMove = (state, move) => {
+  return {
+    ...move,
+    type: MOVE,
+    me: state.me,
+    roomId: state.roomId
+  };
+};
+
+export const takeCoinsFromStash = stash => {
+  return (dispatch, getState) => {
+    makeRequest(dispatch)(
+      POST,
+      MOVE,
+      GAME,
+      makeMove(getState(), { stash }),
+      json => {
+        dispatch(resetStash());
+        dispatch(startLoad());
+        dispatch(pollGameState(getState().roomId));
+      }
+    );
+  };
+};
+
+export const buyCard = card => {
+  return (dispatch, getState) => {
+    makeRequest(dispatch)(
+      POST,
+      MOVE,
+      GAME,
+      makeMove(getState(), { card }),
+      json => {
+        dispatch(startLoad());
+        dispatch(pollGameState(getState().roomId));
+      }
+    );
+  };
+};
 // Helpers
 export const newState = (next, curr) => (next !== undefined ? next : curr);
 

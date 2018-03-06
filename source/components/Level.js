@@ -14,7 +14,7 @@ class Level extends Component {
       }
       const buyable = canBuyCard(player, cardId);
       const buyCard = () => {
-        this.props.buyCard(cardId, this.props.id);
+        this.props.buyCard(cardId);
       };
       return (
         <div
