@@ -21,7 +21,7 @@ class NobleList extends Component {
     let placeholders = [];
 
     while (placeholders.length + theNobles.length < 5) {
-      placeholders.push(<Noble placeholder="True" />);
+      placeholders.push(<Noble key={placeholders.length} placeholder={true} />);
     }
 
     return <div className="noble__list">{placeholders.concat(theNobles)}</div>;
