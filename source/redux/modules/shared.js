@@ -89,8 +89,8 @@ const makeRequest = dispatch => (method, type, endpoint, body, action) => {
     })
     .then(json => {
       console.log(json);
-      action(json);
       dispatch(stopLoad());
+      action(json);
     })
     .catch(error => {
       console.log("Error is: ", error);
@@ -113,10 +113,10 @@ export const pollGameState = roomId => {
     interval = setInterval(
       () =>
         makeRequest(dispatch)(GET, UPDATE, GAME, { roomId }, json => {
+          dispatch(updateState(json));
           if (isMyTurn(getState(), json.playOrder, json.playIndex)) {
             dispatch(stopPoll());
           }
-          dispatch(updateState(json));
         }),
       pollTime
     );
@@ -152,7 +152,7 @@ export const joinGame = (name, roomId) => {
 export const activateGame = roomId => {
   return (dispatch, getState) => {
     makeRequest(dispatch)(POST, ACTIVATE, GAME, { roomId }, json => {
-      dispatch(updateState(json));
+      dispatch(startLoad());
     });
   };
 };
