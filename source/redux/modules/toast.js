@@ -16,7 +16,7 @@ const clearToast = () => ({
 export const toast = text => {
   return (dispatch, getState) => {
     dispatch(setToast(text));
-    setTimeout(() => dispatch(clearToast), TOAST_TIME);
+    setTimeout(() => dispatch(clearToast()), TOAST_TIME);
   };
 };
 
