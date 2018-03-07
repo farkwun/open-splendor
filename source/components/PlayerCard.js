@@ -12,14 +12,10 @@ class PlayerCard extends Component {
   render() {
     const playerCards = this.props.player.cards.map(id => cards[id]);
     const playerNobles = this.props.player.nobles.map(id => nobles[id]);
-    const netPrestige =
-      this.props.player.prestige +
-      getPrestigeFor(playerCards) +
-      getPrestigeFor(playerNobles);
 
     return (
       <div className="player__card">
-        <Prestige prestige={netPrestige} />
+        <Prestige prestige={this.props.player.prestige} />
         <h1 className="player__name">{this.props.player.id}</h1>
         <CardTray cards={playerCards} />
         <NobleTray playerNobles={this.props.player.nobles} />
