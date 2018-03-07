@@ -6,7 +6,10 @@ import { nobles } from "../data/static";
 
 class NobleList extends Component {
   render() {
-    const theNobles = this.props.nobleList.map(nobleId => {
+    const theNobles = this.props.nobleList.map((nobleId, idx) => {
+      if (nobleId === null) {
+        return <Noble key={idx} placeholder={true} />;
+      }
       const noble = nobles[nobleId];
       return (
         <Noble
