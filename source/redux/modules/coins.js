@@ -16,6 +16,11 @@ export default (state = {}, action) => {
       return { ...state, [action.coinType]: state[action.coinType] - 1 };
     case REMOVE_FROM_STASH:
       return { ...state, [action.coinType]: state[action.coinType] + 1 };
+    case CLEAR_STASH:
+      return action.stash.reduce(
+        (newCoins, { type }) => ((newCoins[type] += 1), newCoins),
+        state
+      );
     case BUY_CARD:
       return replenishedCoins(coinsSpent(action.cardId, action.player), state);
     default:
