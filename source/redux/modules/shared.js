@@ -161,7 +161,7 @@ export const takeCoinsFromStash = stash => {
       GAME,
       makeMove(getState(), { stash }),
       json => {
-        dispatch(resetStash());
+        dispatch(resetStash(stash));
         dispatch(startLoad());
         dispatch(pollGameState(getState().roomId));
       }
