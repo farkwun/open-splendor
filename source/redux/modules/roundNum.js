@@ -1,4 +1,4 @@
-import { UPDATE_STATE, newState } from "./MockData";
+import { UPDATE_STATE, newState } from "./shared";
 
 // Action types
 const SET_ROUND = "set_round";
