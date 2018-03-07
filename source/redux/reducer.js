@@ -14,6 +14,7 @@ import stash from "./modules/stash";
 import playOrder from "./modules/playOrder";
 import playIndex from "./modules/playIndex";
 import players from "./modules/players";
+import winner from "./modules/winner";
 
 export default combineReducers({
   me,
@@ -29,5 +30,6 @@ export default combineReducers({
   stash,
   playOrder,
   playIndex,
-  players
+  players,
+  winner
 });
