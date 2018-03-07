@@ -8,6 +8,7 @@ import CoinBoard from "./CoinBoard";
 import Stash from "./Stash";
 import PlayerBoard from "./PlayerBoard";
 import Info from "./Info";
+import Winner from "./Winner";
 
 import { canTakeStash } from "../helpers/Helpers";
 
@@ -68,7 +69,9 @@ class GameBoard extends Component {
   render() {
     const player = this.getCurrPlayer();
 
-    return (
+    return this.props.winner ? (
+      <Winner winner={this.props.winner} players={this.props.players} />
+    ) : (
       <div className="game__board">
         <NobleList nobleList={this.props.nobleList} />
         <LevelBoard
@@ -104,6 +107,8 @@ class GameBoard extends Component {
 
 GameBoard.propTypes = {
   me: PropTypes.string.isRequired,
+  winner: PropTypes.string,
+
   playIndex: PropTypes.number.isRequired,
   roundNum: PropTypes.number.isRequired,
   nobleList: PropTypes.array.isRequired,
@@ -133,7 +138,8 @@ function mapStateToProps(state) {
     stash: state.stash,
     playOrder: state.playOrder,
     playIndex: state.playIndex,
-    players: state.players
+    players: state.players,
+    winner: state.winner
   };
 }
 
