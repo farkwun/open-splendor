@@ -33,7 +33,7 @@ export const removeCoinFromStash = (coinType, index) => ({
 });
 
 // Thunks
-const URI = "http://localhost:5000/";
+const URI = "api/";
 
 /* POST TYPES */
 const NEW_GAME = "new";
