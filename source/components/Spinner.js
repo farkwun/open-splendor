@@ -5,10 +5,7 @@ import PropTypes from "prop-types";
 class Spinner extends Component {
   render() {
     return this.props.isLoading ? (
-      <img
-        className="spinner"
-        src="http://thinkfuture.com/wp-content/uploads/2013/10/loading_spinner.gif"
-      />
+      <img className="spinner" src="/source/data/img/spinner.gif" />
     ) : (
       <div />
     );
