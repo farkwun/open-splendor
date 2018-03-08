@@ -10,7 +10,10 @@ class WaitingRoom extends Component {
         <hr />
         <h5>Room ID: {this.props.roomId}</h5>
         <PlayerList playerIds={this.props.players} />
-        <button onClick={this.props.start(this.props.roomId)}>
+        <button
+          disabled={this.props.players.length <= 1}
+          onClick={this.props.start(this.props.roomId)}
+        >
           Start Game
         </button>
       </div>
