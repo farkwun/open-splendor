@@ -101,7 +101,10 @@ export const pollGameState = roomId => {
       () =>
         makeRequest(dispatch)(GET, UPDATE, GAME, { roomId }, json => {
           dispatch(updateState(json));
-          if (isMyTurn(getState(), json.playOrder, json.playIndex)) {
+          if (
+            isMyTurn(getState(), json.playOrder, json.playIndex) ||
+            gameOver(getState())
+          ) {
             dispatch(stopPoll());
           }
         }),
@@ -194,3 +197,5 @@ const makeQueryString = dict =>
 
 const isMyTurn = (state, playOrder, playIndex) =>
   state.active && state.me === playOrder[playIndex];
+
+const gameOver = state => state.winner !== "";
