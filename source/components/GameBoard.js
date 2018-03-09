@@ -35,7 +35,7 @@ class GameBoard extends Component {
       .length;
 
   ifActive = func =>
-    this.active() ? func : this.props.setToast("It isn't your turn!");
+    this.active() ? func : this.props.setToast("It isn't your turn!", 1000);
 
   active = () => this.props.me === this.props.playOrder[this.props.playIndex];
 
@@ -166,8 +166,8 @@ function mapDispatchToProps(dispatch) {
     buyCardFor: card => {
       dispatch(buyCard(card));
     },
-    setToast: text => () => {
-      dispatch(toast(text));
+    setToast: (text, ms) => () => {
+      dispatch(toast(text, ms));
     }
   };
 }

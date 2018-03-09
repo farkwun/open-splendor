@@ -1,6 +1,5 @@
 const SET_TOAST = "set_toast";
 const CLEAR_TOAST = "clear_toast";
-const TOAST_TIME = 1000;
 
 // Action creators
 const setToast = toastText => ({
@@ -13,10 +12,10 @@ const clearToast = () => ({
 });
 
 // Thunks
-export const toast = text => {
+export const toast = (text, ms) => {
   return (dispatch, getState) => {
     dispatch(setToast(text));
-    setTimeout(() => dispatch(clearToast()), TOAST_TIME);
+    setTimeout(() => dispatch(clearToast()), ms);
   };
 };
 
