@@ -16,6 +16,11 @@
   background-color: rgba(202,232,202,0.5)
 }
 
+.reminder__text {
+  color: grey;
+  font-size: 50%;
+}
+
 .game__board {
   background: #eee;
   padding: 2% 2% 2% 2%;
