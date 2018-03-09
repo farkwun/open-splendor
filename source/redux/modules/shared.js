@@ -1,5 +1,6 @@
 import { startLoad, stopLoad } from "./loading";
 import { setMe } from "./me";
+import { toast } from "./toast";
 
 export const ADD_TO_STASH = "add_to_stash";
 export const REMOVE_FROM_STASH = "remove_from_stash";
@@ -105,6 +106,7 @@ export const pollGameState = roomId => {
             isMyTurn(getState(), json.playOrder, json.playIndex) ||
             gameOver(getState())
           ) {
+            dispatch(toast("It's your turn!", 5000));
             dispatch(stopPoll());
           }
         }),
