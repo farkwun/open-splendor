@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import Prestige from "./Prestige";
 import Cost from "./Cost";
+import Jewel from "./Jewel";
 import { cards } from "../data/static";
 
 class Card extends Component {
@@ -23,7 +24,7 @@ class Card extends Component {
     return (
       <div className="card">
         <Prestige prestige={card.prestige} />
-        {card.type}
+        <Jewel color={card.type} />
         {costs}
       </div>
     );
