@@ -1,8 +1,10 @@
 import { cards } from "../data/static";
 
+export const maxCoins = 10;
+
 export function canTakeStash(player, stash) {
   const playerCoins = numCoins(player);
-  if (playerCoins + stash.length > 10) {
+  if (playerCoins + stash.length > maxCoins) {
     return false;
   }
 
