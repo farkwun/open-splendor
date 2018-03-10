@@ -2,7 +2,7 @@ import { cards } from "../data/static";
 
 export const maxCoins = 10;
 
-export function canTakeStash(player, stash) {
+export function canTakeStash(player, stash, coins) {
   const playerCoins = numCoins(player);
   if (playerCoins + stash.length > maxCoins) {
     return false;
@@ -10,11 +10,11 @@ export function canTakeStash(player, stash) {
 
   const types = stash.reduce((acc, coin) => acc.add(coin.type), new Set());
 
-  return (
-    (types.size === 3 && stash.length === 3) ||
-    (types.size === 1 && stash.length === 2) ||
-    playerCoins >= 8
-  );
+  if (types.size === 1 && stash.length === 2) {
+    return coins[stash[0].type] >= 4;
+  }
+
+  return (types.size === 3 && stash.length === 3) || playerCoins >= 8;
 }
 
 export function canBuyCard(player, cardId) {
