@@ -82,6 +82,7 @@ const makeRequest = dispatch => (method, type, endpoint, body, action) => {
     })
     .catch(error => {
       console.log("Error is: ", error);
+      dispatch(toast("Error! " + error, 2000));
       dispatch(stopLoad());
     });
 };
