@@ -26,12 +26,14 @@ class JoinGameForm extends Component {
           placeholder="Enter room ID"
           value={this.state.roomId}
           onChange={this.changeRoomId}
+          maxLength="10"
         />
         <input
           type="text"
           placeholder="Enter name"
           value={this.state.name}
           onChange={this.changeName}
+          maxLength="10"
         />
         <Link to="/game">
           <button

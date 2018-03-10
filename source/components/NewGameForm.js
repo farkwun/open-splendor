@@ -21,6 +21,7 @@ class NewGameForm extends Component {
           placeholder="Enter name"
           value={this.state.value}
           onChange={this.changeValue}
+          maxLength="10"
         />
         <Link to="/game">
           <button
