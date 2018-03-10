@@ -7,12 +7,12 @@ import { canBuyCard } from "../helpers/Helpers";
 
 class Level extends Component {
   render() {
-    const player = this.props.currPlayer;
+    const me = this.props.me;
     const levelCards = this.props.rowCards.map((cardId, idx) => {
       if (cardId === null) {
         return <div key={idx} className={"level__box"} />;
       }
-      const buyable = canBuyCard(player, cardId);
+      const buyable = canBuyCard(me, cardId);
       const buyCard = () => {
         this.props.buyCard(cardId);
       };
@@ -43,7 +43,7 @@ Level.propTypes = {
 
   rowCards: PropTypes.array.isRequired,
 
-  currPlayer: PropTypes.object.isRequired,
+  me: PropTypes.object.isRequired,
 
   buyCard: PropTypes.func.isRequired,
   getBonus: PropTypes.func.isRequired

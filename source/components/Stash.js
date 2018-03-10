@@ -45,8 +45,6 @@ class Stash extends Component {
 Stash.propTypes = {
   stash: PropTypes.array.isRequired,
 
-  currPlayer: PropTypes.object.isRequired,
-
   removeFromStash: PropTypes.func.isRequired,
   takeStash: PropTypes.func.isRequired,
   clearStash: PropTypes.func.isRequired

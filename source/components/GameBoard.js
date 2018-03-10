@@ -25,12 +25,13 @@ import { toast } from "../redux/modules/toast";
 import { cards } from "../data/static";
 
 class GameBoard extends Component {
+  getMe = () => this.props.players[this.props.me];
+
   getCurrPlayer = () =>
     this.props.players[this.props.playOrder[this.props.playIndex]];
 
   getBonus = type =>
-    this.getCurrPlayer().cards.filter(cardId => cards[cardId].type === type)
-      .length;
+    this.getMe().cards.filter(cardId => cards[cardId].type === type).length;
 
   ifActive = func =>
     this.active() ? func : this.props.setToast("It isn't your turn!", 1000);
@@ -52,7 +53,7 @@ class GameBoard extends Component {
   };
 
   render() {
-    const player = this.getCurrPlayer();
+    const me = this.getMe();
 
     return this.props.winner ? (
       <Winner winner={this.props.winner} players={this.props.players} />
@@ -63,7 +64,7 @@ class GameBoard extends Component {
           levels={this.props.levels}
           buyCard={this.ifActive(this.props.buyCardFor)}
           getBonus={this.getBonus}
-          currPlayer={player}
+          me={me}
         />
         <CoinBoard
           coins={this.props.coins}
@@ -71,7 +72,7 @@ class GameBoard extends Component {
         />
         <Stash
           stash={this.props.stash}
-          currPlayer={player}
+          me={me}
           removeFromStash={this.ifActive(this.props.removeFromStash)}
           takeStash={this.ifActive(this.takeStash)}
           clearStash={this.ifActive(this.props.clearStash)}
@@ -81,7 +82,7 @@ class GameBoard extends Component {
           players={this.props.players}
         />
         <Info
-          currPlayer={player}
+          currPlayer={this.getCurrPlayer()}
           roundNum={this.props.roundNum}
           incrementIndex={this.incrementIndex}
         />
