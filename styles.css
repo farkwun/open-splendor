@@ -210,6 +210,7 @@
 }
 
 .cost {
+  display: inline-block;
   text-align: center;
   font-weight: 800;
   font-size: 100%;

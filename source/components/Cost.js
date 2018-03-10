@@ -3,29 +3,30 @@ import PropTypes from "prop-types";
 
 class Cost extends Component {
   render() {
-    // TODO: Refactor
-    let type = this.props.type;
-    let val = this.props.val;
-    let bonus = 0;
+    const type = this.props.type;
+    const bonus = this.props.getBonus ? this.props.getBonus(type) : 0;
+    const val = Math.max(0, this.props.val - bonus);
 
-    let style = {
-      backgroundColor: type
+    const style = {
+      backgroundColor: type,
+      color: "white"
     };
 
-    if (this.props.getBonus) {
-      bonus = this.props.getBonus(type);
-    }
-
-    style.color = "white";
-    if (bonus) {
-      style.color = "#00ff00";
-    }
-
-    val = Math.max(0, val - bonus);
-
-    return (
-      <div className="cost" style={style}>
-        {val}
+    return bonus ? (
+      <div>
+        <div className="cost" style={style}>
+          {this.props.val}
+        </div>
+        -&gt;
+        <div className="cost" style={{ ...style, color: "#00ff00" }}>
+          {val}
+        </div>
+      </div>
+    ) : (
+      <div>
+        <div className="cost" style={style}>
+          {this.props.val}
+        </div>
       </div>
     );
   }
