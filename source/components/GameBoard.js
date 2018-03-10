@@ -108,7 +108,8 @@ GameBoard.propTypes = {
   addToStash: PropTypes.func.isRequired,
   takeStash: PropTypes.func.isRequired,
   removeFromStash: PropTypes.func.isRequired,
-  clearStash: PropTypes.func.isRequired
+  clearStash: PropTypes.func.isRequired,
+  setToast: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
