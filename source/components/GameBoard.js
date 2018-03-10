@@ -20,8 +20,6 @@ import {
   buyCard
 } from "../redux/modules/shared";
 
-import { setPlayIndex } from "../redux/modules/playIndex";
-import { setRoundNum } from "../redux/modules/roundNum";
 import { toast } from "../redux/modules/toast";
 
 import { cards } from "../data/static";
@@ -51,19 +49,6 @@ class GameBoard extends Component {
     } else {
       this.props.setToast("Can't take stash.")();
     }
-  };
-
-  incrementPlayIndex = () => {
-    let index = this.props.playIndex + 1;
-    let roundNum = this.props.roundNum;
-
-    if (index >= this.props.playOrder.length) {
-      index = 0;
-      roundNum = roundNum + 1;
-    }
-
-    this.props.setCurrPlayer(index);
-    this.props.setRound(roundNum);
   };
 
   render() {
@@ -122,8 +107,6 @@ GameBoard.propTypes = {
   buyCardFor: PropTypes.func.isRequired,
   addToStash: PropTypes.func.isRequired,
   takeStash: PropTypes.func.isRequired,
-  setCurrPlayer: PropTypes.func.isRequired,
-  setRound: PropTypes.func.isRequired,
   removeFromStash: PropTypes.func.isRequired,
   clearStash: PropTypes.func.isRequired
 };
@@ -156,12 +139,6 @@ function mapDispatchToProps(dispatch) {
     },
     takeStash: stash => {
       dispatch(takeCoinsFromStash(stash));
-    },
-    setCurrPlayer: index => {
-      dispatch(setPlayIndex(index));
-    },
-    setRound: num => {
-      dispatch(setRoundNum(num));
     },
     buyCardFor: card => {
       dispatch(buyCard(card));
