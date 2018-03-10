@@ -49,7 +49,7 @@ class GameBoard extends Component {
     if (canTakeStash(this.props.players[this.props.me], this.props.stash)) {
       this.props.takeStash(this.props.stash);
     } else {
-      this.props.setToast("Stash invalid!")();
+      this.props.setToast("Can't take stash.")();
     }
   };
 
