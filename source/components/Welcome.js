@@ -4,13 +4,15 @@ import PropTypes from "prop-types";
 
 import NewGameForm from "./NewGameForm";
 import JoinGameForm from "./JoinGameForm";
+import Game from "./Game";
 
 import {
   MAIN,
   NEW_GAME,
   JOIN_GAME,
+  PLAY,
   changeMode
-} from "../redux/modules/welcome";
+} from "../redux/modules/mode";
 
 import { LOADING, startLoad, stopLoad } from "../redux/modules/loading";
 
@@ -33,6 +35,8 @@ class Welcome extends Component {
             back={this.props.moveModeTo(MAIN)}
           />
         );
+      case PLAY:
+        return <Game />;
       default:
         return (
           <div className="welcome">
@@ -61,7 +65,7 @@ Welcome.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    mode: state.welcome
+    mode: state.mode
   };
 }
 

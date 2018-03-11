@@ -1,6 +1,7 @@
 import { startLoad, stopLoad } from "./loading";
 import { setMe } from "./me";
 import { toast } from "./toast";
+import { changeMode, PLAY } from "./mode";
 
 export const ADD_TO_STASH = "add_to_stash";
 export const REMOVE_FROM_STASH = "remove_from_stash";
@@ -140,6 +141,7 @@ export const getNewGame = name => {
     makeRequest(dispatch, true)(POST, NEW_GAME, NEW, { user: name }, json => {
       dispatch(setMe(name));
       dispatch(updateState(json));
+      dispatch(changeMode(PLAY));
       dispatch(pollGameState(getState().roomId));
     });
   };
@@ -155,6 +157,7 @@ export const joinGame = (name, roomId) => {
       json => {
         dispatch(setMe(name));
         dispatch(updateState(json));
+        dispatch(changeMode(PLAY));
         dispatch(pollGameState(getState().roomId));
       }
     );
