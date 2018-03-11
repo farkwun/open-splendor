@@ -81,6 +81,18 @@ const makeRequest = (dispatch, load) => (
   fetch(URI.concat(endpoint), options)
     .then(response => {
       console.log(response.status);
+      if (!response.ok) {
+        dispatch(
+          toast(
+            "Error! Server replied " +
+              response.status +
+              ". " +
+              response.statusText,
+            2000
+          )
+        );
+        return;
+      }
       return response.json();
     })
     .then(json => {
@@ -90,7 +102,6 @@ const makeRequest = (dispatch, load) => (
     })
     .catch(error => {
       console.log("Error is: ", error);
-      dispatch(toast("Error! " + error, 2000));
       dispatch(stopLoad());
     });
 };
