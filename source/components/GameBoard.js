@@ -36,7 +36,9 @@ class GameBoard extends Component {
   ifActive = func =>
     this.active() ? func : this.props.setToast("It isn't your turn!", 1000);
 
-  active = () => this.props.me === this.props.playOrder[this.props.playIndex];
+  active = () =>
+    !this.props.isLoading &&
+    this.props.me === this.props.playOrder[this.props.playIndex];
 
   addToStash = type => {
     if (this.props.coins[type] > 0 && this.props.stash.length < 3) {
@@ -130,7 +132,8 @@ function mapStateToProps(state) {
     playOrder: state.playOrder,
     playIndex: state.playIndex,
     players: state.players,
-    winner: state.winner
+    winner: state.winner,
+    isLoading: state.isLoading
   };
 }
 
