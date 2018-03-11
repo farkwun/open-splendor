@@ -52,8 +52,16 @@ const GAME = "game";
 const POST = "POST";
 const GET = "GET";
 
-const makeRequest = dispatch => (method, type, endpoint, body, action) => {
-  dispatch(startLoad());
+const makeRequest = (dispatch, load) => (
+  method,
+  type,
+  endpoint,
+  body,
+  action
+) => {
+  if (load) {
+    dispatch(startLoad());
+  }
 
   const options = {
     method,
@@ -101,7 +109,7 @@ export const pollGameState = roomId => {
     clearInterval(interval);
     interval = setInterval(
       () =>
-        makeRequest(dispatch)(GET, UPDATE, GAME, { roomId }, json => {
+        makeRequest(dispatch, false)(GET, UPDATE, GAME, { roomId }, json => {
           dispatch(updateState(json));
           if (
             isMyTurn(getState(), json.playOrder, json.playIndex) ||
@@ -118,7 +126,7 @@ export const pollGameState = roomId => {
 
 export const getNewGame = name => {
   return (dispatch, getState) => {
-    makeRequest(dispatch)(POST, NEW_GAME, NEW, { user: name }, json => {
+    makeRequest(dispatch, true)(POST, NEW_GAME, NEW, { user: name }, json => {
       dispatch(setMe(name));
       dispatch(updateState(json));
       dispatch(pollGameState(getState().roomId));
@@ -128,7 +136,7 @@ export const getNewGame = name => {
 
 export const joinGame = (name, roomId) => {
   return (dispatch, getState) => {
-    makeRequest(dispatch)(
+    makeRequest(dispatch, true)(
       POST,
       JOIN_GAME,
       JOIN,
@@ -144,7 +152,7 @@ export const joinGame = (name, roomId) => {
 
 export const activateGame = roomId => {
   return (dispatch, getState) => {
-    makeRequest(dispatch)(POST, ACTIVATE, GAME, { roomId }, json => {
+    makeRequest(dispatch, true)(POST, ACTIVATE, GAME, { roomId }, json => {
       dispatch(startLoad());
     });
   };
@@ -161,7 +169,7 @@ const makeMove = (state, move) => {
 
 export const takeCoinsFromStash = stash => {
   return (dispatch, getState) => {
-    makeRequest(dispatch)(
+    makeRequest(dispatch, true)(
       POST,
       MOVE,
       GAME,
@@ -177,7 +185,7 @@ export const takeCoinsFromStash = stash => {
 
 export const buyCard = card => {
   return (dispatch, getState) => {
-    makeRequest(dispatch)(
+    makeRequest(dispatch, true)(
       POST,
       MOVE,
       GAME,
