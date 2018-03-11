@@ -1,6 +1,7 @@
 export const MAIN = "default";
 export const NEW_GAME = "new_game";
 export const JOIN_GAME = "join_game";
+export const PLAY = "play_game";
 
 const CHANGE_MODE = "change_mode";
 

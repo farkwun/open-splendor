@@ -5,7 +5,7 @@ import roomId from "./modules/roomid";
 import active from "./modules/active";
 import isLoading from "./modules/loading";
 import toast from "./modules/toast";
-import welcome from "./modules/welcome";
+import mode from "./modules/mode";
 import nobleList from "./modules/nobleList";
 import levels from "./modules/levels";
 import coins from "./modules/coins";
@@ -22,7 +22,7 @@ export default combineReducers({
   active,
   isLoading,
   toast,
-  welcome,
+  mode,
   nobleList,
   levels,
   coins,
