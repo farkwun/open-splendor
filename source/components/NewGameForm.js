@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class NewGameForm extends Component {
   constructor(props) {
@@ -23,14 +22,12 @@ class NewGameForm extends Component {
           onChange={this.changeValue}
           maxLength="10"
         />
-        <Link to="/game">
-          <button
-            disabled={!this.state.value}
-            onClick={this.props.submit(this.state.value)}
-          >
-            Create
-          </button>
-        </Link>
+        <button
+          disabled={!this.state.value}
+          onClick={this.props.submit(this.state.value)}
+        >
+          Create
+        </button>
         <button onClick={this.props.back}>Back</button>
       </div>
     );
