@@ -230,8 +230,11 @@
 
 .spinner {
   position: fixed;
-  top: 40%;
-  left: 40%;
+  opacity: 0.5;
+  top: 0;
+  right: 0;
+  height: 10%;
+  width: 5%;
 }
 
 .toast {
