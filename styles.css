@@ -51,6 +51,10 @@
   box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
 }
 
+.player__board {
+  display: flex;
+}
+
 .clear__stash:hover {
   background-color: #fff;
 }
@@ -81,7 +85,7 @@
 .coin__stack {
   display: inline-block;
   text-align: center;
-  width: 20%;
+  flex-grow: 1;
   padding: 1%;
 }
 
@@ -89,7 +93,7 @@
   padding: 1%;
   vertical-align: text-top;
   display: inline-block;
-  width: 20%;
+  flex-grow: 1;
 }
 
 .noble__tray {
@@ -170,6 +174,7 @@
 }
 
 .card {
+  flex-grow: 1;
   background: #ddd;
   position: relative;
   padding: 2% 2% 2% 2%;
@@ -193,7 +198,7 @@
 .level__box {
   display: block;
   border: 2px solid transparent;
-  width: 23%;
+  flex-grow: 1;
 }
 
 .level__box__buyable {
