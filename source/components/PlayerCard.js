@@ -18,8 +18,10 @@ class PlayerCard extends Component {
         <Prestige prestige={this.props.player.prestige} />
         <h1 className="player__name">{this.props.player.id}</h1>
         <CardTray cards={playerCards} />
-        <NobleTray playerNobles={this.props.player.nobles} />
-        <Wallet coins={this.props.player.coins} />
+        <div className="player__items">
+          <Wallet coins={this.props.player.coins} />
+          <NobleTray playerNobles={this.props.player.nobles} />
+        </div>
       </div>
     );
   }
