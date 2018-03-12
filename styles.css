@@ -38,7 +38,11 @@
 }
 
 .coin__board {
-  display: inline-block;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
   width: 80%;
   background: #ccc;
   padding: 1% 1% 1% 1%;
@@ -77,7 +81,7 @@
 .coin__stack {
   display: inline-block;
   text-align: center;
-  width: 14%;
+  width: 20%;
   padding: 1%;
 }
 
@@ -128,6 +132,7 @@
 .groove {
   background: #aaa;
   margin: auto;
+  height: 90%;
   width: 90%;
   padding: 5%;
   border: 2px solid transparent;
@@ -175,6 +180,11 @@
   height: 90%;
 }
 
+.noble__list {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .noble__box {
   display: inline-block;
   width: 20%;
@@ -201,6 +211,7 @@
 .noble {
   margin: 2%;
   border-radius: 2%;
+  height: 95%;
 }
 
 .prestige {
