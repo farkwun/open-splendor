@@ -8,12 +8,7 @@ class CardStack extends Component {
     const cards = this.props.cards.reduce(
       (acc, card) =>
         card.type === this.props.type
-          ? [
-              ...acc,
-              <div key={card.id} className="stack">
-                <Card key={card.id} id={card.id} />
-              </div>
-            ]
+          ? [...acc, <Card key={card.id} id={card.id} />]
           : acc,
       []
     );
@@ -21,7 +16,7 @@ class CardStack extends Component {
     return (
       <div className="card__stack">
         <div className="reminder__text centered">{cards.length}</div>
-        <div className="groove">{cards}</div>
+        <ul className="stack">{cards}</ul>
       </div>
     );
   }
