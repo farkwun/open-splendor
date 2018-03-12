@@ -84,7 +84,7 @@
 .coin__stack {
   display: inline-block;
   text-align: center;
-  flex-grow: 1;
+  width: 20%;
   padding: 1%;
 }
 
@@ -103,7 +103,7 @@
   margin: 1%;
   border: 6px solid #e5e5df;
   border-radius: 10px;
-  flex-grow: 4;
+  width: 80%;
 }
 
 .wallet {
@@ -111,7 +111,7 @@
   margin: 1%;
   border: 6px solid #e5e5df;
   border-radius: 10px;
-  flex-grow: 1;
+  width: 20%;
 }
 
 .counter {
