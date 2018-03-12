@@ -167,6 +167,7 @@
 .level {
   display: flex;
   border: dashed 4px #ddd;
+  padding: 1%;
 }
 
 .deck {
