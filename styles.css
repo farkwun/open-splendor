@@ -93,25 +93,26 @@
   padding: 1%;
   vertical-align: text-top;
   display: inline-block;
+  border: 2px solid black;
+  border-radius: 5px;
   flex-grow: 1;
 }
 
 .noble__tray {
   vertical-align: text-top;
-  display: inline-block;
+  display: flex;
   margin: 1%;
   border: 6px solid #e5e5df;
-  width: 43%;
   border-radius: 10px;
+  flex-grow: 4;
 }
 
 .wallet {
   vertical-align: text-top;
-  display: inline-block;
   margin: 1%;
   border: 6px solid #e5e5df;
-  width: 43%;
   border-radius: 10px;
+  flex-grow: 1;
 }
 
 .counter {
@@ -146,6 +147,10 @@
 
 .player__name {
   display: inline-block;
+}
+
+.player__items {
+  display: flex;
 }
 
 .coin:hover {
