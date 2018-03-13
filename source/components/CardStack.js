@@ -16,7 +16,7 @@ class CardStack extends Component {
     return (
       <div className="card__stack">
         <div className="reminder__text centered">{cards.length}</div>
-        <ul className="stack">{cards}</ul>
+        <div className="stack">{cards}</div>
       </div>
     );
   }
