@@ -7,10 +7,10 @@ class CardTray extends Component {
   render() {
     return (
       <div className="card__tray">
-        <CardStack cards={this.props.cards} type="green" />
+        <CardStack cards={this.props.cards} type="black" />
         <CardStack cards={this.props.cards} type="white" />
         <CardStack cards={this.props.cards} type="blue" />
-        <CardStack cards={this.props.cards} type="black" />
+        <CardStack cards={this.props.cards} type="green" />
         <CardStack cards={this.props.cards} type="red" />
       </div>
     );
