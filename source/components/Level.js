@@ -29,9 +29,6 @@ class Level extends Component {
 
     return (
       <div className="level" id={this.props.id}>
-        <div className="level__box">
-          <Deck id={this.props.id} />
-        </div>
         {levelCards}
       </div>
     );
