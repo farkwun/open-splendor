@@ -21,22 +21,24 @@ class Stash extends Component {
     return (
       <div className="stash">
         {coins.reverse()}
-        <button
-          className="take__stash"
-          onClick={() => {
-            this.props.takeStash();
-          }}
-        >
-          Take Stash
-        </button>
-        <button
-          className="clear__stash"
-          onClick={() => {
-            this.props.clearStash(this.props.stash);
-          }}
-        >
-          Clear Stash
-        </button>
+        <div className="stash__buttons">
+          <button
+            className="take__stash"
+            onClick={() => {
+              this.props.takeStash();
+            }}
+          >
+            Take Stash
+          </button>
+          <button
+            className="clear__stash"
+            onClick={() => {
+              this.props.clearStash(this.props.stash);
+            }}
+          >
+            Clear Stash
+          </button>
+        </div>
       </div>
     );
   }
