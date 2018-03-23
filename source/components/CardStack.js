@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Card from "./Card";
+import CardAggregate from "./CardAggregate";
 
 class CardStack extends Component {
   render() {
@@ -13,12 +14,12 @@ class CardStack extends Component {
       []
     );
 
-    return (
-      <div className="card__stack">
-        <div className="reminder__text centered">{cards.length}</div>
-        <div className="stack">{cards}</div>
-      </div>
+    const bonus = this.props.cards.reduce(
+      (sum, card) => (card.type === this.props.type ? sum + 1 : sum),
+      0
     );
+
+    return <CardAggregate type={this.props.type} cards={cards} bonus={bonus} />;
   }
 }
 
