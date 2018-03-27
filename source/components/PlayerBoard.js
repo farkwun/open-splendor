@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import PlayerCard from "./PlayerCard";
-import { cards } from "../data/static";
+import { cards, PLAYER_COLORS } from "../data/static";
 
 class PlayerBoard extends Component {
   render() {
-    const players = this.props.playOrder.map(playerId => {
+    const players = this.props.playOrder.map((playerId, idx) => {
       return (
-        <PlayerCard key={playerId} player={this.props.players[playerId]} />
+        <PlayerCard
+          key={playerId}
+          color={PLAYER_COLORS[idx]}
+          player={this.props.players[playerId]}
+        />
       );
     });
     return <div className="player__board">{players}</div>;

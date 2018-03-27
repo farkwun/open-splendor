@@ -14,7 +14,10 @@ class PlayerCard extends Component {
     const playerNobles = this.props.player.nobles.map(id => nobles[id]);
 
     return (
-      <div className="player__card">
+      <div
+        className="player__card"
+        style={{ backgroundColor: this.props.color }}
+      >
         <Prestige prestige={this.props.player.prestige} />
         <h1 className="player__name">{this.props.player.id}</h1>
         <CardTray cards={playerCards} />

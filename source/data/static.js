@@ -945,3 +945,5 @@ export const nobles = {
       "https://cf.geekdo-images.com/A_GXbAh-oYSAOGOVYFXPAHvfezU=/fit-in/1200x630/pic2803135.jpg"
   }
 };
+
+export const PLAYER_COLORS = ["Aqua", "Lime", "Orange", "Fuchsia"];
