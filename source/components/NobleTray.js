@@ -21,7 +21,6 @@ class NobleTray extends Component {
   };
 
   show = () => {
-    console.log("Herae");
     this.setState({
       showNobles: true
     });
@@ -30,6 +29,7 @@ class NobleTray extends Component {
   render() {
     const playerNobles = (
       <div className="my__nobles">
+        <h3 className="box__header centered">Nobles</h3>
         {this.props.playerNobles.map(nobleId => {
           const noble = nobles[nobleId];
           return (
@@ -37,7 +37,7 @@ class NobleTray extends Component {
               key={noble.id}
               prestige={noble.prestige}
               costs={noble.costs}
-              img_url={noble.img_url}
+              imgURL={noble.imgURL}
             />
           );
         })}
@@ -46,11 +46,10 @@ class NobleTray extends Component {
 
     return (
       <div
-        className="noble__tray centered"
+        className="noble__tray"
         onMouseEnter={this.show}
         onMouseLeave={this.hide}
       >
-        <h3 className="box__header">Nobles</h3>
         <Prestige prestige={this.props.playerNobles.length} />
         {this.state.showNobles ? playerNobles : <div />}
       </div>

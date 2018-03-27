@@ -9,7 +9,12 @@ class CardStack extends Component {
     const cards = this.props.cards.reduce(
       (acc, card) =>
         card.type === this.props.type
-          ? [...acc, <Card key={card.id} id={card.id} />]
+          ? [
+              ...acc,
+              <div key={card.id} className="level__box">
+                <Card id={card.id} />
+              </div>
+            ]
           : acc,
       []
     );

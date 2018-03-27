@@ -21,7 +21,6 @@ class Wallet extends Component {
     );
     return (
       <div className="wallet">
-        <h3 className="box__header">Wallet</h3>
         <div
           className="reminder__text"
           style={
@@ -31,7 +30,7 @@ class Wallet extends Component {
           }
         >
           <i>
-            coins - {numCoins}/{maxCoins}
+            Coins - {numCoins}/{maxCoins}
           </i>
         </div>
         {coins}

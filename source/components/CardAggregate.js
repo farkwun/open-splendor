@@ -31,7 +31,7 @@ class CardAggregate extends Component {
     );
     return (
       <div
-        className="aggregate centered"
+        className="aggregate"
         onMouseEnter={this.show}
         onMouseLeave={this.hide}
         style={{ backgroundColor: this.props.type }}

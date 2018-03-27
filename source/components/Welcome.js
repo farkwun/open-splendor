@@ -40,10 +40,20 @@ class Welcome extends Component {
       default:
         return (
           <div className="welcome">
-            <button onClick={this.props.moveModeTo(NEW_GAME)}>New Game</button>
-            <button onClick={this.props.moveModeTo(JOIN_GAME)}>
-              Join Game
-            </button>
+            <div className="centered">
+              <button
+                className="button"
+                onClick={this.props.moveModeTo(NEW_GAME)}
+              >
+                New Game
+              </button>
+              <button
+                className="button"
+                onClick={this.props.moveModeTo(JOIN_GAME)}
+              >
+                Join Game
+              </button>
+            </div>
           </div>
         );
     }
@@ -51,7 +61,7 @@ class Welcome extends Component {
   render() {
     return (
       <div className="welcome">
-        <h2>Welcome to Splendor</h2>
+        <h2 className="centered">Welcome to Splendor</h2>
         <hr />
         {this.renderMode()}
       </div>
