@@ -14,21 +14,28 @@ class NewGameForm extends Component {
 
   render() {
     return (
-      <div className="new__game__form">
-        <input
-          type="text"
-          placeholder="Enter name"
-          value={this.state.value}
-          onChange={this.changeValue}
-          maxLength="10"
-        />
-        <button
-          disabled={!this.state.value}
-          onClick={this.props.submit(this.state.value)}
-        >
-          Create
-        </button>
-        <button onClick={this.props.back}>Back</button>
+      <div className="new__game__form centered">
+        <div className="form__input">
+          <input
+            type="text"
+            placeholder="Enter name"
+            value={this.state.value}
+            onChange={this.changeValue}
+            maxLength="10"
+          />
+        </div>
+        <div>
+          <button
+            className="button"
+            disabled={!this.state.value}
+            onClick={this.props.submit(this.state.value)}
+          >
+            Create
+          </button>
+          <button className="button" onClick={this.props.back}>
+            Back
+          </button>
+        </div>
       </div>
     );
   }
