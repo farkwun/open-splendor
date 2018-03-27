@@ -107,8 +107,6 @@
 
 .player__card {
   padding: 1%;
-  border: 2px solid black;
-  border-radius: 5px;
   width: 125%;
 }
 
@@ -285,7 +283,7 @@
   display: inline-block;
   font-weight: 800;
   font-size: 200%;
-  -webkit-text-stroke: 3px black;
+  -webkit-text-stroke: 1px black;
   color: white;
   margin: auto;
   cursor: default;
