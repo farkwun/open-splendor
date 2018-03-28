@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import Prestige from "./Prestige";
-import Cost from "./Cost";
-
 class Noble extends Component {
   render() {
     if (this.props.placeholder) {
@@ -18,16 +15,9 @@ class Noble extends Component {
       backgroundSize: "contain"
     };
 
-    const costs = Object.keys(this.props.costs).map(key => (
-      <Cost key={key} val={this.props.costs[key]} type={key} />
-    ));
-
     return (
       <div className="noble__box">
-        <div className="noble" style={backgroundStyle}>
-          <Prestige prestige={this.props.prestige} />
-          {costs}
-        </div>
+        <div className="noble" style={backgroundStyle} />
       </div>
     );
   }

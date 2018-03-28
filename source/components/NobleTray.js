@@ -37,7 +37,7 @@ class NobleTray extends Component {
               key={noble.id}
               prestige={noble.prestige}
               costs={noble.costs}
-              imgURL={noble.imgURL}
+              imgURL={`source/data/img/nobles/${noble.id}.png`}
             />
           );
         })}

@@ -273,10 +273,12 @@
 }
 
 .noble {
+  background-repeat: no-repeat;
   margin: 2%;
   border-radius: 2%;
   height: 95%;
   min-width: 100px;
+  min-height: 100px;
 }
 
 .prestige {
