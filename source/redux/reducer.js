@@ -6,6 +6,7 @@ import active from "./modules/active";
 import isLoading from "./modules/loading";
 import toast from "./modules/toast";
 import mode from "./modules/mode";
+import tutorial from "./modules/tutorial";
 import nobleList from "./modules/nobleList";
 import levels from "./modules/levels";
 import coins from "./modules/coins";
@@ -23,6 +24,7 @@ export default combineReducers({
   isLoading,
   toast,
   mode,
+  tutorial,
   nobleList,
   levels,
   coins,
