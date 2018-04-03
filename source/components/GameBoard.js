@@ -11,7 +11,7 @@ import Info from "./Info";
 import Winner from "./Winner";
 import Tooltip from "./Tooltip";
 
-import { canTakeStash } from "../helpers/Helpers";
+import { canTakeStash, getCurrentTooltip } from "../helpers/Helpers";
 
 import {
   addCoinToStash,
@@ -97,8 +97,8 @@ class GameBoard extends Component {
         />
         {this.props.tutorial.show && (
           <Tooltip
-            header={this.props.tutorial.header}
-            body={this.props.tutorial.body}
+            header={getCurrentTooltip(this.props.tutorial.history).header}
+            body={getCurrentTooltip(this.props.tutorial.history).body}
           />
         )}
       </div>

@@ -97,6 +97,10 @@ export function getPrestigeFor(list) {
   return list.reduce((prestige, item) => (prestige += item.prestige), 0);
 }
 
+export function getCurrentTooltip(history) {
+  return history[history.length - 1];
+}
+
 export function range(a, b = null) {
   let ret = [];
   const min = b ? a : 0;
