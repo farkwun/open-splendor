@@ -11,7 +11,7 @@ export function canTakeStash(player, stash, coins) {
   const types = stash.reduce((acc, coin) => acc.add(coin.type), new Set());
 
   if (types.size === 1 && stash.length === 2) {
-    return coins[stash[0].type] >= 4;
+    return coins[stash[0].type] + stash.length >= 4;
   }
 
   return (types.size === 3 && stash.length === 3) || playerCoins >= 8;
