@@ -333,6 +333,20 @@
   z-index: 100;
 }
 
+.tooltip {
+  font-size: 75%;
+  position: fixed;
+  top: 70px;
+  right: 0;
+  width: 300px;
+  height: 245px;
+  word-wrap: normal;
+  border: 2px solid #7C3207;
+  padding: 1%;
+  background-color: rgba(252, 143, 80, 0.5);
+  z-index: 100;
+}
+
 .centered {
   text-align: center;
 }
