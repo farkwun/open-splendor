@@ -19,6 +19,7 @@ class CoinStack extends Component {
         }}
       >
         <div className="groove">{coins}</div>
+        <div className="coin__amount centered">{this.props.amount}</div>
       </div>
     );
   }
