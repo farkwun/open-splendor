@@ -346,6 +346,7 @@
   width: 300px;
   height: 245px;
   word-wrap: normal;
+  overflow-y: scroll;
   border: 2px solid #7C3207;
   padding: 1%;
   background-color: rgba(252, 143, 80, 0.5);
