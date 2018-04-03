@@ -1,24 +1,32 @@
 import React, { Component } from "react";
 
-import { setTutorial, resetTutorial } from "../redux/modules/tutorial";
+import { pushTutorial, popTutorial } from "../redux/modules/tutorial";
 
 import store from "../redux/store";
 
 const { dispatch } = store;
 
-export const showTutorialOnHover = (header, body) => BaseComponent => {
+export const showTutorialOnHover = (
+  header,
+  body,
+  className
+) => BaseComponent => {
   return class ShowTutorial extends Component {
     set = () => {
-      dispatch(setTutorial(header, body));
+      dispatch(pushTutorial({ header, body }));
     };
 
     clear = () => {
-      dispatch(resetTutorial());
+      dispatch(popTutorial());
     };
 
     render() {
       return (
-        <div onMouseEnter={this.set} onMouseLeave={this.clear}>
+        <div
+          className={className}
+          onMouseEnter={this.set}
+          onMouseLeave={this.clear}
+        >
           <BaseComponent {...this.props} />
         </div>
       );
