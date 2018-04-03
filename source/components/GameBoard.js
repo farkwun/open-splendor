@@ -9,6 +9,7 @@ import Stash from "./Stash";
 import PlayerBoard from "./PlayerBoard";
 import Info from "./Info";
 import Winner from "./Winner";
+import Tooltip from "./Tooltip";
 
 import { canTakeStash } from "../helpers/Helpers";
 
@@ -94,6 +95,12 @@ class GameBoard extends Component {
           roundNum={this.props.roundNum}
           incrementIndex={this.incrementIndex}
         />
+        {this.props.tutorial.show && (
+          <Tooltip
+            header={this.props.tutorial.header}
+            body={this.props.tutorial.body}
+          />
+        )}
       </div>
     );
   }
@@ -132,6 +139,7 @@ function mapStateToProps(state) {
     playOrder: state.playOrder,
     playIndex: state.playIndex,
     players: state.players,
+    tutorial: state.tutorial,
     winner: state.winner,
     isLoading: state.isLoading
   };
