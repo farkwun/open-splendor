@@ -10,6 +10,7 @@ import PlayerBoard from "./PlayerBoard";
 import Info from "./Info";
 import Winner from "./Winner";
 import Tooltip from "./Tooltip";
+import Settings from "./Settings";
 
 import { canTakeStash, getCurrentTooltip } from "../helpers/Helpers";
 
@@ -95,6 +96,7 @@ class GameBoard extends Component {
           roundNum={this.props.roundNum}
           incrementIndex={this.incrementIndex}
         />
+        <Settings />
         {this.props.tutorial.show && (
           <Tooltip
             header={getCurrentTooltip(this.props.tutorial.history).header}
