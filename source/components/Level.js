@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import Deck from "./Deck";
 import Card from "./Card";
+import HoverCard from "./HoverCard";
 import { canBuyCard } from "../helpers/Helpers";
 
 class Level extends Component {
@@ -13,17 +14,16 @@ class Level extends Component {
         return <div key={idx} className={"level__box"} />;
       }
       const buyable = canBuyCard(me, cardId);
-      const buyCard = () => {
-        this.props.buyCard(cardId);
-      };
+      const buyCard = () => this.props.buyCard(cardId);
       return (
-        <div
+        <HoverCard
           key={cardId}
-          className={buyable ? "level__box__buyable" : "level__box"}
-          onClick={buyable ? buyCard : undefined}
+          buyable={buyable}
+          buyCard={buyCard}
+          reserveCard={undefined}
         >
-          <Card id={cardId} key={cardId} getBonus={this.props.getBonus} />
-        </div>
+          <Card id={cardId} getBonus={this.props.getBonus} />
+        </HoverCard>
       );
     });
 
