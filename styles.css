@@ -12,8 +12,18 @@
   position: fixed;
   bottom: 0;
   right: 0;
+  min-width: 250px;
   border: 3px solid #73AD21;
   background-color: rgba(202,232,202,0.5)
+}
+
+.settings {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(204, 204, 204, 0.5);
+  padding: 1%;
+  border: 2px solid #000;
 }
 
 .reminder__text {
