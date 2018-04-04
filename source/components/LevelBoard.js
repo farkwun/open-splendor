@@ -2,6 +2,22 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Level from "./Level";
+import { showTutorialOnHover } from "./TutorialHover";
+
+const header = "Levels";
+const body = (
+  <div>
+    Each row of the board is called a Level.
+    <br />
+    <br />
+    Each Level contains development cards that correspond to it.
+    <br />
+    <br />
+    The top Level contains the most expensive, valuable cards, the middle Level
+    contains cards of middling value and expense, and the bottom Level contains
+    the cheapest and least Prestigious cards.
+  </div>
+);
 
 class LevelBoard extends Component {
   render() {
@@ -29,4 +45,5 @@ LevelBoard.propTypes = {
   buyCard: PropTypes.func.isRequired,
   getBonus: PropTypes.func.isRequired
 };
-export default LevelBoard;
+
+export default showTutorialOnHover(header, body)(LevelBoard);

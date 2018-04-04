@@ -5,8 +5,31 @@ import Prestige from "./Prestige";
 import CardTray from "./CardTray";
 import NobleTray from "./NobleTray";
 import Wallet from "./Wallet";
+import { showTutorialOnHover } from "./TutorialHover";
+
 import { getPrestigeFor } from "../helpers/Helpers";
 import { cards, nobles } from "../data/static";
+
+const header = "Player Card";
+const body = (
+  <div>
+    Each player has a card that represents their important game information.
+    <br />
+    <br />
+    Each card displays the current Prestige of the player, the numbers and types
+    of coins in their possession, the numbers and types of cards in their
+    possession, and the number of Nobles that have visited them.
+    <br />
+    <br />
+    Each player card displays 5 card aggregates (represented by the gem type and
+    number of cards of that type) and 1 Noble aggregate, representing each
+    player&apos;s total discount per gem type and the Nobles that have visited
+    that player, respectively. Hover over each aggregate to see the cards of
+    that type owned, and nobles visited, for that player.
+    <br />
+    <br />
+  </div>
+);
 
 class PlayerCard extends Component {
   render() {
@@ -34,4 +57,4 @@ PlayerCard.propTypes = {
   player: PropTypes.object.isRequired
 };
 
-export default PlayerCard;
+export default showTutorialOnHover(header, body)(PlayerCard);
