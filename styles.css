@@ -257,6 +257,24 @@
   min-width: 100px;
 }
 
+.card__overlay {
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(255,255,255,0.5);
+  padding: 2%;
+  margin: 2%;
+  border: 2px solid #e5e5df;
+  width: 90%;
+  height: 90%;
+  border-radius: 10px;
+}
+
+.overlay__buttons {
+  margin: auto;
+  width: 60%;
+  padding: 20% 0;
+}
+
 .noble__list {
   display: flex;
   justify-content: flex-end;
@@ -268,6 +286,7 @@
 }
 
 .level__box {
+  position: relative;
   display: block;
   border: 2px solid transparent;
   flex-grow: 1;
@@ -275,6 +294,7 @@
 }
 
 .level__box__buyable {
+  position: relative;
   display: block;
   border: 2px solid transparent;
   flex-grow: 1;
