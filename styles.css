@@ -285,23 +285,25 @@
   width: 20%;
 }
 
-.level__box {
+.card__box {
   position: relative;
   display: block;
   border: 2px solid transparent;
   flex-grow: 1;
   padding: 1px;
+  height: 185px;
 }
 
-.level__box__buyable {
+.card__box__buyable {
   position: relative;
   display: block;
   border: 2px solid transparent;
   flex-grow: 1;
   padding: 1px;
+  height: 185px;
 }
 
-.level__box__buyable:hover {
+.card__box__buyable:hover {
   border: 2px solid #66ff66;
   border-radius: 10px;
   background-color: #66ff66;

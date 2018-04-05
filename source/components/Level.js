@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import Deck from "./Deck";
-import Card from "./Card";
-import HoverCard from "./HoverCard";
+import CardBox from "./CardBox";
+
 import { canBuyCard } from "../helpers/Helpers";
 
 class Level extends Component {
@@ -16,14 +15,14 @@ class Level extends Component {
       const buyable = canBuyCard(me, cardId);
       const buyCard = () => this.props.buyCard(cardId);
       return (
-        <HoverCard
+        <CardBox
           key={cardId}
+          cardId={cardId}
           buyable={buyable}
           buyCard={buyCard}
           reserveCard={undefined}
-        >
-          <Card id={cardId} getBonus={this.props.getBonus} />
-        </HoverCard>
+          getBonus={this.props.getBonus}
+        />
       );
     });
 
