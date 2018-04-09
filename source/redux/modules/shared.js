@@ -53,6 +53,11 @@ const GAME = "game";
 const POST = "POST";
 const GET = "GET";
 
+/* MOVE TYPES */
+const MOVE_BUY_CARD = "buy_card";
+const MOVE_RESERVE_CARD = "reserve_card";
+const MOVE_TAKE_COINS = "take_coins";
+
 const makeRequest = (dispatch, load) => (
   method,
   type,
@@ -172,9 +177,10 @@ export const activateGame = roomId => {
   };
 };
 
-const makeMove = (state, move) => {
+const makeMove = (state, obj, move) => {
   return {
-    ...move,
+    ...obj,
+    move,
     type: MOVE,
     me: state.me,
     roomId: state.roomId
@@ -187,7 +193,7 @@ export const takeCoinsFromStash = stash => {
       POST,
       MOVE,
       GAME,
-      makeMove(getState(), { stash }),
+      makeMove(getState(), { stash }, MOVE_TAKE_COINS),
       json => {
         dispatch(resetStash(stash));
         dispatch(startLoad());
@@ -203,7 +209,7 @@ export const buyCard = card => {
       POST,
       MOVE,
       GAME,
-      makeMove(getState(), { card }),
+      makeMove(getState(), { card }, MOVE_BUY_CARD),
       json => {
         dispatch(startLoad());
         dispatch(pollGameState(getState().roomId));
@@ -211,6 +217,7 @@ export const buyCard = card => {
     );
   };
 };
+
 // Helpers
 export const newState = (next, curr) => (next !== undefined ? next : curr);
 
