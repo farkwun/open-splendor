@@ -14,13 +14,14 @@ class Level extends Component {
       }
       const buyable = canBuyCard(me, cardId);
       const buyCard = () => this.props.buyCard(cardId);
+      const reserveCard = () => this.props.reserveCard(cardId);
       return (
         <CardBox
           key={cardId}
           cardId={cardId}
           buyable={buyable}
           buyCard={buyCard}
-          reserveCard={undefined}
+          reserveCard={reserveCard}
           getBonus={this.props.getBonus}
         />
       );

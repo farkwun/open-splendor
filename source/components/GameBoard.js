@@ -19,7 +19,8 @@ import {
   removeCoinFromStash,
   resetStash,
   takeCoinsFromStash,
-  buyCard
+  buyCard,
+  reserveCard
 } from "../redux/modules/shared";
 
 import { toast } from "../redux/modules/toast";
@@ -73,6 +74,7 @@ class GameBoard extends Component {
         <LevelBoard
           levels={this.props.levels}
           buyCard={this.ifActive(this.props.buyCardFor)}
+          reserveCard={this.ifActive(this.props.reserveCardFor)}
           getBonus={this.getBonus}
           me={me}
         />
@@ -123,6 +125,7 @@ GameBoard.propTypes = {
   coins: PropTypes.object.isRequired,
 
   buyCardFor: PropTypes.func.isRequired,
+  reserveCardFor: PropTypes.func.isRequired,
   addToStash: PropTypes.func.isRequired,
   takeStash: PropTypes.func.isRequired,
   removeFromStash: PropTypes.func.isRequired,
@@ -163,6 +166,9 @@ function mapDispatchToProps(dispatch) {
     },
     buyCardFor: card => {
       dispatch(buyCard(card));
+    },
+    reserveCardFor: card => {
+      dispatch(reserveCard(card));
     },
     setToast: (text, ms) => () => {
       dispatch(toast(text, ms));

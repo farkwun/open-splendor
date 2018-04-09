@@ -27,6 +27,7 @@ class LevelBoard extends Component {
           id={level.id}
           key={level.id}
           buyCard={this.props.buyCard}
+          reserveCard={this.props.reserveCard}
           rowCards={level.rowCards}
           me={this.props.me}
           getBonus={this.props.getBonus}

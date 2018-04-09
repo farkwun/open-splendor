@@ -218,6 +218,21 @@ export const buyCard = card => {
   };
 };
 
+export const reserveCard = card => {
+  return (dispatch, getState) => {
+    makeRequest(dispatch, true)(
+      POST,
+      MOVE,
+      GAME,
+      makeMove(getState(), { card }, MOVE_RESERVE_CARD),
+      json => {
+        dispatch(startLoad());
+        dispatch(pollGameState(getState().roomId));
+      }
+    );
+  };
+};
+
 // Helpers
 export const newState = (next, curr) => (next !== undefined ? next : curr);
 
