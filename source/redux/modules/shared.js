@@ -55,6 +55,7 @@ const GET = "GET";
 
 /* MOVE TYPES */
 const MOVE_BUY_CARD = "buy_card";
+const MOVE_BUY_RESERVED_CARD = "buy_reserved_card";
 const MOVE_RESERVE_CARD = "reserve_card";
 const MOVE_TAKE_COINS = "take_coins";
 
@@ -233,6 +234,20 @@ export const reserveCard = card => {
   };
 };
 
+export const buyReservedCard = card => {
+  return (dispatch, getState) => {
+    makeRequest(dispatch, true)(
+      POST,
+      MOVE,
+      GAME,
+      makeMove(getState(), { card }, MOVE_BUY_RESERVED_CARD),
+      json => {
+        dispatch(startLoad());
+        dispatch(pollGameState(getState().roomId));
+      }
+    );
+  };
+};
 // Helpers
 export const newState = (next, curr) => (next !== undefined ? next : curr);
 
