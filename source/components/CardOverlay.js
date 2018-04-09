@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class CardOverlay extends Component {
   render() {
-    return (
+    return this.props.buyCard || this.props.reserveCard ? (
       <div className="card__overlay">
         <div className="overlay__buttons">
           {this.props.buyCard && (
@@ -11,11 +11,15 @@ class CardOverlay extends Component {
             </button>
           )}
           <br />
-          <button className="button" onClick={this.props.reserveCard}>
-            Reserve
-          </button>
+          {this.props.reserveCard && (
+            <button className="button" onClick={this.props.reserveCard}>
+              Reserve
+            </button>
+          )}
         </div>
       </div>
+    ) : (
+      <div />
     );
   }
 }

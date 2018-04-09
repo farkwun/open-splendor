@@ -61,7 +61,9 @@ class CardBox extends Component {
         {this.state.show && (
           <CardOverlay
             buyCard={this.props.buyable ? this.props.buyCard : undefined}
-            reserveCard={this.props.reserveCard}
+            reserveCard={
+              this.props.reserveCard ? this.props.reserveCard : undefined
+            }
           />
         )}
         <Card id={this.props.cardId} getBonus={this.props.getBonus} />
