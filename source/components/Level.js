@@ -10,7 +10,7 @@ class Level extends Component {
     const me = this.props.me;
     const levelCards = this.props.rowCards.map((cardId, idx) => {
       if (cardId === null) {
-        return <div key={idx} className={"level__box"} />;
+        return <div key={idx} className={"card__box"} />;
       }
       const buyable = canBuyCard(me, cardId);
       const buyCard = () => this.props.buyCard(cardId);

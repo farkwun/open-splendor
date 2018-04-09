@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import Card from "./Card";
+import CardBox from "./CardBox";
 import CardAggregate from "./CardAggregate";
 
 class CardStack extends Component {
@@ -9,12 +9,7 @@ class CardStack extends Component {
     const cards = this.props.cards.reduce(
       (acc, card) =>
         card.type === this.props.type
-          ? [
-              ...acc,
-              <div key={card.id} className="level__box">
-                <Card id={card.id} />
-              </div>
-            ]
+          ? [...acc, <CardBox key={card.id} cardId={card.id} />]
           : acc,
       []
     );
