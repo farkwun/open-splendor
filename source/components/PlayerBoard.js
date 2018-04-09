@@ -10,8 +10,11 @@ class PlayerBoard extends Component {
       return (
         <PlayerCard
           key={playerId}
+          me={this.props.me}
           color={PLAYER_COLORS[idx]}
           player={this.props.players[playerId]}
+          buyCard={this.props.buyCard}
+          getBonus={this.props.getBonus}
         />
       );
     });

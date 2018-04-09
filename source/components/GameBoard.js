@@ -20,6 +20,7 @@ import {
   resetStash,
   takeCoinsFromStash,
   buyCard,
+  buyReservedCard,
   reserveCard
 } from "../redux/modules/shared";
 
@@ -42,7 +43,6 @@ class GameBoard extends Component {
   active = () =>
     !this.props.isLoading &&
     this.props.me === this.props.playOrder[this.props.playIndex];
-
   addToStash = type => {
     if (this.props.coins[type] > 0 && this.props.stash.length < 3) {
       this.props.addToStash(type);
@@ -92,6 +92,9 @@ class GameBoard extends Component {
         <PlayerBoard
           playOrder={this.props.playOrder}
           players={this.props.players}
+          me={me}
+          buyCard={this.ifActive(this.props.buyReservedCardFor)}
+          getBonus={this.getBonus}
         />
         <Info
           currPlayer={this.getCurrPlayer()}
@@ -169,6 +172,9 @@ function mapDispatchToProps(dispatch) {
     },
     reserveCardFor: card => {
       dispatch(reserveCard(card));
+    },
+    buyReservedCardFor: card => {
+      dispatch(buyReservedCard(card));
     },
     setToast: (text, ms) => () => {
       dispatch(toast(text, ms));

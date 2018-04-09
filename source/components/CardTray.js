@@ -14,8 +14,12 @@ class CardTray extends Component {
         <CardStack cards={this.props.cards} type="green" />
         <CardStack cards={this.props.cards} type="red" />
         <ReserveCards
+          me={this.props.me}
+          isMyCards={this.props.isMyCards}
+          buyCard={this.props.buyCard}
           cards={this.props.reserved}
           numCards={this.props.reserved.length}
+          getBonus={this.props.getBonus}
         />
       </div>
     );
