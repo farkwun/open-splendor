@@ -186,6 +186,14 @@
   padding: 10px;
 }
 
+.my__reserved {
+  position: absolute;
+  bottom: 60px;
+  border-style: solid;
+  background-color: #aaa;
+  padding: 10px;
+}
+
 .card__tray {
   display: flex;
   justify-content: center;
@@ -296,6 +304,7 @@
   flex-grow: 1;
   padding: 1px;
   height: 185px;
+  min-width: 180px;
 }
 
 .card__box__buyable {
@@ -305,6 +314,7 @@
   flex-grow: 1;
   padding: 1px;
   height: 185px;
+  min-width: 180px;
 }
 
 .card__box__buyable:hover {
@@ -404,4 +414,8 @@
 
 .form__input {
   margin: 10px;
+}
+
+.flexed {
+  display: flex;
 }
