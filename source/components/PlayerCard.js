@@ -34,7 +34,7 @@ const body = (
 class PlayerCard extends Component {
   render() {
     const playerCards = this.props.player.cards.map(id => cards[id]);
-    const playerNobles = this.props.player.nobles.map(id => nobles[id]);
+    const reserveCards = this.props.player.reserved.map(id => cards[id]);
 
     return (
       <div
@@ -43,7 +43,7 @@ class PlayerCard extends Component {
       >
         <Prestige prestige={this.props.player.prestige} />
         <h1 className="player__name">{this.props.player.id}</h1>
-        <CardTray cards={playerCards} />
+        <CardTray cards={playerCards} reserved={reserveCards} />
         <div className="player__items">
           <Wallet coins={this.props.player.coins} />
           <NobleTray playerNobles={this.props.player.nobles} />
