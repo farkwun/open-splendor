@@ -64,7 +64,7 @@ class CardBox extends Component {
             reserveCard={this.props.reserveCard}
           />
         )}
-        <Card id={this.props.cardId} getBonuns={this.props.getBonus} />
+        <Card id={this.props.cardId} getBonus={this.props.getBonus} />
       </div>
     );
   }
