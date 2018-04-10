@@ -56,7 +56,7 @@ class CardBox extends Component {
       <div
         onMouseEnter={this.show}
         onMouseLeave={this.hide}
-        className={this.props.buyable ? "card__box__buyable" : "card__box"}
+        className={this.props.buyable ? "card__box buyable" : "card__box"}
       >
         {this.state.show && (
           <CardOverlay
