@@ -31,7 +31,7 @@
 }
 
 .game {
-  width: 50%;
+  width: 60%;
   margin: auto;
 }
 
@@ -59,7 +59,7 @@
   margin-top: 1%;
   bottom: 30px;
   height: 80px;
-  width: 300px;
+  width: 240px;
   margin-right: auto;
   margin-bottom: 1%;
   background: rgba(204, 204, 204, 0.5);
@@ -97,7 +97,7 @@
 .stash {
   position: fixed;
   bottom: 140px;
-  width: 300px;
+  width: 240px;
   right: 0;
   background: rgba(204, 204, 204, 0.5);
   padding: 1%;
@@ -304,7 +304,7 @@
   flex-grow: 1;
   padding: 1px;
   height: 185px;
-  min-width: 180px;
+  min-width: 160px;
 }
 
 .card__box__buyable {
@@ -314,10 +314,10 @@
   flex-grow: 1;
   padding: 1px;
   height: 185px;
-  min-width: 180px;
+  min-width: 160px;
 }
 
-.card__box__buyable:hover {
+.buyable:hover {
   border: 2px solid #66ff66;
   border-radius: 10px;
   background-color: #66ff66;
@@ -385,11 +385,11 @@
 }
 
 .tooltip {
-  font-size: 65%;
+  font-size: 55%;
   position: fixed;
   top: 70px;
   right: 0;
-  width: 300px;
+  width: 240px;
   height: 245px;
   word-wrap: normal;
   overflow-y: scroll;
