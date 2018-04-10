@@ -2,6 +2,8 @@ import { cards } from "../data/static";
 
 export const maxCoins = 10;
 
+const YELLOW = "yellow";
+
 export function canTakeStash(player, stash, coins) {
   const playerCoins = numCoins(player);
   if (playerCoins + stash.length > maxCoins) {
@@ -19,11 +21,14 @@ export function canTakeStash(player, stash, coins) {
 
 export function canBuyCard(player, cardId) {
   const playerBonus = getBonusAggregateFor(player);
-  return Object.keys(cards[cardId].costs).reduce((buyable, type) => {
-    const netCoins = player.coins[type] ? player.coins[type] : 0;
-    const netBonus = playerBonus[type] ? playerBonus[type] : 0;
-    return cards[cardId].costs[type] - netCoins - netBonus <= 0 && buyable;
-  }, true);
+  const playerJokers = player.coins[YELLOW] ? player.coins[YELLOW] : 0;
+  return (
+    Object.keys(cards[cardId].costs).reduce((costs, type) => {
+      const netCoins = player.coins[type] ? player.coins[type] : 0;
+      const netBonus = playerBonus[type] ? playerBonus[type] : 0;
+      return costs + cards[cardId].costs[type] - netCoins - netBonus;
+    }, 0) <= playerJokers
+  );
 }
 
 export function canReserveCard(player) {
