@@ -36,11 +36,12 @@ class ReserveCards extends Component {
     return (
       <div
         className="aggregate black__hover"
-        onClick={this.toggle}
         style={{ backgroundColor: "grey" }}
       >
-        <Prestige prestige={this.props.numCards} />
         {this.state.show && myReserved}
+        <div onClick={this.toggle}>
+          <Prestige prestige={this.props.numCards} />
+        </div>
       </div>
     );
   }
