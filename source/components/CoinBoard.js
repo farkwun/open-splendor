@@ -9,6 +9,7 @@ const WHITE = "white";
 const BLUE = "blue";
 const GREEN = "green";
 const RED = "red";
+const YELLOW = "yellow";
 
 const header = "Coin Board";
 const body = (
@@ -29,6 +30,7 @@ class CoinBoard extends Component {
     const addToStash = this.coinStack(this.props.coins, this.props.addToStash);
     return (
       <div className="coin__board">
+        {this.coinStack(this.props.coins)(YELLOW)}
         {addToStash(BLACK)}
         {addToStash(WHITE)}
         {addToStash(BLUE)}
