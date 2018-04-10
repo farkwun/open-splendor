@@ -26,6 +26,10 @@ export function canBuyCard(player, cardId) {
   }, true);
 }
 
+export function canReserveCard(player) {
+  return player.reserved.length <= 2;
+}
+
 export function updateIn(list, cond, func) {
   return list.map(object => {
     if (cond(object)) {

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import CardBox from "./CardBox";
 
-import { canBuyCard } from "../helpers/Helpers";
+import { canBuyCard, canReserveCard } from "../helpers/Helpers";
 
 class Level extends Component {
   render() {
@@ -21,7 +21,7 @@ class Level extends Component {
           cardId={cardId}
           buyable={buyable}
           buyCard={buyCard}
-          reserveCard={reserveCard}
+          reserveCard={canReserveCard(me) ? reserveCard : undefined}
           getBonus={this.props.getBonus}
         />
       );
