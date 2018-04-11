@@ -26,7 +26,9 @@ export function canBuyCard(player, cardId) {
     Object.keys(cards[cardId].costs).reduce((costs, type) => {
       const netCoins = player.coins[type] ? player.coins[type] : 0;
       const netBonus = playerBonus[type] ? playerBonus[type] : 0;
-      return costs + cards[cardId].costs[type] - netCoins - netBonus;
+      return (
+        costs + Math.max(cards[cardId].costs[type] - netCoins - netBonus, 0)
+      );
     }, 0) <= playerJokers
   );
 }
