@@ -54,14 +54,13 @@
 .coin__board {
   position: fixed;
   right: 0;
+  bottom: 0;
   display: flex;
   align-items: flex-end;
   margin-top: 1%;
-  bottom: 30px;
   height: 80px;
   width: 240px;
   margin-right: auto;
-  margin-bottom: 1%;
   background: rgba(204, 204, 204, 0.5);
   padding: 1% 1% 0% 1%;
   border: 2px solid #000;
@@ -96,7 +95,7 @@
 
 .stash {
   position: fixed;
-  bottom: 140px;
+  bottom: 95px;
   width: 240px;
   right: 0;
   background: rgba(204, 204, 204, 0.5);
@@ -123,6 +122,7 @@
 .player__card {
   padding: 1%;
   width: 125%;
+  border: 3px solid transparent;
 }
 
 .noble__tray {
@@ -390,7 +390,7 @@
   top: 70px;
   right: 0;
   width: 240px;
-  height: 245px;
+  height: 310px;
   word-wrap: normal;
   overflow-y: scroll;
   border: 2px solid #7C3207;
@@ -418,4 +418,31 @@
 
 .flexed {
   display: flex;
+}
+
+.active {
+  animation: pulse 1.5s infinite;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    border: 3px solid black;
+  }
+  50% {
+    border: 3px solid transparent;
+  }
+  100% {
+    border: 3px solid black;
+  }
+}
+@keyframes pulse {
+  0% {
+    border: 3px solid black;
+  }
+  50% {
+    border: 3px solid transparent;
+  }
+  100% {
+    border: 3px solid black;
+  }
 }

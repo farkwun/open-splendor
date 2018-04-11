@@ -38,7 +38,11 @@ class PlayerCard extends Component {
 
     return (
       <div
-        className="player__card"
+        className={
+          this.props.currPlayer.id == this.props.player.id
+            ? "player__card active"
+            : "player__card"
+        }
         style={{ backgroundColor: this.props.color }}
       >
         <Prestige prestige={this.props.player.prestige} />

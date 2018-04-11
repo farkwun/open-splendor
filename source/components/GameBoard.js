@@ -7,7 +7,6 @@ import LevelBoard from "./LevelBoard";
 import CoinBoard from "./CoinBoard";
 import Stash from "./Stash";
 import PlayerBoard from "./PlayerBoard";
-import Info from "./Info";
 import Winner from "./Winner";
 import Tooltip from "./Tooltip";
 import Settings from "./Settings";
@@ -91,15 +90,11 @@ class GameBoard extends Component {
         />
         <PlayerBoard
           playOrder={this.props.playOrder}
+          currPlayer={this.getCurrPlayer()}
           players={this.props.players}
           me={me}
           buyCard={this.ifActive(this.props.buyReservedCardFor)}
           getBonus={this.getBonus}
-        />
-        <Info
-          currPlayer={this.getCurrPlayer()}
-          roundNum={this.props.roundNum}
-          incrementIndex={this.incrementIndex}
         />
         <Settings />
         {this.props.tutorial.show && (
