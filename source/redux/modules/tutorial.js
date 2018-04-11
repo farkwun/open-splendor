@@ -16,9 +16,16 @@ const body = (
     Hover over elements for more information!
     <br />
     <br />
-    Each turn, players will choose to either take coins or buy development
-    cards. Taking tokens is done through the Stash and Coin Board. Taking a
-    valid Stash ends your turn, so be sure to choose wisely!
+    Each turn, players will choose to either take coins or reserve/buy
+    development cards. Taking tokens is done using the Stash and the Coin Board.
+    Taking a valid Stash ends your turn, so be sure to choose wisely!
+    <br />
+    <br />
+    Reserving a card places that card in your own personal reserve, where you
+    may buy them during your turn. Reserving a card also provides you with a
+    yellow joker token, which may be used as if it were a coin of any color. You
+    will not receive a joker token if there are none left or if receiving that
+    token would put you over the maximum of 10 coins per player.
     <br />
     <br />
     Once a player has enough coins to meet the costs displayed on a development

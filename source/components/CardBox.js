@@ -16,6 +16,12 @@ const body = (
     achieve victory.
     <br />
     <br />
+    Cards can be either bought or reserved. You can only have three cards
+    reserved at a time. Reserving a card places it in your Player Card and also
+    gives you a joker coin (if you have room for the coin and if there are any
+    left).
+    <br />
+    <br />
     Development cards have three main elements: Prestige, cost, and type.
     <br />
     <br />

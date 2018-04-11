@@ -18,16 +18,25 @@ const body = (
     <br />
     Each card displays the current Prestige of the player, the numbers and types
     of coins in their possession, the numbers and types of cards in their
-    possession, and the number of Nobles that have visited them.
+    possession, the number of cards they have reserved, and the number of Nobles
+    that have visited them.
     <br />
     <br />
     Each player card displays 5 card aggregates (represented by the gem type and
-    number of cards of that type) and 1 Noble aggregate, representing each
-    player&apos;s total discount per gem type and the Nobles that have visited
-    that player, respectively. Hover over each aggregate to see the cards of
-    that type owned, and nobles visited, for that player.
+    number of cards of that type), 1 reserve aggregate, and 1 Noble aggregate.
+    These represent each player&apos;s total discount per gem type, the cards
+    they have reserved (up to a max of 3), and the Nobles that have visited that
+    player, respectively.
     <br />
     <br />
+    Hover over the card and Noble aggregates to see the cards of that type
+    owned, and nobles visited, for that player. Click on the reserve aggregate
+    to toggle the view for that player&apos;s reserved cards. If you have the
+    funds, you may buy your own reserved cards during your turn, but will not be
+    able to buy cards reserved by others.
+    <br />
+    <br />
+    The active player&apos;s Player Card will flash with a black outline.
   </div>
 );
 

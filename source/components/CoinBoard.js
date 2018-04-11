@@ -19,6 +19,11 @@ const body = (
     <br />
     The number at the bottom of each stack of coins indicates the number of
     coins remaining in the stack.
+    <br />
+    <br />
+    You are unable to directly add yellow joker tokens to the stash. Joker
+    tokens can only be obtained by reserving cards. Yellow joker tokens can be
+    used as if they were coins of any color.
   </div>
 );
 

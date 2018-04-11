@@ -26,6 +26,9 @@ const body = (
     - You may only take stashed coins if your total coins after taking your
     stash would not exceed the per-player coin limit
     <br />
+    - You may take less than three coins of differing colors if taking three
+    coins would exceed the per-player coin limit.
+    <br />
     <br />
     Take coins for your turn by clicking &quot;Take Stash&quot;.
     <br />
