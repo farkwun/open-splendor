@@ -18,7 +18,7 @@ class NewGameForm extends Component {
         <div className="form__input">
           <input
             type="text"
-            placeholder="Enter name"
+            placeholder="Enter desired username"
             value={this.state.value}
             onChange={this.changeValue}
             maxLength="10"

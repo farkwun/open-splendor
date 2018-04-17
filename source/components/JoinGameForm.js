@@ -23,7 +23,7 @@ class JoinGameForm extends Component {
         <div className="form__input">
           <input
             type="text"
-            placeholder="Enter room ID"
+            placeholder="Enter existing room ID"
             value={this.state.roomId}
             onChange={this.changeRoomId}
             maxLength="10"
@@ -32,7 +32,7 @@ class JoinGameForm extends Component {
         <div className="form__input">
           <input
             type="text"
-            placeholder="Enter name"
+            placeholder="Enter desired username"
             value={this.state.name}
             onChange={this.changeName}
             maxLength="10"
