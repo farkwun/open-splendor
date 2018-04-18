@@ -427,22 +427,28 @@
 @-webkit-keyframes pulse {
   0% {
     border: 3px solid black;
+    color: white;
   }
   50% {
     border: 3px solid transparent;
+    color: black;
   }
   100% {
     border: 3px solid black;
+    color: white;
   }
 }
 @keyframes pulse {
   0% {
     border: 3px solid black;
+    color: white;
   }
   50% {
     border: 3px solid transparent;
+    color: black;
   }
   100% {
     border: 3px solid black;
+    color: white;
   }
 }
