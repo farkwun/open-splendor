@@ -5,7 +5,9 @@ import PropTypes from "prop-types";
 class Toast extends Component {
   render() {
     return this.props.showToast ? (
-      <div className="toast">{this.props.toastText}</div>
+      <div className="toast">
+        <h4 className="centered">{this.props.toastText}</h4>
+      </div>
     ) : (
       <div />
     );

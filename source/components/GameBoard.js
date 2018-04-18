@@ -37,7 +37,7 @@ class GameBoard extends Component {
     this.getMe().cards.filter(cardId => cards[cardId].type === type).length;
 
   ifActive = func =>
-    this.active() ? func : this.props.setToast("It isn't your turn!", 1000);
+    this.active() ? func : this.props.setToast("It isn't your turn!", 3000);
 
   active = () =>
     !this.props.isLoading &&
@@ -58,7 +58,10 @@ class GameBoard extends Component {
     ) {
       this.props.takeStash(this.props.stash);
     } else {
-      this.props.setToast("Can't take stash.", 1000)();
+      this.props.setToast(
+        "Can't take stash. Enable tooltips and hover over the Stash for more details.",
+        3000
+      )();
     }
   };
 

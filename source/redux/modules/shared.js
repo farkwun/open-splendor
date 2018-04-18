@@ -133,7 +133,7 @@ export const pollGameState = roomId => {
             isMyTurn(getState(), json.playOrder, json.playIndex) ||
             gameOver(getState())
           ) {
-            dispatch(toast("It's your turn!", 5000));
+            dispatch(toast("It's your turn!", 7000));
             dispatch(stopPoll());
           }
         }),

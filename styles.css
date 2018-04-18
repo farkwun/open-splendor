@@ -374,13 +374,19 @@
 }
 
 .toast {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   margin: auto;
+  min-width: 300px;
+  min-height: 150px;
   border: 3px solid #73AD21;
   background-color: rgba(202,232,202,0.5);
+  pointer-events: none;
   z-index: 100;
 }
 
