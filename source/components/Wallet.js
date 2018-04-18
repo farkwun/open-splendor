@@ -25,7 +25,7 @@ class Wallet extends Component {
           className="reminder__text"
           style={
             numCoins < maxCoins - WARN_OFFSET
-              ? { color: "grey" }
+              ? { color: "black" }
               : { color: "red" }
           }
         >
