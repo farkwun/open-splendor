@@ -3,13 +3,19 @@ import PropTypes from "prop-types";
 
 import { maxCoins } from "../helpers/Helpers";
 
+import { PALETTE } from "../data/static.js";
+
 const WARN_OFFSET = 2;
 
 class Wallet extends Component {
   render() {
     const coins = Object.keys(this.props.coins).map(key => {
       return (
-        <div key={key} className="counter" style={{ backgroundColor: key }}>
+        <div
+          key={key}
+          className="counter"
+          style={{ backgroundColor: PALETTE["colorblind"][key] }}
+        >
           {this.props.coins[key]}
         </div>
       );

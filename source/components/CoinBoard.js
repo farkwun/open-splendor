@@ -4,12 +4,7 @@ import PropTypes from "prop-types";
 import CoinStack from "./CoinStack";
 import { showTutorialOnHover } from "./TutorialHover";
 
-const BLACK = "black";
-const WHITE = "white";
-const BLUE = "blue";
-const GREEN = "green";
-const RED = "red";
-const YELLOW = "yellow";
+import { TYPE } from "../data/static.js";
 
 const header = "Coin Board";
 const body = (
@@ -35,12 +30,12 @@ class CoinBoard extends Component {
     const addToStash = this.coinStack(this.props.coins, this.props.addToStash);
     return (
       <div className="coin__board">
-        {this.coinStack(this.props.coins)(YELLOW)}
-        {addToStash(BLACK)}
-        {addToStash(WHITE)}
-        {addToStash(BLUE)}
-        {addToStash(GREEN)}
-        {addToStash(RED)}
+        {this.coinStack(this.props.coins)(TYPE.GOLD)}
+        {addToStash(TYPE.ONYX)}
+        {addToStash(TYPE.DIAMOND)}
+        {addToStash(TYPE.SAPPHIRE)}
+        {addToStash(TYPE.EMERALD)}
+        {addToStash(TYPE.RUBY)}
       </div>
     );
   }

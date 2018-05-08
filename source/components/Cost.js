@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import { PALETTE } from "../data/static.js";
+
 class Cost extends Component {
   render() {
-    const type = this.props.type;
+    const type = PALETTE["colorblind"][this.props.type];
     const bonus = this.props.getBonus ? this.props.getBonus(type) : 0;
     const val = Math.max(0, this.props.val - bonus);
 

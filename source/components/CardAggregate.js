@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import Prestige from "./Prestige";
 
+import { PALETTE } from "../data/static.js";
+
 class CardAggregate extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +27,10 @@ class CardAggregate extends Component {
 
   render() {
     const myCards = (
-      <div className="my__cards" style={{ borderColor: this.props.type }}>
+      <div
+        className="my__cards"
+        style={{ borderColor: PALETTE["colorblind"][this.props.type] }}
+      >
         {this.props.cards}
       </div>
     );
@@ -34,7 +39,7 @@ class CardAggregate extends Component {
         className="aggregate"
         onMouseEnter={this.show}
         onMouseLeave={this.hide}
-        style={{ backgroundColor: this.props.type }}
+        style={{ backgroundColor: PALETTE["colorblind"][this.props.type] }}
       >
         <Prestige prestige={this.props.bonus} />
         {this.state.showCards ? myCards : <div />}
