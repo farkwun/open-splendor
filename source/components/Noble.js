@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import Prestige from "./Prestige";
+import Cost from "./Cost";
 import { showTutorialOnHover } from "./TutorialHover";
 
 const className = "noble__box";
@@ -33,12 +35,22 @@ class Noble extends Component {
     if (this.props.placeholder) {
       return <div className="noble__placeholder" />;
     }
+
     const backgroundStyle = {
       backgroundImage: "url(" + this.props.imgURL + ")",
       backgroundSize: "contain"
     };
 
-    return <div className="noble" style={backgroundStyle} />;
+    const costs = Object.keys(this.props.costs).map(type => (
+      <Cost key={type} val={this.props.costs[type]} type={type} />
+    ));
+
+    return (
+      <div className="noble" style={backgroundStyle}>
+        <Prestige prestige={this.props.prestige} />
+        {costs}
+      </div>
+    );
   }
 }
 
