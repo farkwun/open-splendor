@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { maxCoins } from "../helpers/Helpers";
 
-import { PALETTE } from "../data/static.js";
+import { addDynamicPalette } from "./DynamicPalette";
 
 const WARN_OFFSET = 2;
 
@@ -14,7 +14,7 @@ class Wallet extends Component {
         <div
           key={key}
           className="counter"
-          style={{ backgroundColor: PALETTE["colorblind"][key] }}
+          style={{ backgroundColor: this.props.palette.colors[key] }}
         >
           {this.props.coins[key]}
         </div>
@@ -49,4 +49,4 @@ Wallet.propTypes = {
   coins: PropTypes.object.isRequired
 };
 
-export default Wallet;
+export default addDynamicPalette(Wallet);

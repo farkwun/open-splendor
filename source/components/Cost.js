@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import { PALETTE } from "../data/static.js";
+import { addDynamicPalette } from "./DynamicPalette";
 
 class Cost extends Component {
   render() {
-    const type = PALETTE["colorblind"][this.props.type];
+    const type = this.props.palette.colors[this.props.type];
     const bonus = this.props.getBonus ? this.props.getBonus(type) : 0;
     const val = Math.max(0, this.props.val - bonus);
 
@@ -41,4 +41,4 @@ Cost.propTypes = {
   getBonus: PropTypes.func
 };
 
-export default Cost;
+export default addDynamicPalette(Cost);

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Prestige from "./Prestige";
 
-import { PALETTE } from "../data/static.js";
+import { addDynamicPalette } from "./DynamicPalette";
 
 class CardAggregate extends Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class CardAggregate extends Component {
     const myCards = (
       <div
         className="my__cards"
-        style={{ borderColor: PALETTE["colorblind"][this.props.type] }}
+        style={{ borderColor: this.props.palette.colors[this.props.type] }}
       >
         {this.props.cards}
       </div>
@@ -39,7 +39,7 @@ class CardAggregate extends Component {
         className="aggregate"
         onMouseEnter={this.show}
         onMouseLeave={this.hide}
-        style={{ backgroundColor: PALETTE["colorblind"][this.props.type] }}
+        style={{ backgroundColor: this.props.palette.colors[this.props.type] }}
       >
         <Prestige prestige={this.props.bonus} />
         {this.state.showCards ? myCards : <div />}
@@ -48,4 +48,4 @@ class CardAggregate extends Component {
   }
 }
 
-export default CardAggregate;
+export default addDynamicPalette(CardAggregate);
