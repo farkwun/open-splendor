@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { showTutorial, hideTutorial } from "../redux/modules/tutorial";
+import {
+  setPalette,
+  COLORBLIND_PALETTE,
+  DEFAULT_PALETTE
+} from "../redux/modules/palette";
 
 class Settings extends Component {
   toggleTutorial = () =>
@@ -9,6 +14,12 @@ class Settings extends Component {
       ? this.props.hideTooltips()
       : this.props.showTooltips();
 
+  togglePalette = () =>
+    this.isColorblind(this.props.palette.type)
+      ? this.props.setDefault()
+      : this.props.setColorblind();
+
+  isColorblind = colorscheme => colorscheme === COLORBLIND_PALETTE;
   render() {
     return (
       <div className="settings centered">
@@ -21,6 +32,15 @@ class Settings extends Component {
             onClick={this.toggleTutorial}
           />
         </label>
+        <label>
+          Colorblind
+          <input
+            name="Colorblind"
+            type="checkbox"
+            checked={this.isColorblind(this.props.palette.type)}
+            onClick={this.togglePalette}
+          />
+        </label>
       </div>
     );
   }
@@ -28,14 +48,17 @@ class Settings extends Component {
 
 function mapStateToProps(state) {
   return {
-    tutorial: state.tutorial
+    tutorial: state.tutorial,
+    palette: state.palette
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     showTooltips: () => dispatch(showTutorial()),
-    hideTooltips: () => dispatch(hideTutorial())
+    hideTooltips: () => dispatch(hideTutorial()),
+    setColorblind: () => dispatch(setPalette(COLORBLIND_PALETTE)),
+    setDefault: () => dispatch(setPalette(DEFAULT_PALETTE))
   };
 }
 
