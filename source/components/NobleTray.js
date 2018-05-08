@@ -30,17 +30,19 @@ class NobleTray extends Component {
     const playerNobles = (
       <div className="my__nobles">
         <h3 className="box__header centered">Nobles</h3>
-        {this.props.playerNobles.map(nobleId => {
-          const noble = nobles[nobleId];
-          return (
-            <Noble
-              key={noble.id}
-              prestige={noble.prestige}
-              costs={noble.costs}
-              imgURL={`source/data/img/nobles/${noble.id}.png`}
-            />
-          );
-        })}
+        <div className="flexed">
+          {this.props.playerNobles.map(nobleId => {
+            const noble = nobles[nobleId];
+            return (
+              <Noble
+                key={noble.id}
+                prestige={noble.prestige}
+                costs={noble.costs}
+                imgURL={`source/data/img/noble.png`}
+              />
+            );
+          })}
+        </div>
       </div>
     );
 

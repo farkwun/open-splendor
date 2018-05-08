@@ -295,7 +295,7 @@
 
 .noble__box {
   display: inline-block;
-  width: 20%;
+  min-width: 20%;
 }
 
 .card__box {
