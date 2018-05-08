@@ -5,12 +5,12 @@ import { addDynamicPalette } from "./DynamicPalette";
 
 class Cost extends Component {
   render() {
-    const type = this.props.palette.colors[this.props.type];
-    const bonus = this.props.getBonus ? this.props.getBonus(type) : 0;
+    const type = this.props.type;
+    const bonus = this.props.bonus;
     const val = Math.max(0, this.props.val - bonus);
 
     const style = {
-      backgroundColor: type,
+      backgroundColor: this.props.palette.colors[type],
       color: "white"
     };
 
@@ -37,8 +37,7 @@ class Cost extends Component {
 Cost.propTypes = {
   type: PropTypes.string.isRequired,
   val: PropTypes.number.isRequired,
-
-  getBonus: PropTypes.func
+  bonus: PropTypes.number
 };
 
 export default addDynamicPalette(Cost);

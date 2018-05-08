@@ -18,7 +18,7 @@ class Card extends Component {
         key={key}
         val={card.costs[key]}
         type={key}
-        getBonus={this.props.getBonus}
+        bonus={this.props.getBonus(key)}
       />
     ));
 
@@ -33,9 +33,7 @@ class Card extends Component {
 }
 
 Card.propTypes = {
-  id: PropTypes.string,
-
-  getBonus: PropTypes.func
+  id: PropTypes.string
 };
 
 export default Card;
