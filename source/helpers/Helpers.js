@@ -1,8 +1,7 @@
 import { cards } from "../data/static";
+import { TYPE } from "../data/static";
 
 export const maxCoins = 10;
-
-const YELLOW = "yellow";
 
 export function canTakeStash(player, stash, coins) {
   const playerCoins = numCoins(player);
@@ -21,7 +20,7 @@ export function canTakeStash(player, stash, coins) {
 
 export function canBuyCard(player, cardId) {
   const playerBonus = getBonusAggregateFor(player);
-  const playerJokers = player.coins[YELLOW] ? player.coins[YELLOW] : 0;
+  const playerGold = player.coins[TYPE.GOLD] ? player.coins[TYPE.GOLD] : 0;
   return (
     Object.keys(cards[cardId].costs).reduce((costs, type) => {
       const netCoins = player.coins[type] ? player.coins[type] : 0;
@@ -29,7 +28,7 @@ export function canBuyCard(player, cardId) {
       return (
         costs + Math.max(cards[cardId].costs[type] - netCoins - netBonus, 0)
       );
-    }, 0) <= playerJokers
+    }, 0) <= playerGold
   );
 }
 
