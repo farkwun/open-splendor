@@ -20,7 +20,7 @@ const PALETTE = {
     [TYPE.DIAMOND]: "white",
     [TYPE.SAPPHIRE]: "blue",
     [TYPE.EMERALD]: "green",
-    [TYPE.RUBY]: "lightsalmon",
+    [TYPE.RUBY]: "peachpuff",
     [TYPE.GOLD]: "yellow"
   }
 };
