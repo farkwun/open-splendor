@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Prestige from "./Prestige";
-import Cost from "./Cost";
+import NobleCost from "./NobleCost";
 import { showTutorialOnHover } from "./TutorialHover";
 
 const className = "noble__box";
@@ -42,7 +42,7 @@ class Noble extends Component {
     };
 
     const costs = Object.keys(this.props.costs).map(type => (
-      <Cost key={type} val={this.props.costs[type]} type={type} />
+      <NobleCost key={type} val={this.props.costs[type]} type={type} />
     ));
 
     return (
