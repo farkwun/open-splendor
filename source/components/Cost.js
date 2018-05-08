@@ -16,17 +16,17 @@ class Cost extends Component {
 
     return bonus ? (
       <div>
-        <div className="cost" style={style}>
+        <div className="cost rounded" style={style}>
           {this.props.val}
         </div>
         -&gt;
-        <div className="cost" style={{ ...style, color: "#00ff00" }}>
+        <div className="cost rounded" style={{ ...style, color: "#00ff00" }}>
           {val}
         </div>
       </div>
     ) : (
       <div>
-        <div className="cost" style={style}>
+        <div className="cost rounded" style={style}>
           {this.props.val}
         </div>
       </div>

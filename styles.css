@@ -354,7 +354,6 @@
   padding: 3px;
   margin: 2px;
   width: 10%;
-  border-radius: 10px;
   border: 1px solid #000;
 }
 
@@ -429,6 +428,10 @@
 
 .flexed {
   display: flex;
+}
+
+.rounded {
+  border-radius: 10px;
 }
 
 .active {
