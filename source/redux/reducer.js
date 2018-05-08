@@ -5,6 +5,7 @@ import roomId from "./modules/roomid";
 import active from "./modules/active";
 import isLoading from "./modules/loading";
 import toast from "./modules/toast";
+import palette from "./modules/palette";
 import mode from "./modules/mode";
 import tutorial from "./modules/tutorial";
 import nobleList from "./modules/nobleList";
@@ -23,6 +24,7 @@ export default combineReducers({
   active,
   isLoading,
   toast,
+  palette,
   mode,
   tutorial,
   nobleList,
