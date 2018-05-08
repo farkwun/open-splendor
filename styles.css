@@ -326,6 +326,8 @@
 
 .noble {
   background-repeat: no-repeat;
+  background-size: 100px;
+  background-position: center;
   margin: 2%;
   border-radius: 2%;
   height: 95%;
