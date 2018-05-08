@@ -6,15 +6,14 @@ import { addDynamicPalette } from "./DynamicPalette";
 class Cost extends Component {
   render() {
     const type = this.props.type;
-    const bonus = this.props.bonus;
-    const val = Math.max(0, this.props.val - bonus);
+    const val = Math.max(0, this.props.val - this.props.discount);
 
     const style = {
       backgroundColor: this.props.palette.colors[type],
       color: "white"
     };
 
-    return bonus ? (
+    return this.props.discount ? (
       <div>
         <div className="cost rounded" style={style}>
           {this.props.val}

@@ -18,7 +18,7 @@ class Card extends Component {
         key={key}
         val={card.costs[key]}
         type={key}
-        bonus={this.props.getBonus(key)}
+        discount={this.props.getBonus && this.props.getBonus(key)}
       />
     ));
 
